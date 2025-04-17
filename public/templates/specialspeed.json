@@ -1,0 +1,22 @@
+[
+    {
+        "name": "匀速",
+        "type": "linear"
+    },
+    {
+        "name": "由慢变快再变慢",
+        "type": "ease"
+    },
+    {
+        "name": "以低速开始",
+        "type": "ease-in"
+    },
+    {
+        "name": "以低速结束",
+        "type": "ease-out"
+    },
+    {
+        "name": "以低速开始和结束",
+        "type": "ease-in-out"
+    }
+]

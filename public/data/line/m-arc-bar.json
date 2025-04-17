@@ -1,0 +1,37 @@
+[
+    {
+        "label": "刘备",
+        "value": 100,
+        "category": "蜀"
+    },
+    {
+        "label": "关羽",
+        "value": 200,
+        "category": "蜀"
+    },
+    {
+        "label": "张飞",
+        "value": 300,
+        "category": "蜀"
+    },
+    {
+        "label": "孙权",
+        "value": 400,
+        "category": "吴"
+    },
+    {
+        "label": "周瑜",
+        "value": 500,
+        "category": "吴"
+    },
+    {
+        "label": "曹操",
+        "value": 600,
+        "category": "魏"
+    },
+    {
+        "label": "张郃",
+        "value": 700,
+        "category": "魏"
+    }
+]

@@ -1,0 +1,902 @@
+[
+    {
+      "key": "transform",
+      "config": {
+        "type": "unknown",
+        "component": "select",
+        "alias": "控制",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": false,
+        "defaultValue": null,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "transform",
+      "virtualPath": ""
+    },
+    {
+      "key": "render",
+      "config": {
+        "type": "object",
+        "component": "none",
+        "alias": "渲染",
+        "tip": "",
+        "displayMode": "nest",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": false,
+        "defaultValue": null,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "render",
+      "virtualPath": "",
+      "children": [
+        {
+          "key": "clearColor",
+          "config": {
+            "type": "string",
+            "component": "color",
+            "alias": "背景颜色",
+            "tip": "",
+            "displayMode": "single",
+            "features": [],
+            "layout": "horizontal",
+            "toggleCol": "",
+            "isHide": false,
+            "defaultValue": "rgba(255,255,255,1)",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "InfiniteMin": false,
+            "InfiniteMax": false,
+            "suffix": "",
+            "enums": [],
+            "whichEnum": {
+              "field": "",
+              "value": ""
+            },
+            "flatValue": false
+          },
+          "path": "render.clearColor",
+          "virtualPath": ""
+        },
+        {
+          "key": "antialias",
+          "config": {
+            "type": "boolean",
+            "component": "switch",
+            "alias": "抗锯齿",
+            "tip": "",
+            "displayMode": "single",
+            "features": [],
+            "layout": "horizontal",
+            "toggleCol": "",
+            "isHide": false,
+            "defaultValue": true,
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "InfiniteMin": false,
+            "InfiniteMax": false,
+            "suffix": "",
+            "enums": [],
+            "whichEnum": {
+              "field": "",
+              "value": ""
+            },
+            "flatValue": false
+          },
+          "path": "render.antialias",
+          "virtualPath": ""
+        }
+      ],
+      "cols": [
+        "clearColor",
+        "antialias"
+      ]
+    },
+    {
+      "key": "camera",
+      "config": {
+        "type": "object",
+        "component": "none",
+        "alias": "相机",
+        "tip": "",
+        "displayMode": "nest",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": false,
+        "defaultValue": null,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "camera",
+      "virtualPath": "",
+      "children": [
+        {
+          "key": "position",
+          "config": {
+            "type": "object",
+            "component": "none",
+            "alias": "位置",
+            "tip": "",
+            "displayMode": "nest",
+            "features": [],
+            "layout": "horizontal",
+            "toggleCol": "",
+            "isHide": false,
+            "defaultValue": null,
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "InfiniteMin": false,
+            "InfiniteMax": false,
+            "suffix": "",
+            "enums": [],
+            "whichEnum": {
+              "field": "",
+              "value": ""
+            },
+            "flatValue": false
+          },
+          "path": "camera.position",
+          "virtualPath": "",
+          "children": [
+            {
+              "key": "x",
+              "config": {
+                "type": "number",
+                "component": "number",
+                "alias": "X",
+                "tip": "",
+                "displayMode": "single",
+                "features": [],
+                "layout": "horizontal",
+                "toggleCol": "",
+                "isHide": false,
+                "defaultValue": -8,
+                "min": -10000,
+                "max": 100,
+                "step": 1,
+                "InfiniteMin": true,
+                "InfiniteMax": true,
+                "suffix": "",
+                "enums": [],
+                "whichEnum": {
+                  "field": "",
+                  "value": ""
+                },
+                "flatValue": false
+              },
+              "path": "camera.position.x",
+              "virtualPath": ""
+            },
+            {
+              "key": "y",
+              "config": {
+                "type": "number",
+                "component": "number",
+                "alias": "",
+                "tip": "",
+                "displayMode": "single",
+                "features": [],
+                "layout": "horizontal",
+                "toggleCol": "",
+                "isHide": false,
+                "defaultValue": -26,
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "InfiniteMin": true,
+                "InfiniteMax": true,
+                "suffix": "",
+                "enums": [],
+                "whichEnum": {
+                  "field": "",
+                  "value": ""
+                },
+                "flatValue": false
+              },
+              "path": "camera.position.y",
+              "virtualPath": ""
+            },
+            {
+              "key": "z",
+              "config": {
+                "type": "number",
+                "component": "number",
+                "alias": "",
+                "tip": "",
+                "displayMode": "single",
+                "features": [],
+                "layout": "horizontal",
+                "toggleCol": "",
+                "isHide": false,
+                "defaultValue": 0,
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "InfiniteMin": true,
+                "InfiniteMax": true,
+                "suffix": "",
+                "enums": [],
+                "whichEnum": {
+                  "field": "",
+                  "value": ""
+                },
+                "flatValue": false
+              },
+              "path": "camera.position.z",
+              "virtualPath": ""
+            }
+          ],
+          "cols": [
+            "x",
+            "y",
+            "z"
+          ]
+        },
+        {
+          "key": "lookAt",
+          "config": {
+            "type": "object",
+            "component": "none",
+            "alias": "指向位置",
+            "tip": "",
+            "displayMode": "nest",
+            "features": [],
+            "layout": "horizontal",
+            "toggleCol": "",
+            "isHide": false,
+            "defaultValue": null,
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "InfiniteMin": false,
+            "InfiniteMax": false,
+            "suffix": "",
+            "enums": [],
+            "whichEnum": {
+              "field": "",
+              "value": ""
+            },
+            "flatValue": false
+          },
+          "path": "camera.lookAt",
+          "virtualPath": "",
+          "children": [
+            {
+              "key": "x",
+              "config": {
+                "type": "number",
+                "component": "number",
+                "alias": "X",
+                "tip": "",
+                "displayMode": "single",
+                "features": [],
+                "layout": "horizontal",
+                "toggleCol": "",
+                "isHide": false,
+                "defaultValue": 0,
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "InfiniteMin": true,
+                "InfiniteMax": true,
+                "suffix": "",
+                "enums": [],
+                "whichEnum": {
+                  "field": "",
+                  "value": ""
+                },
+                "flatValue": false
+              },
+              "path": "camera.lookAt.x",
+              "virtualPath": ""
+            },
+            {
+              "key": "y",
+              "config": {
+                "type": "number",
+                "component": "number",
+                "alias": "Y",
+                "tip": "",
+                "displayMode": "single",
+                "features": [],
+                "layout": "horizontal",
+                "toggleCol": "",
+                "isHide": false,
+                "defaultValue": 0,
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "InfiniteMin": true,
+                "InfiniteMax": true,
+                "suffix": "",
+                "enums": [],
+                "whichEnum": {
+                  "field": "",
+                  "value": ""
+                },
+                "flatValue": false
+              },
+              "path": "camera.lookAt.y",
+              "virtualPath": ""
+            },
+            {
+              "key": "z",
+              "config": {
+                "type": "number",
+                "component": "number",
+                "alias": "Z",
+                "tip": "",
+                "displayMode": "single",
+                "features": [],
+                "layout": "horizontal",
+                "toggleCol": "",
+                "isHide": false,
+                "defaultValue": 0,
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "InfiniteMin": true,
+                "InfiniteMax": true,
+                "suffix": "",
+                "enums": [],
+                "whichEnum": {
+                  "field": "",
+                  "value": ""
+                },
+                "flatValue": false
+              },
+              "path": "camera.lookAt.z",
+              "virtualPath": ""
+            }
+          ],
+          "cols": [
+            "x",
+            "y",
+            "z"
+          ]
+        }
+      ],
+      "cols": [
+        "position",
+        "lookAt"
+      ]
+    },
+    {
+      "key": "model",
+      "config": {
+        "type": "object",
+        "component": "none",
+        "alias": "模型",
+        "tip": "",
+        "displayMode": "nest",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": false,
+        "defaultValue": null,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "model",
+      "virtualPath": "",
+      "children": [
+        {
+          "key": "url",
+          "config": {
+            "type": "string",
+            "component": "input",
+            "alias": "Url",
+            "tip": "",
+            "displayMode": "single",
+            "features": [],
+            "layout": "horizontal",
+            "toggleCol": "",
+            "isHide": false,
+            "defaultValue": "./public/C919/scene.gltf",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "InfiniteMin": false,
+            "InfiniteMax": false,
+            "suffix": "",
+            "enums": [],
+            "whichEnum": {
+              "field": "",
+              "value": ""
+            },
+            "flatValue": false
+          },
+          "path": "model.url",
+          "virtualPath": ""
+        },
+        {
+          "key": "scale",
+          "config": {
+            "type": "object",
+            "component": "none",
+            "alias": "缩放",
+            "tip": "",
+            "displayMode": "nest",
+            "features": [],
+            "layout": "horizontal",
+            "toggleCol": "",
+            "isHide": false,
+            "defaultValue": null,
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "InfiniteMin": false,
+            "InfiniteMax": false,
+            "suffix": "",
+            "enums": [],
+            "whichEnum": {
+              "field": "",
+              "value": ""
+            },
+            "flatValue": false
+          },
+          "path": "model.scale",
+          "virtualPath": "",
+          "children": [
+            {
+              "key": "X",
+              "config": {
+                "type": "number",
+                "component": "number",
+                "alias": "X",
+                "tip": "",
+                "displayMode": "single",
+                "features": [],
+                "layout": "horizontal",
+                "toggleCol": "",
+                "isHide": false,
+                "defaultValue": 0,
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "InfiniteMin": true,
+                "InfiniteMax": true,
+                "suffix": "",
+                "enums": [],
+                "whichEnum": {
+                  "field": "",
+                  "value": ""
+                },
+                "flatValue": false
+              },
+              "path": "model.scale.X",
+              "virtualPath": ""
+            },
+            {
+              "key": "Y",
+              "config": {
+                "type": "number",
+                "component": "number",
+                "alias": "Y",
+                "tip": "",
+                "displayMode": "single",
+                "features": [],
+                "layout": "horizontal",
+                "toggleCol": "",
+                "isHide": false,
+                "defaultValue": 0,
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "InfiniteMin": true,
+                "InfiniteMax": true,
+                "suffix": "",
+                "enums": [],
+                "whichEnum": {
+                  "field": "",
+                  "value": ""
+                },
+                "flatValue": false
+              },
+              "path": "model.scale.Y",
+              "virtualPath": ""
+            },
+            {
+              "key": "Z",
+              "config": {
+                "type": "number",
+                "component": "number",
+                "alias": "Z",
+                "tip": "",
+                "displayMode": "single",
+                "features": [],
+                "layout": "horizontal",
+                "toggleCol": "",
+                "isHide": false,
+                "defaultValue": 0,
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "InfiniteMin": true,
+                "InfiniteMax": true,
+                "suffix": "",
+                "enums": [],
+                "whichEnum": {
+                  "field": "",
+                  "value": ""
+                },
+                "flatValue": false
+              },
+              "path": "model.scale.Z",
+              "virtualPath": ""
+            }
+          ],
+          "cols": [
+            "X",
+            "Y",
+            "Z"
+          ]
+        },
+        {
+          "key": "postion",
+          "config": {
+            "type": "object",
+            "component": "none",
+            "alias": "位置",
+            "tip": "",
+            "displayMode": "nest",
+            "features": [],
+            "layout": "horizontal",
+            "toggleCol": "",
+            "isHide": false,
+            "defaultValue": null,
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "InfiniteMin": false,
+            "InfiniteMax": false,
+            "suffix": "",
+            "enums": [],
+            "whichEnum": {
+              "field": "",
+              "value": ""
+            },
+            "flatValue": false
+          },
+          "path": "model.postion",
+          "virtualPath": "",
+          "children": [
+            {
+              "key": "X",
+              "config": {
+                "type": "number",
+                "component": "number",
+                "alias": "X",
+                "tip": "",
+                "displayMode": "single",
+                "features": [],
+                "layout": "horizontal",
+                "toggleCol": "",
+                "isHide": false,
+                "defaultValue": 0,
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "InfiniteMin": false,
+                "InfiniteMax": false,
+                "suffix": "",
+                "enums": [],
+                "whichEnum": {
+                  "field": "",
+                  "value": ""
+                },
+                "flatValue": false
+              },
+              "path": "model.postion.X",
+              "virtualPath": ""
+            },
+            {
+              "key": "Y",
+              "config": {
+                "type": "number",
+                "component": "number",
+                "alias": "Y",
+                "tip": "",
+                "displayMode": "single",
+                "features": [],
+                "layout": "horizontal",
+                "toggleCol": "",
+                "isHide": false,
+                "defaultValue": 0,
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "InfiniteMin": false,
+                "InfiniteMax": false,
+                "suffix": "",
+                "enums": [],
+                "whichEnum": {
+                  "field": "",
+                  "value": ""
+                },
+                "flatValue": false
+              },
+              "path": "model.postion.Y",
+              "virtualPath": ""
+            },
+            {
+              "key": "Z",
+              "config": {
+                "type": "number",
+                "component": "number",
+                "alias": "Z",
+                "tip": "",
+                "displayMode": "single",
+                "features": [],
+                "layout": "horizontal",
+                "toggleCol": "",
+                "isHide": false,
+                "defaultValue": 0,
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "InfiniteMin": false,
+                "InfiniteMax": false,
+                "suffix": "",
+                "enums": [],
+                "whichEnum": {
+                  "field": "",
+                  "value": ""
+                },
+                "flatValue": false
+              },
+              "path": "model.postion.Z",
+              "virtualPath": ""
+            }
+          ],
+          "cols": [
+            "X",
+            "Y",
+            "Z"
+          ]
+        }
+      ],
+      "cols": [
+        "url",
+        "scale",
+        "postion"
+      ]
+    },
+    {
+      "key": "light",
+      "config": {
+        "type": "object",
+        "component": "none",
+        "alias": "光源",
+        "tip": "",
+        "displayMode": "nest",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": false,
+        "defaultValue": null,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "light",
+      "virtualPath": "",
+      "children": [
+        {
+          "key": "color",
+          "config": {
+            "type": "string",
+            "component": "color",
+            "alias": "颜色",
+            "tip": "",
+            "displayMode": "single",
+            "features": [],
+            "layout": "horizontal",
+            "toggleCol": "",
+            "isHide": false,
+            "defaultValue": "rgba(255,255,255,1)",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "InfiniteMin": false,
+            "InfiniteMax": false,
+            "suffix": "",
+            "enums": [],
+            "whichEnum": {
+              "field": "",
+              "value": ""
+            },
+            "flatValue": false
+          },
+          "path": "light.color",
+          "virtualPath": ""
+        },
+        {
+          "key": "intensity",
+          "config": {
+            "type": "number",
+            "component": "number",
+            "alias": "强度",
+            "tip": "",
+            "displayMode": "single",
+            "features": [],
+            "layout": "horizontal",
+            "toggleCol": "",
+            "isHide": false,
+            "defaultValue": 2,
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "InfiniteMin": false,
+            "InfiniteMax": false,
+            "suffix": "",
+            "enums": [],
+            "whichEnum": {
+              "field": "",
+              "value": ""
+            },
+            "flatValue": false
+          },
+          "path": "light.intensity",
+          "virtualPath": ""
+        }
+      ],
+      "cols": [
+        "color",
+        "intensity"
+      ]
+    },
+    {
+      "key": "select",
+      "config": {
+        "type": "object",
+        "component": "none",
+        "alias": "模型选择",
+        "tip": "",
+        "displayMode": "nest",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "enable",
+        "isHide": false,
+        "defaultValue": null,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "select",
+      "virtualPath": "",
+      "children": [
+        {
+          "key": "enable",
+          "config": {
+            "type": "boolean",
+            "component": "switch",
+            "alias": "",
+            "tip": "",
+            "displayMode": "single",
+            "features": [],
+            "layout": "horizontal",
+            "toggleCol": "",
+            "isHide": false,
+            "defaultValue": true,
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "InfiniteMin": false,
+            "InfiniteMax": false,
+            "suffix": "",
+            "enums": [],
+            "whichEnum": {
+              "field": "",
+              "value": ""
+            },
+            "flatValue": false
+          },
+          "path": "select.enable",
+          "virtualPath": ""
+        },
+        {
+          "key": "color",
+          "config": {
+            "type": "string",
+            "component": "color",
+            "alias": "颜色",
+            "tip": "",
+            "displayMode": "single",
+            "features": [],
+            "layout": "horizontal",
+            "toggleCol": "",
+            "isHide": false,
+            "defaultValue": "rgba(255,0,0,1)",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "InfiniteMin": false,
+            "InfiniteMax": false,
+            "suffix": "",
+            "enums": [],
+            "whichEnum": {
+              "field": "",
+              "value": ""
+            },
+            "flatValue": false
+          },
+          "path": "select.color",
+          "virtualPath": ""
+        }
+      ],
+      "cols": [
+        "enable",
+        "color"
+      ]
+    }
+  ]

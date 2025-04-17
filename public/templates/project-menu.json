@@ -1,0 +1,62 @@
+[
+  {
+    "id": 0,
+    "key": "IconHb",
+    "name": "画布",
+    "children": [
+      { "id": 0, "icon": "IconHmgl", "name": "画面管理", "path": "CavansList" }
+    ]
+  },
+  {
+    "id": 1,
+    "key": "IconBl",
+    "name": "变量",
+    "children": [
+      { "id": 1, "icon": "IconBlgl", "name": "上位机变量", "path": "VariateList" },
+      { "id": 11, "icon": "IconBlgl", "name": "上位机程序", "path": "HostComputer" }
+    ]
+  },
+  {
+    "id": 2,
+    "key": "IconBb",
+    "name": "报表",
+    "children": [{ "id": 2, "icon": "IconBb2", "name": "报表", "path": "ReportList" }]
+  },
+  {
+    "id": 3,
+    "key": "IconPf",
+    "name": "配方",
+    "children": [
+        { "id": 3, "icon": "IconPf2", "name": "配方", "path": "FormulaList" }
+        ]
+  },
+  {
+    "id": 4,
+    "key": "IconBj",
+    "name": "报警",
+    "children": [
+      { "id": 4, "icon": "IconBjgz", "name": "报警规则", "path": "WarningList" },
+      { "id": 5, "icon": "IconLsbj", "name": "历史报警", "path": "HistoryList" }
+    ]
+  },
+  {
+    "id": 5,
+    "key": "IconKzq",
+    "name": "设备",
+    "children": [
+      { "id": 6, "icon": "IconKzq", "name": "设备管理", "path": "DeviceList" },
+      { "id": 7, "icon": "IcondeviceLocation", "name": "点位", "path": "PositionList" }
+    ]
+  },
+  {
+    "id": 6,
+    "key": "IconUserManage", 
+    "name": "用户",
+    "children": [
+      { "id": 8, "icon": "IconJsgl", "name": "角色管理", "path": "CavansRole" },
+      { "id": 9, "icon": "IconYhgl", "name": "用户管理", "path": "CavansUser" },
+      { "id": 10, "icon": "IconCavansLocation", "name": "点位设置", "path": "CavansUserLocation" }
+    ]
+  }
+
+]

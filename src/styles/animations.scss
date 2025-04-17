@@ -1,0 +1,259 @@
+// 上下摆动
+@keyframes Updown {
+    0% {
+        margin-top: 0;
+    }
+
+    25% {
+        margin-top: -20px;
+    }
+
+    50% {
+        margin-top: 0;
+    }
+
+    75% {
+        margin-top: 20px;
+    }
+
+    100% {
+        margin-top: 0;
+    }
+}
+
+
+@keyframes Updown_20 {
+    from {
+        margin-top: 30px;
+    }
+
+    to {
+        margin-top: 10px;
+    }
+}
+
+@keyframes Updown_40 {
+    from {
+        margin-top: 30px;
+    }
+
+    to {
+        margin-top: -10px;
+    }
+}
+
+@keyframes Updown_60 {
+    from {
+        margin-top: 40px;
+    }
+
+    to {
+        margin-top: -20px;
+    }
+}
+
+//旋转
+@keyframes Rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes Rotate_15_15 {
+    0% {
+        transform: rotate(15deg);
+    }
+
+    100% {
+        transform: rotate(-15deg);
+    }
+}
+
+@keyframes Rotate_30_30 {
+    0% {
+        transform: rotate(30deg);
+    }
+
+    100% {
+        transform: rotate(-30deg);
+    }
+}
+
+@keyframes Rotate_90 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(90deg);
+    }
+}
+
+@keyframes Rotate_180 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes Rotate_270 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(270deg);
+    }
+}
+
+// 缩放
+@keyframes GrowShrink {
+
+    // 0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(2);
+    }
+}
+
+// 旋转加缩放
+@keyframes ZoomSpin {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    50% {
+        transform: scale(1.2) rotate(180deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(360deg);
+    }
+}
+
+// 从中间放大出现
+@keyframes ZoomInCenter {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+// 左摇右摆
+@keyframes Swing {
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+
+    50% {
+        transform: translateX(10px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+}
+
+// 闪烁
+@keyframes Blink {
+    49% {
+        opacity: 1;
+    }
+
+    99% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
+//   淡入淡出
+@keyframes FadeInOut {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 2;
+    }
+}
+
+// 弹跳进入
+@keyframes BounceIn {
+    0% {
+        transform: translateY(-2000px);
+        opacity: 0;
+    }
+
+    60% {
+        transform: translateY(30px);
+        opacity: 1;
+    }
+
+    80% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+// 抖动
+@keyframes Jitter {
+
+    0%,
+    100% {
+        transform: translate(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translate(5px, 5px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translate(-5px, -5px);
+    }
+}
+
+// 波纹变形
+@keyframes Wave {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(20px);
+    }
+}

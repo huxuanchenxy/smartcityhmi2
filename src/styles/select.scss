@@ -1,0 +1,132 @@
+.n-base-select-menu {
+
+  background-color: #fff;
+
+  .n-virtual-list,
+  .n-base-select-menu__empty {
+    border: var(--datav-border-primary);
+  }
+
+  .n-base-select-option {
+    border-left: 2px solid transparent;
+    color      : var(--datav-font-color);
+
+    .n-base-select-option__content {
+      margin-left: 4px;
+      width      : 100%;
+    }
+
+    &.n-base-select-option--pending {
+      --n-option-color-pending: #f5f5f5 !important;
+    }
+
+    &.n-base-select-option--selected {
+      font-weight     : 700;
+      color           : var(--datav-font-color);
+      background-color: #c8c8c8;
+
+      &::before {
+        content         : " ● ";
+        color           : var(--datav-main-color);
+        font-family     : "Helvetica Neue";
+        display         : inline-block;
+        position        : absolute;
+        left            : 4px;
+        top             : 4px;
+        vertical-align  : middle;
+        background-color: transparent !important;
+      }
+    }
+
+
+
+    &:hover {
+      border-left-color: var(--datav-main-color);
+    }
+  }
+
+  .n-scrollbar {
+    --n-scrollbar-color      : #c8c8c8 !important;
+    --n-scrollbar-color-hover: #c8c8c8 !important;
+  }
+}
+
+.n-base-selection {
+
+
+  &.n-base-selection--disabled {
+    opacity: 0.5;
+  }
+
+  .n-base-selection-label {
+    background-color: #fff;
+
+    .n-base-selection-input {
+      color: #000;
+    }
+
+    .n-base-selection-label__render-label{
+      .n-base-selection-overlay__wrapper{
+        color:var(--datav-gui-font-color-2)
+      }
+    }
+  }
+
+  &.n-base-selection--focus {
+
+    .n-base-selection-label {
+      background-color: #f5f5f5 !important;
+
+      .n-base-selection-input {
+        color: #000;
+      }
+    }
+
+  }
+
+  .n-base-selection__state-border {
+    border: 1px solid #888888;
+  }
+
+  .n-base-suffix {
+    .n-base-suffix__arrow {
+      color: #888888
+    }
+  }
+}
+
+.n-base-selection--selected {
+  .n-base-selection-label {
+    background-color: #fff;
+
+    .n-base-selection-input {
+      color: #000;
+    }
+  }
+}
+
+
+
+.datav-new-select {
+  width : 100%;
+  margin: 10px 0;
+
+  .n-base-selection {
+    .n-base-selection-label {
+      background-color: #fff;
+
+      .n-base-selection-label__render-label {
+        color: var(--datav-font-color);
+      }
+  
+      .n-base-selection-placeholder {
+        color: var(--datav-font-color);
+      }
+    }
+
+    .n-base-selection__border,
+    .n-base-selection__state-border {
+      border: 1px solid #888888;
+    }
+  }
+}

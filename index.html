@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="keywords" content="dataS, vue, vue3, typescript, echarts, echarts5">
+  <meta name="description" content="DataS可视化开发工具" />
+  <title>DataS</title>
+</head>
+<script>
+  "object" != typeof ue || "object" != typeof ue.interface ? ("object" != typeof ue && (ue = {}),
+    ue.interface = {},
+    ue.interface.broadcast = function (e, t) {
+      if ("string" == typeof e) {
+        var o = [e, ""];
+        void 0 !== t && (o[1] = t);
+        var n = encodeURIComponent(JSON.stringify(o));
+        "object" == typeof history && "function" == typeof history.pushState ? (history.pushState({}, "", "#" + n),
+          history.pushState({}, "", "#" + encodeURIComponent("[]"))) : (document.location.hash = n, document.location.hash = encodeURIComponent("[]"))
+      }
+    }) : function (e) {
+      ue.interface = {},
+        ue.interface.broadcast = function (t, o) {
+          "string" == typeof t && (void 0 !== o ? e.broadcast(t, JSON.stringify(o)) : e.broadcast(t, ""))
+        }
+    }(ue.interface), (ue4 = ue.interface.broadcast);
+
+
+    //window._AMapSecurityConfig = { securityJsCode: '「申请的安全密钥」'};
+</script>
+
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+.n-radio-group {
+  .n-radio-button {
+    padding: 0 8px;
+    color: var(--datav-gui-font-color-1);
+
+    border-top: 1px solid #888888;
+    border-bottom: 1px solid #888888;
+
+    &:first-child{
+      border-left: 1px solid #888888;
+    }
+
+    &:last-child{
+      border-right: 1px solid #888888;
+    }
+  }
+
+ 
+}

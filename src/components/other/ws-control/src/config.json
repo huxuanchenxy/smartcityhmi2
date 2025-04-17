@@ -1,0 +1,118 @@
+[
+    {
+      "key": "ws",
+      "config": {
+        "type": "string",
+        "component": "input",
+        "alias": "ws地址",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": false,
+        "defaultValue": "ws://127.0.0.1",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "ws",
+      "virtualPath": ""
+    },
+    {
+      "key": "retryCounts",
+      "config": {
+        "type": "number",
+        "component": "number",
+        "alias": "重连次数",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": false,
+        "defaultValue": 3,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "次",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "retryCounts",
+      "virtualPath": ""
+    },
+    {
+      "key": "retryTimeSpan",
+      "config": {
+        "type": "number",
+        "component": "number",
+        "alias": "重连间隔",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": false,
+        "defaultValue": 5000,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "ms",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "retryTimeSpan",
+      "virtualPath": ""
+    },
+    {
+      "key": "mode",
+      "config": {
+        "type": "string",
+        "component": "select",
+        "alias": "模式",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": false,
+        "defaultValue": "dev",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "mode",
+      "virtualPath": ""
+    }
+  ]

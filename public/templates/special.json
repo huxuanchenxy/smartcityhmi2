@@ -1,0 +1,102 @@
+[
+    {
+        "name": "淡入",
+        "type": "fadeIn"
+    },
+    {
+        "name": "淡出",
+        "type": "fadeOut"
+    },
+    {
+        "name": "淡入（缩放）",
+        "type": "fadeInScale"
+    },
+    {
+        "name": "淡出（缩放）",
+        "type": "fadeOutScale"
+    },
+    {
+        "name": "从上方进入",
+        "type": "fadeInTop"
+    },
+    {
+        "name": "从下方进入",
+        "type": "fadeInBottom"
+    },
+    {
+        "name": "从左侧进入",
+        "type": "fadeInLeft"
+    },
+    {
+        "name": "从右侧进入",
+        "type": "fadeInRight"
+    },
+    {
+        "name": "从上方离去",
+        "type": "fadeOutTop"
+    },
+    {
+        "name": "从下方离去",
+        "type": "fadeOutBottom"
+    },
+    {
+        "name": "从左侧离去",
+        "type": "fadeOutLeft"
+    },
+    {
+        "name": "从右侧离去",
+        "type": "fadeOutRight"
+    },
+    {
+        "name": "3D翻转进入(水平)",
+        "type": "flipInHorizontal3D"
+    },
+    {
+        "name": "3D翻转离去(水平)",
+        "type": "flipOutHorizontal3D"
+    },
+    {
+        "name": "3D翻转进入(竖直)",
+        "type": "flipInVertical3D"
+    },
+    {
+        "name": "3D翻转离去(竖直)",
+        "type": "flipOutVertical3D"
+    },
+    {
+        "name": "左侧3D旋转进入",
+        "type": "rotateInLeft3D"
+    },
+    {
+        "name": "左侧3D旋转离去",
+        "type": "rotateOutLeft3D"
+    },
+    {
+        "name": "右侧3D旋转进入",
+        "type": "rotateInRight3D"
+    },
+    {
+        "name": "右侧3D旋转离去",
+        "type": "rotateOutRight3D"
+    },
+    {
+        "name": "左侧抖动进入",
+        "type": "slideInLeft"
+    },
+    {
+        "name": "右侧抖动进入",
+        "type": "slideInRight"
+    },
+    {
+        "name": "按X轴旋转一周",
+        "type": "rotateX"
+    },
+    {
+        "name": "按Y轴旋转一周",
+        "type": "rotateY"
+    },
+    {
+        "name": "按Z轴旋转一周",
+        "type": "rotateZ"
+    }
+]

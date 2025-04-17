@@ -1,0 +1,397 @@
+[
+  {
+    "key": "common",
+    "config": {
+      "type": "object",
+      "component": "none",
+      "alias": "通用",
+      "tip": "",
+      "displayMode": "nest",
+      "features": [],
+      "layout": "horizontal",
+      "toggleCol": "",
+      "isHide": false,
+      "defaultValue": null,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "InfiniteMin": false,
+      "InfiniteMax": false,
+      "suffix": "",
+      "enums": [],
+      "whichEnum": {
+        "field": "",
+        "value": ""
+      },
+      "flatValue": false
+    },
+    "path": "common",
+    "virtualPath": "",
+    "children": [
+      {
+        "key": "waitTime",
+        "config": {
+          "type": "number",
+          "component": "number",
+          "alias": "轮播时间间隔",
+          "tip": "",
+          "displayMode": "single",
+          "features": [],
+          "layout": "horizontal",
+          "toggleCol": "",
+          "isHide": false,
+          "defaultValue": 2000,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "InfiniteMin": false,
+          "InfiniteMax": false,
+          "suffix": "ms",
+          "enums": [],
+          "whichEnum": {
+            "field": "",
+            "value": ""
+          },
+          "flatValue": false
+        },
+        "path": "common.waitTime",
+        "virtualPath": ""
+      },
+      {
+        "key": "rowNum",
+        "config": {
+          "type": "number",
+          "component": "number",
+          "alias": "表行数",
+          "tip": "",
+          "displayMode": "single",
+          "features": [],
+          "layout": "horizontal",
+          "toggleCol": "",
+          "isHide": false,
+          "defaultValue": 5,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "InfiniteMin": false,
+          "InfiniteMax": false,
+          "suffix": "",
+          "enums": [],
+          "whichEnum": {
+            "field": "",
+            "value": ""
+          },
+          "flatValue": false
+        },
+        "path": "common.rowNum",
+        "virtualPath": ""
+      },
+      {
+        "key": "showIndex",
+        "config": {
+          "type": "boolean",
+          "component": "switch",
+          "alias": "显示行号",
+          "tip": "",
+          "displayMode": "single",
+          "features": [],
+          "layout": "horizontal",
+          "toggleCol": "",
+          "isHide": false,
+          "defaultValue": false,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "InfiniteMin": false,
+          "InfiniteMax": false,
+          "suffix": "",
+          "enums": [],
+          "whichEnum": {
+            "field": "",
+            "value": ""
+          },
+          "flatValue": false
+        },
+        "path": "common.showIndex",
+        "virtualPath": ""
+      },
+      {
+        "key": "carousel",
+        "config": {
+          "type": "string",
+          "component": "select",
+          "alias": "轮播方式",
+          "tip": "",
+          "displayMode": "single",
+          "features": [],
+          "layout": "horizontal",
+          "toggleCol": "",
+          "isHide": false,
+          "defaultValue": "single",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "InfiniteMin": false,
+          "InfiniteMax": false,
+          "suffix": "",
+          "enums": [],
+          "whichEnum": {
+            "field": "",
+            "value": ""
+          },
+          "flatValue": false
+        },
+        "path": "common.carousel",
+        "virtualPath": ""
+      },
+      {
+        "key": "hoverPause",
+        "config": {
+          "type": "boolean",
+          "component": "switch",
+          "alias": "悬浮暂停轮播",
+          "tip": "",
+          "displayMode": "single",
+          "features": [],
+          "layout": "horizontal",
+          "toggleCol": "",
+          "isHide": false,
+          "defaultValue": true,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "InfiniteMin": false,
+          "InfiniteMax": false,
+          "suffix": "",
+          "enums": [],
+          "whichEnum": {
+            "field": "",
+            "value": ""
+          },
+          "flatValue": false
+        },
+        "path": "common.hoverPause",
+        "virtualPath": ""
+      },
+      {
+        "key": "oddRowBGC",
+        "config": {
+          "type": "string",
+          "component": "color",
+          "alias": "奇数行背景色",
+          "tip": "",
+          "displayMode": "single",
+          "features": [],
+          "layout": "horizontal",
+          "toggleCol": "",
+          "isHide": false,
+          "defaultValue": "#003B51",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "InfiniteMin": false,
+          "InfiniteMax": false,
+          "suffix": "",
+          "enums": [],
+          "whichEnum": {
+            "field": "",
+            "value": ""
+          },
+          "flatValue": false
+        },
+        "path": "common.oddRowBGC",
+        "virtualPath": ""
+      },
+      {
+        "key": "evenRowBGC",
+        "config": {
+          "type": "string",
+          "component": "color",
+          "alias": "偶数行背景色",
+          "tip": "",
+          "displayMode": "single",
+          "features": [],
+          "layout": "horizontal",
+          "toggleCol": "",
+          "isHide": false,
+          "defaultValue": "#0A2732",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "InfiniteMin": false,
+          "InfiniteMax": false,
+          "suffix": "",
+          "enums": [],
+          "whichEnum": {
+            "field": "",
+            "value": ""
+          },
+          "flatValue": false
+        },
+        "path": "common.evenRowBGC",
+        "virtualPath": ""
+      }
+    ],
+    "cols": [
+      "waitTime",
+      "rowNum",
+      "showIndex",
+      "carousel",
+      "hoverPause",
+      "oddRowBGC",
+      "evenRowBGC"
+    ]
+  },
+  {
+    "key": "header",
+    "config": {
+      "type": "object",
+      "component": "none",
+      "alias": "表头",
+      "tip": "",
+      "displayMode": "nest",
+      "features": [],
+      "layout": "horizontal",
+      "toggleCol": "",
+      "isHide": false,
+      "defaultValue": null,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "InfiniteMin": false,
+      "InfiniteMax": false,
+      "suffix": "",
+      "enums": [],
+      "whichEnum": {
+        "field": "",
+        "value": ""
+      },
+      "flatValue": false
+    },
+    "path": "header",
+    "virtualPath": "",
+    "children": [
+      {
+        "key": "indexHeader",
+        "config": {
+          "type": "string",
+          "component": "input",
+          "alias": "行号表头",
+          "tip": "",
+          "displayMode": "single",
+          "features": [],
+          "layout": "horizontal",
+          "toggleCol": "",
+          "isHide": false,
+          "defaultValue": "#",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "InfiniteMin": false,
+          "InfiniteMax": false,
+          "suffix": "",
+          "enums": [],
+          "whichEnum": {
+            "field": "",
+            "value": ""
+          },
+          "flatValue": false
+        },
+        "path": "header.indexHeader",
+        "virtualPath": ""
+      },
+      {
+        "key": "headerHeight",
+        "config": {
+          "type": "number",
+          "component": "number",
+          "alias": "表头高度",
+          "tip": "",
+          "displayMode": "single",
+          "features": [],
+          "layout": "horizontal",
+          "toggleCol": "",
+          "isHide": false,
+          "defaultValue": 35,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "InfiniteMin": false,
+          "InfiniteMax": false,
+          "suffix": "",
+          "enums": [],
+          "whichEnum": {
+            "field": "",
+            "value": ""
+          },
+          "flatValue": false
+        },
+        "path": "header.headerHeight",
+        "virtualPath": ""
+      },
+      {
+        "key": "headerBGC",
+        "config": {
+          "type": "string",
+          "component": "color",
+          "alias": "表头背景色",
+          "tip": "",
+          "displayMode": "single",
+          "features": [],
+          "layout": "horizontal",
+          "toggleCol": "",
+          "isHide": false,
+          "defaultValue": "#00BAFF",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "InfiniteMin": false,
+          "InfiniteMax": false,
+          "suffix": "",
+          "enums": [],
+          "whichEnum": {
+            "field": "",
+            "value": ""
+          },
+          "flatValue": false
+        },
+        "path": "header.headerBGC",
+        "virtualPath": ""
+      }
+    ],
+    "cols": [
+      "indexHeader",
+      "headerHeight",
+      "headerBGC"
+    ]
+  },
+  {
+    "key": "columns",
+    "config": {
+      "type": "unknown",
+      "component": "none",
+      "alias": "列设置",
+      "tip": "",
+      "displayMode": "single",
+      "features": [],
+      "layout": "horizontal",
+      "toggleCol": "",
+      "isHide": false,
+      "defaultValue": null,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "InfiniteMin": false,
+      "InfiniteMax": false,
+      "suffix": "",
+      "enums": [],
+      "whichEnum": {
+        "field": "",
+        "value": ""
+      },
+      "flatValue": false
+    },
+    "path": "columns",
+    "virtualPath": ""
+  }
+]

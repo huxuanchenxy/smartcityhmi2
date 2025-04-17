@@ -1,0 +1,43 @@
+.n-color-picker {
+  background: var(--datav-gui-component-bgcolor);
+
+  .n-color-picker-trigger {
+    border-left-color: #0000;
+
+    .n-color-picker-trigger__value {
+      display: none;
+    }
+
+    &:hover {
+      border-color: var(--datav-main-color);
+    }
+  }
+}
+
+.n-color-picker-panel {
+  border: var(--datav-outline);
+  background-color: #f5f5f5;
+  color:var(--datav-font-color);
+}
+
+.g-color-picker {
+  width: 100%;
+
+  .g-color-picker__inner {
+    display: flex;
+    justify-content: space-between;
+
+    .n-color-picker-trigger{
+      border-right: 1px solid #888888;
+      border-top: 1px solid #888888;
+      border-bottom: 1px solid #888888;
+
+      &:hover{
+        border-left: 1px solid #0000;
+        border-right: 1px solid #005497;
+        border-top: 1px solid #005497;
+        border-bottom: 1px solid #005497;
+      }
+    }
+  } 
+}

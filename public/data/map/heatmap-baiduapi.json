@@ -1,0 +1,100 @@
+[
+    {
+        "name": "XX街道XX路1号",
+        "lng": 121.51849,
+        "lat": 31.246751,
+        "count": 50,
+        "type": null
+    },
+    {
+        "name": "XX街道XX路2号",
+        "lng": 121.51649,
+        "lat": 31.246951,
+        "count": 10,
+        "type": null
+    },
+    {
+        "name": "XX街道XX路3号",
+        "lng": 121.51749,
+        "lat": 31.246851,
+        "count": 30,
+        "type": null
+    },
+    {
+        "name": "XX街道XX路4号",
+        "lng": 121.52249,
+        "lat": 31.247251,
+        "count": 60,
+        "type": null
+    },
+    {
+        "name": "XX街道XX路4号",
+        "lng": 121.53022,
+        "lat": 31.296835,
+        "count": 90,
+        "type": null
+    },
+    {
+        "name": "XX街道XX路4号",
+        "lng": 121.528676,
+        "lat": 31.297532,
+        "count": 50,
+        "type": null
+    },
+    {
+        "name": "XX街道XX路4号",
+        "lng": 121.524684,
+        "lat": 31.294085,
+        "count": 100,
+        "type": null
+    },
+    {
+        "name": "XX街道XX路4号",
+        "lng": 121.536958,
+        "lat": 31.294635,
+        "count": 15,
+        "type": null
+    },
+    {
+        "name": "XX街道XX路4号",
+        "lng": 121.528761,
+        "lat": 31.288841,
+        "count": 66,
+        "type": null
+    },
+    {
+        "name": "XX街道XX路4号",
+        "lng": 121.544425,
+        "lat": 31.296065,
+        "count": 44,
+        "type": null
+    },
+    {
+        "name": "XX街道XX路4号",
+        "lng": 121.540949,
+        "lat": 31.295863,
+        "count": 88,
+        "type": null
+    },
+    {
+        "name": "XX街道XX路4号",
+        "lng": 121.54391,
+        "lat": 31.293095,
+        "count": 77,
+        "type": null
+    },
+    {
+        "name": "XX街道XX路4号",
+        "lng": 121.547226,
+        "lat": 31.297248,
+        "count": 23,
+        "type": null
+    },
+    {
+        "name": "XX街道XX路4号",
+        "lng": 121.543943,
+        "lat": 31.298421,
+        "count": 65,
+        "type": null
+    }
+]

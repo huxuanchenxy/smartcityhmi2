@@ -1,0 +1,18 @@
+[
+    {
+        "x":121.337922,
+        "y":30.741429,
+        "radius":20,
+        "lineColor":"red",
+        "lineWidth":3,
+        "fillColor":"transparent"
+    },
+    {
+        "x":121.427623,
+        "y":31.624253,
+        "radius":30,
+        "lineColor":"red",
+        "lineWidth":5,
+        "fillColor":"transparent"
+    }
+]

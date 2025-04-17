@@ -1,0 +1,371 @@
+[
+  {
+    "component": "VMainTitle",
+    "icevents": [
+      {
+        "name": "property",
+        "title": "属性-点位",
+        "properties": [
+          {
+            "name": "标题内容",
+            "type":"string",
+            "path": "config.title"
+          },
+          {
+            "name": "字体颜色",
+            "type":"color",
+            "path": "config.textStyle.color"
+          },
+          {
+            "name": "背景颜色",
+            "type":"color",
+            "path": "config.backgroundStyle.bgColor"
+          }
+        ],
+        "events": null
+      },
+      {
+        "name": "event",
+        "title": "事件-点位",
+        "properties": null,
+        "events": [
+        ]
+      }
+    ]
+  },
+  {
+    "component": "VNumberTitleFlop",
+    "icevents": [
+      {
+        "name": "property",
+        "title": "属性-点位",
+        "properties": [
+          {
+            "name": "显示数字",
+            "type":"number",
+            "path": "config.numbers.icValue"
+          }
+        ],
+        "events": null
+      },
+      {
+        "name": "event",
+        "title": "事件-点位",
+        "properties": null,
+        "events": [
+        ]
+      }
+    ]
+  },
+  {
+    "component": "VMainImg",
+    "icevents": [
+      {
+        "name": "property",
+        "title": "属性-点位",
+        "properties": [
+          {
+            "name": "图片地址",
+            "type":"image",
+            "path": "config.backgroundImage"
+          },
+          {
+            "name": "动画开启",
+            "type":"enableTypes",
+            "path": "config.animation.enable"
+          },
+          {
+            "name": "动画名称",
+            "type":"animationTypes",
+            "path": "config.animation.name"
+          },
+          {
+            "name": "动画速率",
+            "type":"number",
+            "path": "config.animation.duration"
+          },
+          {
+            "name": "动画状态",
+            "type":"animationState",
+            "path": "config.animation.state"
+          }
+        ],
+        "events": null
+      },
+      {
+        "name": "event",
+        "title": "事件-点位",
+        "properties": null,
+        "events": [
+        ]
+      }
+    ]
+  },
+  {
+    "component": "VSvgLine",
+    "icevents": [
+      {
+        "name": "property",
+        "title": "属性-点位",
+        "properties": [
+          {
+            "name": "线条颜色",
+            "type":"color",
+            "path": "config.props.stroke"
+          },
+          {
+            "name": "色块颜色",
+            "type":"color",
+            "path": "config.animations.color"
+          },
+          {
+            "name": "轨迹图片",
+            "type":"image",
+            "path": "config.imgStyle.backgroundImage"
+          },  
+          {
+            "name": "动画速率(秒)",
+            "type":"number",
+            "path": "config.animations.dur"
+          },
+          {
+            "name": "反转动画",
+            "type":"enableTypes",
+            "path": "config.animations.reverse"
+          },
+          {
+            "name": "动画开启",
+            "type":"enableTypes",
+            "path": "config.animations.enable"
+          }
+        ],
+        "events": null
+      },
+      {
+        "name": "event",
+        "title": "事件-点位",
+        "properties": null,
+        "events": [
+        ]
+      }
+    ]
+  },
+  {
+    "component": "VSvgReservoir",
+    "icevents": [
+      {
+        "name": "property",
+        "title": "属性-点位",
+        "properties": [
+          {
+            "name": "当前值",
+            "type":"number",
+            "path": "config.currentValue"
+          },
+          {
+            "name": "动画速率(秒)",
+            "type":"number",
+            "path": "config.wave.animate.dur"
+          },
+          {
+            "name": "动画开启",
+            "type":"enableTypes",
+            "path": "config.wave.animate.enable"
+          }
+        ],
+        "events": null
+      },
+      {
+        "name": "event",
+        "title": "事件-点位",
+        "properties": null,
+        "events": [
+        ]
+      }
+    ]
+  },
+  {
+    "component": "VSvgBlower",
+    "icevents": [
+      {
+        "name": "property",
+        "title": "属性-点位",
+        "properties": [
+          {
+            "name": "转速(圈/秒)",
+            "type":"number",
+            "path": "config.fan.animate.dur"
+          },
+          {
+            "name": "动画开启",
+            "type":"enableTypes",
+            "path": "config.fan.animate.enable"
+          }
+        ],
+        "events": null
+      },
+      {
+        "name": "event",
+        "title": "事件-点位",
+        "properties": null,
+        "events": [
+        ]
+      }
+    ]
+  },
+  {
+    "component": "VButton",
+    "icevents": [
+      {
+        "name": "property",
+        "title": "属性-点位",
+        "properties": [
+          {
+            "name": "按钮文字",
+            "type":"string",
+            "path": "config.content.buttonContent"
+          },
+          {
+            "name": "文字颜色",
+            "type":"color",
+            "path": "config.fontStyle.fontColor"
+          }      
+        ],
+        "events": null
+      },
+      {
+        "name": "event",
+        "title": "事件-点位",
+        "properties": null,
+        "events": [
+        ]
+      }
+    ]
+  },
+  {
+    "component": "VSwitch",
+    "icevents": [
+      {
+        "name": "property",
+        "title": "属性-点位",
+        "properties": [
+          {
+            "name": "按钮文字",
+            "type":"string",
+            "path": "config.content.buttonContent"
+          }   
+        ],
+        "events": null
+      },
+      {
+        "name": "event",
+        "title": "事件-点位",
+        "properties": null,
+        "events": [
+          {
+            "methodCode": "on",
+            "methodName": "开启"
+          },
+          {
+            "methodCode": "off",
+            "methodName": "关闭"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "component": "VVideo",
+    "icevents": [
+      {
+        "name": "property",
+        "title": "属性-点位",
+        "properties": [
+          {
+            "name": "视频地址",
+            "type":"string",
+            "path": "config.src"
+          }   
+        ],
+        "events": null
+      },
+      {
+        "name": "event",
+        "title": "事件-点位",
+        "properties": null,
+        "events": [
+          {
+            "methodCode": "videoCanplay",
+            "methodName": "加载完成"
+          },
+          {
+            "methodCode": "videoPlayed",
+            "methodName": "开始播放"
+          },
+          {
+            "methodCode": "videoEnded",
+            "methodName": "播放结束"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "component": "VThreedViewer",
+    "icevents": [
+      {
+        "name": "property",
+        "title": "属性-点位",
+        "properties": [
+          {
+            "name": "模型控制",
+            "type":"string",
+            "path": "config.select.enable"
+          }
+        ],
+        "events": null
+      },
+      {
+        "name": "event",
+        "title": "事件-点位",
+        "properties": null,
+        "events": [
+          {
+            "methodCode": "cameraReset",
+            "methodName": "恢复初始视角"
+          },
+          {
+            "methodCode": "pointIconClick",
+            "methodName": "点击散点图标"
+          }
+        ]
+      },
+      {
+        "name": "nodeValueChange",
+        "title": "节点值改变",
+        "properties": null,
+        "events": null
+      }
+    ]
+  },
+  {
+    "component": "VGroup",
+    "icevents": [
+      {
+        "name": "property",
+        "title": "属性-点位",
+        "properties": [
+       
+        ],
+        "events": null
+      },
+      {
+        "name": "event",
+        "title": "事件-点位",
+        "properties": null,
+        "events": [
+        ]
+      }
+    ]
+  }
+]

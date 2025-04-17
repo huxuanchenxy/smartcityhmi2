@@ -1,0 +1,1834 @@
+[
+  {
+    "component": "VMainTitle",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "refreshData",
+        "title": "更新数据"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VMarquee",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VParagraph",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VTimer",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VFullScreen",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VBgBox",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VBorderBox",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VDecoration",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VMainImg",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VDatePicker",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VBasicLine",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VIframe",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VSearchBox",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "buttonClick",
+        "title": "按钮点击"
+      },
+      {
+        "name": "textChange",
+        "title": "文本变更"
+      }
+    ]
+  },
+  {
+    "component": "VButton",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VDropDownList",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      },
+      {
+        "methodCode": "filter",
+        "methodName": "过滤"
+      }
+    ],
+    "events": [
+      {
+        "name": "optionSelect",
+        "title": "选中目标"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VUeMap",
+    "actions": [
+      {
+        "methodCode": "broadcast",
+        "methodName": "底图通讯(旧/数据)",
+        "hasParams": true
+      },
+      {
+        "methodCode": "broadcast1",
+        "methodName": "底图通讯(旧/脚本)",
+        "hasScript": true,
+        "hasParams": false
+      },
+      {
+        "methodCode": "broadcast2",
+        "methodName": "底图通讯(新/数据)",
+        "hasParams": true
+      },
+      {
+        "methodCode": "broadcast3",
+        "methodName": "底图通讯(新/脚本)",
+        "hasScript": true,
+        "hasParams": false
+      }
+    ],
+    "events": [
+      {
+        "name": "screenevents",
+        "title": "底图事件接入"
+      }
+    ]
+  },
+  {
+    "component": "VBasicPie",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VBasicBar",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "clickChart",
+        "title": "点击项"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VMultiBar",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "clickChart",
+        "title": "点击项"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VDynamicBar",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "clickChart",
+        "title": "点击项"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VBasicHorizontal",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "clickChart",
+        "title": "点击项"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VStackHorizontal",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "clickChart",
+        "title": "点击项"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VNegativeHorizontal",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "clickChart",
+        "title": "点击项"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VBasicArea",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "clickChart",
+        "title": "点击项"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VBasicCarousel",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VStackArea",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "clickChart",
+        "title": "点击项"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VBrokenLineBar",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "clickChart",
+        "title": "点击项"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VGroup",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VArcBar",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VDashboardPie",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "refreshData",
+        "title": "更新数据"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VMArcBar",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VProportionRing",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VNumberTitleFlop",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "refreshData",
+        "title": "更新数据"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VWordCloud",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VFunnel",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VWaterfall",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VDrillDownBar",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VOlMapWmts",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      },
+      {
+        "methodCode": "setMapPoint",
+        "methodName": "散点",
+        "hasParams": true
+      },
+      {
+        "methodCode": "clearMapPoint",
+        "methodName": "清除散点"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VGdMap",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      },
+      {
+        "methodCode": "setMapPoint",
+        "methodName": "散点",
+        "hasParams": true
+      },
+      {
+        "methodCode": "clearMapPoint",
+        "methodName": "清除散点"
+      }
+    ],
+    "events": [
+      {
+        "name": "clickPoint",
+        "title": "点击散点"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VCity3dMap",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      },
+      {
+        "methodCode": "setMapPoint",
+        "methodName": "散点",
+        "hasParams": true
+      },
+      {
+        "methodCode": "setMapPointAndClear",
+        "methodName": "清除后散点",
+        "hasParams": true
+      },
+      {
+        "methodCode": "clearMapPoint",
+        "methodName": "清除散点"
+      },
+      {
+        "methodCode": "setLine",
+        "methodName": "绘制轨迹",
+        "hasParams": true
+      },
+      {
+        "methodCode": "setHeatMap",
+        "methodName": "绘制热力图",
+        "hasParams": true
+      },
+      {
+        "methodCode": "setHeatMapAndClear",
+        "methodName": "清除后绘制热力图",
+        "hasParams": true
+      },
+      {
+        "methodCode": "clearHeatMap",
+        "methodName": "清除热力图"
+      }
+    ],
+    "events": [
+      {
+        "name": "clickPoint",
+        "title": "点击散点"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VBaiduapiMap",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      },
+      {
+        "methodCode": "setHeatMap",
+        "methodName": "绘制热力图",
+        "hasParams": true
+      },
+      {
+        "methodCode": "clearHeatMap",
+        "methodName": "清除热力图"
+      }
+    ],
+    "events": [
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VBaiduwebglMap",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      },
+      {
+        "methodCode": "setMapPoint",
+        "methodName": "散点",
+        "hasParams": true
+      },
+      {
+        "methodCode": "clearMapPoint",
+        "methodName": "清除散点"
+      }
+    ],
+    "events": [
+      {
+        "name": "clickPoint",
+        "title": "点击散点"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VGd3dMap",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      },
+      {
+        "methodCode": "setMapPoint",
+        "methodName": "散点",
+        "hasScript": true
+      },
+      {
+        "methodCode": "setMapPointAndClear",
+        "methodName": "清除后散点",
+        "hasScript": true
+      },
+      {
+        "methodCode": "clearMapPoint",
+        "methodName": "清除散点"
+      },
+      {
+        "methodCode": "setCenterAndZoom",
+        "methodName": "定位与缩放",
+        "hasScript": true
+      },
+      {
+        "methodCode": "clearGroupPoint",
+        "methodName": "清除指定散点",
+        "hasParams": true
+      },
+      {
+        "methodCode": "setLine",
+        "methodName": "绘制轨迹",
+        "hasParams": true
+      },
+      {
+        "methodCode": "setHeatMap",
+        "methodName": "绘制热力图",
+        "hasScript": true
+      },
+      {
+        "methodCode": "setHeatMapAndClear",
+        "methodName": "清除后绘制热力图",
+        "hasScript": true
+      },
+      {
+        "methodCode": "clearHeatMap",
+        "methodName": "清除热力图"
+      }
+    ],
+    "events": [
+      {
+        "name": "clickPoint",
+        "title": "点击散点"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VCarouselTable",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "rowClick",
+        "title": "点击行"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VTable",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "rowClick",
+        "title": "点击行"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VFlexTextBox",
+    "actions": [
+      {
+        "methodCode": "clearSelected",
+        "methodName": "清除选中"
+      },
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "itemClick",
+        "title": "点击项"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VWaterLevel",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "itemClick",
+        "title": "点击项"
+      },
+      {
+        "name": "refreshData",
+        "title": "更新数据"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VPunchCardScatter",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VPolarBar",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VCartesianHeatmap",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VSvgLine",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      },
+      {
+        "methodCode": "pause",
+        "methodName": "暂停动画"
+      },
+      {
+        "methodCode": "play",
+        "methodName": "播放动画"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VSvgReservoir",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VSvgBlower",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VSwitch",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "on",
+        "title": "开启"
+      },
+      {
+        "name": "off",
+        "title": "关闭"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VWsControl",
+    "actions": [
+      {
+        "methodCode": "sendSocket",
+        "methodName": "发送数据",
+        "hasParams": true
+      },
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "reviceSocket",
+        "title": "获取数据"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VBasicRadar",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "click",
+        "title": "点击"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VSlider",
+    "actions": [
+      {
+        "methodCode": "show",
+        "methodName": "显示"
+      },
+      {
+        "methodCode": "hide",
+        "methodName": "隐藏"
+      }
+    ],
+    "events": [
+      {
+        "name": "change",
+        "title": "数值变化"
+      },
+      {
+        "name": "mouseEnter",
+        "title": "鼠标移入"
+      },
+      {
+        "name": "mouseLeave",
+        "title": "鼠标移出"
+      }
+    ]
+  },
+  {
+    "component": "VPmControl",
+    "actions": [
+      {
+        "methodCode": "postmessage",
+        "methodName": "发送数据到父窗体",
+        "hasScript": false,
+        "hasParams": true
+      },
+      {
+        "methodCode": "screenstatus",
+        "methodName": "发送大屏状态",
+        "hasScript": false,
+        "hasParams": true
+      },
+      {
+        "methodCode": "savescreen",
+        "methodName": "保存后发送状态",
+        "hasScript": false,
+        "hasParams": true
+      }
+    ],
+    "events": [
+      {
+        "name": "onmessage",
+        "title": "窗体通讯"
+      }
+    ]
+  },
+  {
+    "component": "VIcPanel",
+    "actions": [
+      {
+        "methodCode": "sync",
+        "methodName": "点位数据同步"
+      }
+    ],
+    "events": []
+  },
+  {
+    "component": "VBasicForm",
+    "actions": [
+      {
+        "methodCode": "open",
+        "methodName": "打开"
+      },
+      {
+        "methodCode": "close",
+        "methodName": "关闭"
+      }
+    ],
+    "events": [
+      {
+        "name": "submit",
+        "title": "提交"
+      },
+      {
+        "name": "cancle",
+        "title": "取消"
+      }
+    ]
+  },
+  {
+    "component": "VThreedViewer",
+    "actions": [
+      {
+        "methodCode": "navigatorStart",
+        "methodName": "开始路径导航"
+      },
+      {
+        "methodCode": "navigatorStop",
+        "methodName": "结束路径导航"
+      },
+      {
+        "methodCode": "cameraReset",
+        "methodName": "恢复初始视角"
+      },
+      {
+        "methodCode": "changeMeshMaterialColor",
+        "methodName": "修改材质颜色",
+        "hasScript": false,
+        "hasParams": true
+      },
+      {
+        "methodCode": "setMapPoint",
+        "methodName": "添加撒点",
+        "hasScript": false,
+        "hasParams": true
+      },
+      {
+        "methodCode": "clearMapPoint",
+        "methodName": "清除所有撒点",
+        "hasScript": false,
+        "hasParams": false
+      },
+      {
+        "methodCode": "resetMapPoint",
+        "methodName": "清除并撒点",
+        "hasScript": false,
+        "hasParams": true
+      }
+    ],
+    "events": [{
+      "name": "pointIconClick",
+      "title": "点击散点图标"
+    }]
+  },
+  {
+    "component": "VVideo",
+    "actions": [
+      {
+        "methodCode": "play",
+        "methodName": "播放视频"
+      },
+      {
+        "methodCode": "pause",
+        "methodName": "暂停视频"
+      },
+      {
+        "methodCode": "load",
+        "methodName": "重载视频"
+      },
+      {
+        "methodCode": "loadplay",
+        "methodName": "重播视频"
+      }
+    ],
+    "events": [
+      {
+        "name": "videoCanplay",
+        "title": "加载完成"
+      },
+      {
+        "name": "videoPlayed",
+        "title": "开始播放"
+      },
+      {
+        "name": "videoEnded",
+        "title": "播放结束"
+      }
+    ]
+  }
+]

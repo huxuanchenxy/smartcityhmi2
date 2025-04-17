@@ -1,0 +1,245 @@
+[
+    {
+      "key": "global",
+      "config": {
+        "type": "object",
+        "component": "none",
+        "alias": "全局",
+        "tip": "",
+        "displayMode": "nest",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": false,
+        "defaultValue": null,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "global",
+      "virtualPath": "",
+      "children": [
+        {
+          "key": "shape",
+          "config": {
+            "type": "string",
+            "component": "select",
+            "alias": "形状",
+            "tip": "",
+            "displayMode": "single",
+            "features": [],
+            "layout": "horizontal",
+            "toggleCol": "",
+            "isHide": false,
+            "defaultValue": "round",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "InfiniteMin": false,
+            "InfiniteMax": false,
+            "suffix": "",
+            "enums": [],
+            "whichEnum": {
+              "field": null,
+              "value": ""
+            },
+            "flatValue": false
+          },
+          "path": "global.shape",
+          "virtualPath": ""
+        },
+        {
+          "key": "waveNum",
+          "config": {
+            "type": "number",
+            "component": "number",
+            "alias": "波浪数量",
+            "tip": "",
+            "displayMode": "single",
+            "features": [],
+            "layout": "horizontal",
+            "toggleCol": "",
+            "isHide": false,
+            "defaultValue": 3,
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "InfiniteMin": false,
+            "InfiniteMax": false,
+            "suffix": "",
+            "enums": [],
+            "whichEnum": {
+              "field": "",
+              "value": ""
+            },
+            "flatValue": false
+          },
+          "path": "global.waveNum",
+          "virtualPath": ""
+        },
+        {
+          "key": "waveHeight",
+          "config": {
+            "type": "number",
+            "component": "number",
+            "alias": "波浪高度",
+            "tip": "",
+            "displayMode": "single",
+            "features": [],
+            "layout": "horizontal",
+            "toggleCol": "",
+            "isHide": false,
+            "defaultValue": 40,
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "InfiniteMin": false,
+            "InfiniteMax": false,
+            "suffix": "",
+            "enums": [],
+            "whichEnum": {
+              "field": "",
+              "value": ""
+            },
+            "flatValue": false
+          },
+          "path": "global.waveHeight",
+          "virtualPath": ""
+        },
+        {
+          "key": "waveOpacity",
+          "config": {
+            "type": "number",
+            "component": "number",
+            "alias": "波浪透明度",
+            "tip": "",
+            "displayMode": "single",
+            "features": [],
+            "layout": "horizontal",
+            "toggleCol": "",
+            "isHide": false,
+            "defaultValue": 0.4,
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "InfiniteMin": false,
+            "InfiniteMax": false,
+            "suffix": "",
+            "enums": [],
+            "whichEnum": {
+              "field": "",
+              "value": ""
+            },
+            "flatValue": false
+          },
+          "path": "global.waveOpacity",
+          "virtualPath": ""
+        },
+        {
+          "key": "formatter",
+          "config": {
+            "type": "string",
+            "component": "input",
+            "alias": "信息格式化",
+            "tip": "",
+            "displayMode": "single",
+            "features": [],
+            "layout": "horizontal",
+            "toggleCol": "",
+            "isHide": false,
+            "defaultValue": "{value}%",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "InfiniteMin": false,
+            "InfiniteMax": false,
+            "suffix": "",
+            "enums": [],
+            "whichEnum": {
+              "field": "",
+              "value": ""
+            },
+            "flatValue": false
+          },
+          "path": "global.formatter",
+          "virtualPath": ""
+        },
+        {
+          "key": "color1",
+          "config": {
+            "type": "string",
+            "component": "color",
+            "alias": "起始颜色",
+            "tip": "",
+            "displayMode": "single",
+            "features": [],
+            "layout": "horizontal",
+            "toggleCol": "",
+            "isHide": false,
+            "defaultValue": "#00BAFF",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "InfiniteMin": false,
+            "InfiniteMax": false,
+            "suffix": "",
+            "enums": [],
+            "whichEnum": {
+              "field": "",
+              "value": ""
+            },
+            "flatValue": false
+          },
+          "path": "global.color1",
+          "virtualPath": ""
+        },
+        {
+          "key": "color2",
+          "config": {
+            "type": "string",
+            "component": "color",
+            "alias": "终止颜色",
+            "tip": "",
+            "displayMode": "single",
+            "features": [],
+            "layout": "horizontal",
+            "toggleCol": "",
+            "isHide": false,
+            "defaultValue": "#3DE7C9",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "InfiniteMin": false,
+            "InfiniteMax": false,
+            "suffix": "",
+            "enums": [],
+            "whichEnum": {
+              "field": "",
+              "value": ""
+            },
+            "flatValue": false
+          },
+          "path": "global.color2",
+          "virtualPath": ""
+        }
+      ],
+      "cols": [
+        "shape",
+        "waveNum",
+        "waveHeight",
+        "waveOpacity",
+        "formatter",
+        "color1",
+        "color2"
+      ]
+    }
+  ]

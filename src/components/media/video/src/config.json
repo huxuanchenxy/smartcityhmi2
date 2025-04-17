@@ -1,0 +1,205 @@
+[
+    {
+      "key": "autoplay",
+      "config": {
+        "type": "boolean",
+        "component": "switch",
+        "alias": "自动播放",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": false,
+        "defaultValue": true,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "autoplay",
+      "virtualPath": ""
+    },
+    {
+      "key": "controls",
+      "config": {
+        "type": "boolean",
+        "component": "switch",
+        "alias": "显示操控面板",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": false,
+        "defaultValue": true,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "controls",
+      "virtualPath": ""
+    },
+    {
+      "key": "loop",
+      "config": {
+        "type": "boolean",
+        "component": "switch",
+        "alias": "循环播放",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": false,
+        "defaultValue": true,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "loop",
+      "virtualPath": ""
+    },
+    {
+      "key": "muted",
+      "config": {
+        "type": "boolean",
+        "component": "switch",
+        "alias": "静音",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": false,
+        "defaultValue": true,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "muted",
+      "virtualPath": ""
+    },
+    {
+      "key": "poster",
+      "config": {
+        "type": "string",
+        "component": "uploadImage",
+        "alias": "显示图片",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": false,
+        "defaultValue": "",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "poster",
+      "virtualPath": ""
+    },
+    {
+      "key": "preload",
+      "config": {
+        "type": "boolean",
+        "component": "switch",
+        "alias": "预加载",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": false,
+        "defaultValue": true,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "preload",
+      "virtualPath": ""
+    },
+    {
+      "key": "src",
+      "config": {
+        "type": "string",
+        "component": "input",
+        "alias": "视频地址",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": false,
+        "defaultValue": "",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "src",
+      "virtualPath": ""
+    }
+  ]

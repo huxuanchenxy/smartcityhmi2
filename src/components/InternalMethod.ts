@@ -1,0 +1,17 @@
+export enum InternalMethod {
+    custom = 'custom',
+    initData = 'initData',
+    initConfig = 'initConfig',
+    initApi = 'initApi',
+    ueMap = 'broadcast',
+    ueMap_oldcustom = 'broadcast1',
+    ueMap_new = 'broadcast2',
+    ueMap_custom = 'broadcast3',
+    special='special',
+    setMapPoint='setMapPoint',
+    setMapPointAndClear='setMapPointAndClear',
+    setCenterAndZoom='setCenterAndZoom',
+    clearGroupPoint='clearGroupPoint',
+    setHeatMap='setHeatMap',
+    setHeatMapAndClear='setHeatMapAndClear',
+}

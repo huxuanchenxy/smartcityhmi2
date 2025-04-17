@@ -1,0 +1,24 @@
+[
+    {
+        "ComName": "VMainImg",
+        "Attributes": [
+            {
+                "index": 0,
+                "path": "backgroundImage"
+            },
+            {
+                "index": 1,
+                "path": "vectorImage"
+            }
+        ]
+    },
+    {
+        "ComName": "VButton",
+        "Attributes": [
+            {
+                "index": 0,
+                "path": "background.backgroundImage"
+            }
+        ]
+    }
+]

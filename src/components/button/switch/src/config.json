@@ -1,0 +1,437 @@
+[
+    {
+      "key": "disabled",
+      "config": {
+        "type": "boolean",
+        "component": "switch",
+        "alias": "",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": true,
+        "defaultValue": false,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "disabled",
+      "virtualPath": ""
+    },
+    {
+      "key": "loading",
+      "config": {
+        "type": "boolean",
+        "component": "switch",
+        "alias": "",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": true,
+        "defaultValue": false,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "loading",
+      "virtualPath": ""
+    },
+    {
+      "key": "size",
+      "config": {
+        "type": "string",
+        "component": "select",
+        "alias": "尺寸",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": false,
+        "defaultValue": "default",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "size",
+      "virtualPath": ""
+    },
+    {
+      "key": "inlinePrompt",
+      "config": {
+        "type": "boolean",
+        "component": "switch",
+        "alias": "",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": true,
+        "defaultValue": false,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "inlinePrompt",
+      "virtualPath": ""
+    },
+    {
+      "key": "activeIcon",
+      "config": {
+        "type": "unknown",
+        "component": "none",
+        "alias": "",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": true,
+        "defaultValue": null,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "activeIcon",
+      "virtualPath": ""
+    },
+    {
+      "key": "inactiveIcon",
+      "config": {
+        "type": "unknown",
+        "component": "none",
+        "alias": "",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": true,
+        "defaultValue": null,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "inactiveIcon",
+      "virtualPath": ""
+    },
+    {
+      "key": "activeActionIcon",
+      "config": {
+        "type": "unknown",
+        "component": "none",
+        "alias": "",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": true,
+        "defaultValue": null,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "activeActionIcon",
+      "virtualPath": ""
+    },
+    {
+      "key": "inactiveActionIcon",
+      "config": {
+        "type": "unknown",
+        "component": "none",
+        "alias": "",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": true,
+        "defaultValue": null,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "inactiveActionIcon",
+      "virtualPath": ""
+    },
+    {
+      "key": "activeColor",
+      "config": {
+        "type": "string",
+        "component": "color",
+        "alias": "开启颜色",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": false,
+        "defaultValue": "#409eff",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "activeColor",
+      "virtualPath": ""
+    },
+    {
+      "key": "inactiveColor",
+      "config": {
+        "type": "string",
+        "component": "color",
+        "alias": "关闭颜色",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": false,
+        "defaultValue": "#dcdfe6",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "inactiveColor",
+      "virtualPath": ""
+    },
+    {
+      "key": "activeText",
+      "config": {
+        "type": "string",
+        "component": "input",
+        "alias": "开启文字",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": false,
+        "defaultValue": "开",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "activeText",
+      "virtualPath": ""
+    },
+    {
+      "key": "inactiveText",
+      "config": {
+        "type": "string",
+        "component": "input",
+        "alias": "关闭文字",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": false,
+        "defaultValue": "关",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "inactiveText",
+      "virtualPath": ""
+    },
+    {
+      "key": "activeValue",
+      "config": {
+        "type": "boolean",
+        "component": "none",
+        "alias": "开启值",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": true,
+        "defaultValue": true,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "activeValue",
+      "virtualPath": ""
+    },
+    {
+      "key": "inactiveValue",
+      "config": {
+        "type": "boolean",
+        "component": "switch",
+        "alias": "关闭值",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": true,
+        "defaultValue": false,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "inactiveValue",
+      "virtualPath": ""
+    },
+    {
+      "key": "cursor",
+      "config": {
+        "type": "string",
+        "component": "select",
+        "alias": "鼠标手势",
+        "tip": "",
+        "displayMode": "single",
+        "features": [],
+        "layout": "horizontal",
+        "toggleCol": "",
+        "isHide": false,
+        "defaultValue": "pointer",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "InfiniteMin": false,
+        "InfiniteMax": false,
+        "suffix": "",
+        "enums": [],
+        "whichEnum": {
+          "field": "",
+          "value": ""
+        },
+        "flatValue": false
+      },
+      "path": "cursor",
+      "virtualPath": ""
+    }
+  ]

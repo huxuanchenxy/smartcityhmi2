@@ -1,0 +1,18 @@
+[
+    {
+        "name": "POI点击事件",
+        "type": "OnPOIClicked"
+    },
+    {
+        "name": "建筑点击事件",
+        "type": "OnbuildClicked"
+    },
+    {
+        "name": "虚实融合点击",
+        "type": "OnVirtualCameraClick"
+    },
+    {
+        "name": "昼夜变换事件",
+        "type": "OnDiurnalchange"
+    }
+]
