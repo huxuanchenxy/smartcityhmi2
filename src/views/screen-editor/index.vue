@@ -12,6 +12,7 @@
         <g-loading :spinning="loading">
           <canvas-main />
         </g-loading>
+       
         <footer-toolbar />
       </div>
       <config-panel />

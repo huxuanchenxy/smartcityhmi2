@@ -15,19 +15,18 @@
           <span>{{ comTitle }}</span>
         </div>
       </div>
-
     </div>
     <slot></slot>
   </div>
 </template>
 
 <script lang='ts'>
-import { defineComponent, computed } from 'vue'
-import { findComByName } from '@/data/system-components'
-import { IconDocument } from '@/icons'
+import { findComByName } from "@/data/system-components";
+import { IconDocument } from "@/icons";
+import { computed, defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'SettingPanel',
+  name: "SettingPanel",
   components: {
     IconDocument,
   },
@@ -43,15 +42,19 @@ export default defineComponent({
   },
   setup(props) {
     const comTitle = computed(() => {
-      const obj = findComByName(props.comName)
-      return obj?.com.alias
-    })
+      const obj = findComByName(props.comName);
+      if (props.comName == "VCustomerComp") {
+        return "自定义组件";
+      } else {
+        return obj?.com.alias;
+      }
+    });
 
     return {
       comTitle,
-    }
+    };
   },
-})
+});
 </script>
 
 <style lang="scss" scoped>
@@ -102,7 +105,6 @@ export default defineComponent({
       font-size: 12px;
       color: #647279;
       flex-wrap: nowrap;
-      
     }
   }
 }

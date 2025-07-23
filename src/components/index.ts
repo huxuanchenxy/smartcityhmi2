@@ -1,7 +1,7 @@
 import type { App } from 'vue'
 import VMainTitle from './text/main-title'
-import VNumberTitleFlop from './text/number-title-flop'
 import VMarquee from './text/marquee'
+import VNumberTitleFlop from './text/number-title-flop'
 import VParagraph from './text/paragraph'
 import VTimer from './text/timer'
 
@@ -13,10 +13,10 @@ import VDecoration from './media/decoration'
 import VMainImg from './media/main-img'
 
 import VBasicBar from './bar/basic-bar'
-import VMultiBar from './bar/multi-bar'
 import VBrokenLineBar from './bar/broken-line-bar'
-import VWaterfall from './bar/waterfall'
 import VDrillDownBar from './bar/drill-down-bar'
+import VMultiBar from './bar/multi-bar'
+import VWaterfall from './bar/waterfall'
 
 import VNegativeHorizontal from './horizontal/negative-horizontal'
 
@@ -45,24 +45,23 @@ import VSearchBox from './text/search-box'
 
 import VWordCloud from './chart/word-cloud'
 
-import VOlMapWmts from './map/ol-map-wmts'
 import VGdMap from './map/gd-map'
+import VOlMapWmts from './map/ol-map-wmts'
 import VUeMap from './map/ue-map'
 
-import VIframe from './iframe/iframe'
 import VBgIframe from './iframe/bg-iframe'
+import VIframe from './iframe/iframe'
 
 import VDropDownList from './select/drop-down-list'
 
-import VGroup from './group/group'
 import VBasicCarousel from './carousel/basic-carousel'
 import VCarouselTable from './carousel/carousel-table'
-import VTable from './carousel/table'
+import VGroup from './group/group'
 
-import VButton  from  './button/button'
+import VButton from './button/button'
 import VFunnel from './horizontal/funnel'
-import VQuickText from './text/quick-text'
 import VProgress from './line/progress'
+import VQuickText from './text/quick-text'
 
 import VBaiduMap from './map/baidu-map'
 import VBingMap from './map/bing-map'
@@ -83,12 +82,12 @@ import VPolarBar from './bar/polar-bar'
 
 import VCartesianHeatmap from './heatmap/cartesian-heatmap'
 
-import VSvgLine from './media/svg-line'
-import VSvgReservoir from './media/svg-reservoir'
-import VSvgBlower from './media/svg-blower'
 import VSwitch from './button/switch'
 import VBaiduapiMap from './map/baiduapi-map'
 import VBaiduwebglMap from './map/baiduwebgl-map'
+import VSvgBlower from './media/svg-blower'
+import VSvgLine from './media/svg-line'
+import VSvgReservoir from './media/svg-reservoir'
 import VBasicRadar from './radar/basic-radar'
 
 import VWsControl from './other/ws-control'
@@ -107,9 +106,10 @@ import VDynamicLine from './line/dynamic-line'
 
 import VThreedViewer from './media/threed-viewer'
 
+import VCustomerComp from './customer/customer-comp'
 import VBasicForm from './form/basic-form'
-
 const components = [
+  VCustomerComp,
   VMainTitle,
   VNumberTitleFlop,
   VDatePicker,

@@ -1,8 +1,8 @@
-import { generateId } from "@/utils/util";
 import { findComByName } from "@/data/system-components";
-import { ApiConfigMap, ApiDataConfigMap } from "./data-source";
+import { generateId } from "@/utils/util";
 import { DataEventConfig } from "./data-event";
 import { HandleItemConfig, IcHandleItemConfig } from "./data-handle";
+import { ApiConfigMap, ApiDataConfigMap } from "./data-source";
 import { getInitHandleConfig, getInitIcHandleConfig } from "./event-setting";
 
 export enum ComType {
@@ -30,7 +30,7 @@ export abstract class DatavComponent {
   alias: string;
   icon: string;
   img: string;
-
+  filePath: string;
   locked = false;
   hided = false;
 
@@ -89,7 +89,7 @@ export abstract class DatavComponent {
     this.alias = obj.com.alias;
     this.icon = obj.category.icon;
     this.img = obj.com.thum;
-
+    this.filePath = obj.com.filePath;
     this.attr = { ...this.attr, ...attr };
     this.handles = getInitHandleConfig(this.name);
 

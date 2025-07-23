@@ -1,10 +1,10 @@
 <template>
   <div class="my-project">
     <div class="project-main">
-      <div class="project-manage" style="display:none;">
+      <div class="project-manage" style="display: none">
         <div class="manage-title">
           <div class="my-project project-group">
-            <span style="margin-left: 10px;font-size: 24px;">应用分组</span>
+            <span style="margin-left: 10px; font-size: 24px">应用分组</span>
             <n-icon class="btn-add-icon" @click="adding = true">
               <IconPlus />
             </n-icon>
@@ -23,7 +23,7 @@
               class="edit-input"
               @blur="onAddInputBlur"
               @keyup.enter="addGroup"
-            >
+            />
           </div>
         </div>
 
@@ -46,7 +46,7 @@
                 class="edit-input"
                 @blur="onEditInputBlur($event, g)"
                 @keyup.enter="editGroup($event, g)"
-              >
+              />
             </template>
             <template v-else>
               <span class="project-name">{{ g.name }}</span>
@@ -55,7 +55,11 @@
                 <n-icon :size="14" @click="g.editing = true">
                   <IconEdit />
                 </n-icon>
-                <n-icon :size="14" class="btn-add-icon" @click="confirmDeleteGroup(g)">
+                <n-icon
+                  :size="14"
+                  class="btn-add-icon"
+                  @click="confirmDeleteGroup(g)"
+                >
                   <IconDelete />
                 </n-icon>
               </span>
@@ -70,7 +74,9 @@
             @dragleave="onDragLeave"
             @drop="onDrop($event, ungroup)"
           >
-            <span class="project-name project-ungrouped">{{ ungroup.name }}</span>
+            <span class="project-name project-ungrouped">{{
+              ungroup.name
+            }}</span>
             <span class="project-num">{{ ungroup.children.length }}</span>
           </div>
         </div>
@@ -85,17 +91,17 @@
 </template>
 
 <script lang='ts'>
-import { h, defineComponent, ref, computed, provide, onMounted } from 'vue'
-import { useMessage, useDialog } from 'naive-ui'
-import { ProjectGroup } from '@/domains/project'
-import { ProjectModule } from '@/store/modules/project'
-import { addClass, removeClass } from '@/utils/dom'
-import { IconWarning, IconPlus, IconEdit, IconDelete } from '@/icons'
-import ProjectList from './project-list.vue'
+import { ProjectGroup } from "@/domains/project";
+import { IconDelete, IconEdit, IconPlus, IconWarning } from "@/icons";
+import { ProjectModule } from "@/store/modules/project";
+import { addClass, removeClass } from "@/utils/dom";
+import { useDialog, useMessage } from "naive-ui";
+import { computed, defineComponent, h, onMounted, provide, ref } from "vue";
+import ProjectList from "./project-list.vue";
 // import NewProjectList from './Project-list.vue'
 
 export default defineComponent({
-  name: 'MyProject',
+  name: "MyProject",
   components: {
     ProjectList,
     IconPlus,
@@ -104,161 +110,162 @@ export default defineComponent({
     // NewProjectList
   },
   setup() {
-    const nMessage = useMessage()
-    const nDialog = useDialog()
+    const nMessage = useMessage();
+    const nDialog = useDialog();
     const {
-      getProjects, moveProject,
-      createProjectGroup, deleteProjectGroup, updateProjectGroupName,
-    } = ProjectModule
+      getProjects,
+      moveProject,
+      createProjectGroup,
+      deleteProjectGroup,
+      updateProjectGroupName,
+    } = ProjectModule;
 
-    const selectedGroupId = ref(-1)
-    const loading = ref(true)
-    const adding = ref(false)
-    const draging = ref(false)
+    const selectedGroupId = ref(-1);
+    const loading = ref(true);
+    const adding = ref(false);
+    const draging = ref(false);
 
-    const group = computed(() => ProjectModule.group)
-    const ungroup = computed(() => ProjectModule.ungroup)
-    const groups = computed(() => ProjectModule.groups)
+    const group = computed(() => ProjectModule.group);
+    const ungroup = computed(() => ProjectModule.ungroup);
+    const groups = computed(() => ProjectModule.groups);
 
     const selectedGroup = computed(() => {
       if (selectedGroupId.value === -1) {
-        return group.value
+        return group.value;
       }
 
       if (selectedGroupId.value === 0) {
-        return ungroup.value
+        return ungroup.value;
       }
 
-      return groups.value.find(g => g.id === selectedGroupId.value)
-    })
+      return groups.value.find((g) => g.id === selectedGroupId.value);
+    });
 
     const toggleProject = (id: number) => {
-      selectedGroupId.value = id
-    }
+      selectedGroupId.value = id;
+    };
 
     const onAddInputBlur = (e: any) => {
       if (!adding.value) {
-        return
+        return;
       }
 
-      const name = (e.target.value || '').trim()
+      const name = (e.target.value || "").trim();
       if (!name) {
-        adding.value = false
+        adding.value = false;
       }
-    }
+    };
 
     const addGroup = async (e: any) => {
       if (!adding.value) {
-        return
+        return;
       }
 
-      const name = (e.target.value || '').trim()
+      const name = (e.target.value || "").trim();
       if (name) {
         try {
-          await createProjectGroup(name)
-          adding.value = false
+          await createProjectGroup(name);
+          adding.value = false;
         } catch (error) {
-          nMessage.error(error.message)
+          nMessage.error(error.message);
         }
       } else {
-        adding.value = false
+        adding.value = false;
       }
-    }
+    };
 
     const onEditInputBlur = (e: any, group: any) => {
       if (!group.editing) {
-        return
+        return;
       }
 
-      const newName = (e.target.value || '').trim()
+      const newName = (e.target.value || "").trim();
       if (!newName || group.name === newName) {
-        group.editing = false
+        group.editing = false;
       }
-    }
+    };
 
     const editGroup = async (e: any, group: any) => {
       if (!group.editing) {
-        return
+        return;
       }
 
-      const newName = (e.target.value || '').trim()
+      const newName = (e.target.value || "").trim();
       if (newName && group.name !== newName) {
         try {
-          await updateProjectGroupName({ id: group.id, newName })
-          group.name = newName
-          group.editing = false
+          await updateProjectGroupName({ id: group.id, newName });
+          group.name = newName;
+          group.editing = false;
         } catch (error) {
-          nMessage.error(error.message)
+          nMessage.error(error.message);
         }
       } else {
-        group.editing = false
+        group.editing = false;
       }
-    }
+    };
 
     const confirmDeleteGroup = (group: ProjectGroup) => {
       const d = nDialog.create({
         content: `${group.name} 删除后无法恢复，该分组中的可视化应用将全部移动到未分组，确认删除？`,
-        negativeText: '取消',
-        positiveText: '确定',
-        iconPlacement: 'top',
+        negativeText: "取消",
+        positiveText: "确定",
+        iconPlacement: "top",
         autoFocus: false,
         icon: () => h(IconWarning),
         onPositiveClick: async () => {
-          d.loading = true
+          d.loading = true;
           try {
-            await deleteProjectGroup(group.id)
-            toggleProject(ungroup.value.id)
+            await deleteProjectGroup(group.id);
+            toggleProject(ungroup.value.id);
           } catch (error) {
-            nMessage.error(error.message)
+            nMessage.error(error.message);
           }
         },
-      })
-    }
+      });
+    };
 
-    provide('dragStart', () => {
-      draging.value = true
-    })
-    provide('dragEnd', () => {
-      draging.value = false
-    })
+    provide("dragStart", () => {
+      draging.value = true;
+    });
+    provide("dragEnd", () => {
+      draging.value = false;
+    });
 
     const onDragEnter = (event: any) => {
-      addClass(event.target, 'drag-enter')
-    }
+      addClass(event.target, "drag-enter");
+    };
 
     const onDragLeave = (event: any) => {
-      removeClass(event.target, 'drag-enter')
-    }
+      removeClass(event.target, "drag-enter");
+    };
 
     const onDrop = (event: any, toGroup: ProjectGroup) => {
-      event.preventDefault()
-      removeClass(event.target, 'drag-enter')
-
-      const str = event.dataTransfer.getData('text')
+      event.preventDefault();
+      removeClass(event.target, "drag-enter");
+      const str = event.dataTransfer.getData("text");
       if (str) {
-        const [pid, fromId] = str.split(',').map((m: string) => parseInt(m))
+        const [pid, fromId] = str.split(",").map((m: string) => parseInt(m));
         if (fromId !== toGroup.id) {
-          moveProject({ pid, fromId, toId: toGroup.id })
+          moveProject({ pid, fromId, toId: toGroup.id });
         }
       }
-    }
+    };
 
     onMounted(() => {
+      getProjects()
+        .catch((error) => {
+          if (error.message) {
+            nMessage.error(error.message);
+          }
 
-      getProjects().catch(error => {
-        if(error.message){
-          nMessage.error(error.message)
-        }
-
-        if(error.data.message){
-          nMessage.error(error.data.message)
-        }
-
-      }).finally(() => {
-        loading.value = false
-      })
-
-    })
+          if (error.data.message) {
+            nMessage.error(error.data.message);
+          }
+        })
+        .finally(() => {
+          loading.value = false;
+        });
+    });
 
     return {
       loading,
@@ -278,14 +285,14 @@ export default defineComponent({
       onDragEnter,
       onDragLeave,
       onDrop,
-    }
+    };
   },
-})
+});
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/mixins/util';
-@import '@/styles/mixins/function';
+@import "@/styles/mixins/util";
+@import "@/styles/mixins/function";
 
 .my-project {
   position: relative;
@@ -308,7 +315,6 @@ export default defineComponent({
     height: calc(100vh - 90px);
     box-shadow: 0px 0px 10px 5px #e5e5e5;
     z-index: 3;
-
 
     .manage-main {
       display: flex;
@@ -386,7 +392,7 @@ export default defineComponent({
       display: none;
       color: var(--datav-main-color);
 
-      i+i {
+      i + i {
         margin-left: 10px;
       }
     }
@@ -401,8 +407,6 @@ export default defineComponent({
       justify-content: space-between;
       cursor: pointer;
       transition: color 0.2s;
-
-
 
       .project-name {
         width: 165px;

@@ -85,7 +85,7 @@ export const bar = {
       thum: `${thumPath}柱状图.png`,
       used: true,
       visible: true
-    },
+    }
   ]
 };
 
@@ -225,7 +225,6 @@ export const scatter = {
   ]
 };
 
-
 export const radar = {
   type: "radar",
   name: "雷达图",
@@ -242,7 +241,7 @@ export const radar = {
   ]
 };
 
-export const heatmap={
+export const heatmap = {
   type: "heatmap",
   name: "热力图",
   icon: "v-icon-chart-heatmap",
@@ -256,7 +255,7 @@ export const heatmap={
       visible: true
     }
   ]
-}
+};
 
 // export const relation = {
 //   type: 'relation',
@@ -763,7 +762,49 @@ export const carousel = {
     }
   ]
 };
+const getCustomerDict = () => {
+  const files = import.meta.glob("/public/pages/**/*");
+  console.log(files, Object.keys(files));
+  let filesKey = Object.keys(files);
+  let datas = [];
+  filesKey.forEach(el => {
+    let tempArray = el.split("/");
+    let alias = tempArray[3];
+    let filePath = `./pages/${alias}/index.html`;
+    let existIndex = datas.findIndex(x => x.filePath == filePath);
+    console.log(datas, filePath, datas.includes(filePath));
+    if (existIndex == -1) {
+      // console.log("tempArray", filePath);
+      datas.push({
+        name: "VCustomerComp",
+        alias,
+        img: `${imagePath}kfzj.svg`,
+        thum: `${thumPath}kfzj.svg`,
+        used: true,
+        visible: true,
+        filePath
+      });
+    }
+  });
+  // console.log("datas^*……", datas);
+  return datas;
+};
 
+// getCustomerDict();
+export const customerComp = {
+  type: "customer",
+  name: "自定义组件",
+  icon: "v-icon-other",
+  data: [...getCustomerDict()]
+};
+// {
+//   name: "VCustomerComp",
+//   alias: "自定义组件2",
+//   img: `${imagePath}kfzj.svg`,
+//   thum: `${thumPath}kfzj.svg`,
+//   used: true,
+//   visible: true
+// }
 export const iframe = {
   type: "iframe",
   name: "内联框架",
@@ -806,10 +847,16 @@ export const ic = {
 
 export const classifications = [
   {
+    type: "customer",
+    name: "自定义组件",
+    icon: "v-icon-customer",
+    data: [customerComp] // relation,
+  },
+  {
     type: "regular",
     name: "图表",
     icon: "v-icon-chart",
-    data: [bar, horizontalBar, line, area, pie,radar, scatter,heatmap, chart] // relation,
+    data: [bar, horizontalBar, line, area, pie, radar, scatter, heatmap, chart] // relation,
   },
   {
     type: "iframe",
@@ -859,6 +906,7 @@ export const classifications = [
     icon: "v-icon-material",
     data: [ic]
   },
+
   {
     type: "other",
     name: "其他",

@@ -15,6 +15,7 @@
     <IconOther v-else-if="icon === 'v-icon-other'" />
     <IconViewGrid v-else-if="icon === 'v-icon-view-grid'" />
     <IconFavorite v-else-if="icon === 'v-icon-favorite'" />
+    <IconCustomer  v-else-if="icon === 'v-icon-customer'" />
     <IconHelp v-else />
   </n-icon>
 </template>
@@ -38,6 +39,7 @@ import {
   IconComInfo,
   IconTable,
   IconMedia,
+  IconCustomer
 } from '@/icons'
 
 export default defineComponent({
@@ -59,6 +61,7 @@ export default defineComponent({
     IconComInfo,
     IconTable,
     IconMedia,
+    IconCustomer
   },
   props: {
     icon: {

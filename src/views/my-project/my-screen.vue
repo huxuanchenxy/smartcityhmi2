@@ -3,31 +3,49 @@
     <div class="screen">
       <div class="screen-title">
         <div class="main-name">
-          <g-tooltip-popover placement="top-start" :delay="1000" :content="screen.name">
+          <g-tooltip-popover
+            placement="top-start"
+            :delay="1000"
+            :content="screen.name"
+          >
             <div class="screen-name-input">
               <n-icon>
                 <IconEdit />
               </n-icon>
-              <input v-model.trim="screenName" class="input" @blur="onInputBlur">
+              <input
+                v-model.trim="screenName"
+                class="input"
+                @blur="onInputBlur"
+              />
             </div>
           </g-tooltip-popover>
-
         </div>
       </div>
       <div class="screen-info">
-        <router-link :to="{ name: 'ScreenEditor', params: { projectId: screen.id } }" target="_blank" class="edit-wrap">
+        <router-link
+          :to="{ name: 'ScreenEditor', params: { projectId: screen.id } }"
+          target="_blank"
+          class="edit-wrap"
+        >
           <div class="screen-img" :style="thumbnailStyle"></div>
         </router-link>
       </div>
       <div class="screen-main">
         <div class="screen-edit">
           <div class="publish-info">
-            <span class="dot" :class="{ published: publishState.published }"></span>
+            <span
+              class="dot"
+              :class="{ published: publishState.published }"
+            ></span>
             <span>{{ publishState.text }}</span>
           </div>
           <div class="center-space"></div>
           <div class="right-button">
-            <router-link :to="{ name: 'Preview', params: { screenId: screen.id } }" target="_blank" class="preview">
+            <router-link
+              :to="{ name: 'Preview', params: { screenId: screen.id } }"
+              target="_blank"
+              class="preview"
+            >
               <g-tooltip-popover content="预览">
                 <n-icon size="20">
                   <IconPreview />
@@ -67,17 +85,33 @@
 </template>
 
 <script lang='ts'>
-import { h, defineComponent, PropType, toRefs, computed, ref, inject } from 'vue'
-import { useMessage, useDialog } from 'naive-ui'
-import { globalConfig } from '@/config'
-import { Project } from '@/domains/project'
-import { ProjectModule } from '@/store/modules/project'
-import { IconWarning, IconMove, IconCopy, IconDelete, IconEdit, IconPreview, IconRelease } from '@/icons'
+import { globalConfig } from "@/config";
+import { Project } from "@/domains/project";
+import {
+  IconCopy,
+  IconDelete,
+  IconEdit,
+  IconMove,
+  IconPreview,
+  IconRelease,
+  IconWarning,
+} from "@/icons";
+import { ProjectModule } from "@/store/modules/project";
+import { useDialog, useMessage } from "naive-ui";
+import {
+  PropType,
+  computed,
+  defineComponent,
+  h,
+  inject,
+  ref,
+  toRefs,
+} from "vue";
 
 //const cdn = import.meta.env.VITE_APP_CDN
 
 export default defineComponent({
-  name: 'MyScreen',
+  name: "MyScreen",
   components: {
     IconMove,
     IconCopy,
@@ -93,120 +127,118 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const nMessage = useMessage()
-    const nDialog = useDialog()
-    const { deleteProject, copyProject, updateProjectName } = ProjectModule
+    const nMessage = useMessage();
+    const nDialog = useDialog();
+    const { deleteProject, copyProject, updateProjectName } = ProjectModule;
     //const { id, name, groupId, share, thumbnail,config,snapshotId } = toRefs(props.screen)
-    const { id, name, groupId, thumbnail, config } = toRefs(props.screen)
-    const screenName = ref(name.value)
-    const oldScreenName = ref(name.value)
+    const { id, name, groupId, thumbnail, config } = toRefs(props.screen);
+    const screenName = ref(name.value);
+    const oldScreenName = ref(name.value);
     const thumbnailStyle = computed(() => {
       if (thumbnail.value) {
         return {
-          'background-image': `url(${thumbnail.value})`,
-        }
-      }
-      else if(config.value.screenshot)
-      {
+          "background-image": `url(${thumbnail.value})`,
+        };
+      } else if (config.value.screenshot) {
         return {
-          'background-image': `url(${config.value.screenshot})`,
-        }
+          "background-image": `url(${config.value.screenshot})`,
+        };
       }
       return {
-        'background-image': `url(${globalConfig.logo})`,
-        'background-size': '50%',
-        'background-position': 'center center',
-        'background-repeat': 'no-repeat',
-        filter: 'grayscale(1)',
+        "background-image": `url(${globalConfig.logo})`,
+        "background-size": "50%",
+        "background-position": "center center",
+        "background-repeat": "no-repeat",
+        filter: "grayscale(1)",
         opacity: 0.07,
-      }
-    })
+      };
+    });
 
     const snapshotId = computed(() => {
-      return props.screen.snapshotId
-    })
+      return props.screen.snapshotId;
+    });
 
     const publishState = computed(() => {
       //const published = !!share.value
-      const published = !!snapshotId.value
+      const published = !!snapshotId.value;
       return {
         published,
-        text: published ? '已发布' : '未发布',
-      }
-    })
+        text: published ? "已发布" : "未发布",
+      };
+    });
 
     const onInputBlur = async () => {
       if (screenName.value) {
         try {
-          await updateProjectName({ id: id.value, newName: screenName.value })
-          name.value = screenName.value
+          await updateProjectName({ id: id.value, newName: screenName.value });
+          name.value = screenName.value;
         } catch (error) {
-          nMessage.error(error.message)
+          nMessage.error(error.message);
         }
       } else {
-        screenName.value = oldScreenName.value
+        screenName.value = oldScreenName.value;
       }
-    }
+    };
 
     const confirmCopyProject = () => {
-      copyProject({ pid: id.value, gid: groupId.value })
-    }
+      copyProject({ pid: id.value, gid: groupId.value });
+    };
 
     const confirmDeleteProject = () => {
       const d = nDialog.create({
         content: `${screenName.value} 删除后无法恢复，确认删除？`,
-        negativeText: '取消',
+        negativeText: "取消",
         negativeButtonProps: {
           round: true,
           ghost: true,
-          color: '#7E7E7E',
+          color: "#7E7E7E",
           focusable: false,
         },
-        positiveText: '确定',
+        positiveText: "确定",
         positiveButtonProps: {
           round: true,
-          color: '#0647a1',
+          color: "#0647a1",
         },
-        iconPlacement: 'top',
+        iconPlacement: "top",
         autoFocus: false,
         icon: () => h(IconWarning),
         onPositiveClick: async () => {
-          d.loading = true
+          d.loading = true;
           try {
-            await deleteProject({ pid: id.value, gid: groupId.value })
+            await deleteProject({ pid: id.value, gid: groupId.value });
           } catch (error) {
-            nMessage.error(error.message)
+            nMessage.error(error.message);
           }
         },
-      })
-    }
+      });
+    };
 
-    const dragStart = inject('dragStart') as Function
-    const dragEnd = inject('dragEnd') as Function
-    const publish = inject('publish') as Function
+    const dragStart = inject("dragStart") as Function;
+    const dragEnd = inject("dragEnd") as Function;
+    const publish = inject("publish") as Function;
 
-    const image = new Image()
+    const image = new Image();
     /*    image.src = `${cdn}/datav/drag-thumbnail.png`*/
-    image.src = `data/originPic/drag-thumbnail.png`
+    image.src = `data/originPic/drag-thumbnail.png`;
 
     const onDragStart = (event: DragEvent) => {
-      dragStart()
+      dragStart();
 
-      const dt = event.dataTransfer
+      const dt = event.dataTransfer;
       if (dt) {
-        dt.effectAllowed = 'copyMove'
-        dt.setDragImage(image, 30, 30)
-        dt.setData('text', `${id.value},${groupId.value}`)
+        dt.effectAllowed = "copyMove";
+        dt.setDragImage(image, 30, 30);
+        dt.setData("text", `${id.value},${groupId.value}`);
       }
-    }
+    };
 
     const onDragEnd = () => {
-      dragEnd()
-    }
+      dragEnd();
+    };
 
     const doPublish = () => {
-      publish(id.value)
-    }
+      publish(id.value);
+    };
 
     return {
       name,
@@ -220,9 +252,9 @@ export default defineComponent({
       onDragStart,
       onDragEnd,
       doPublish,
-    }
+    };
   },
-})
+});
 </script>
 
 <style lang="scss" scoped>
@@ -245,7 +277,7 @@ export default defineComponent({
 }
 
 :deep(.n-button__content) {
-  font-family: '思源黑体Normal';
+  font-family: "思源黑体Normal";
 }
 
 .name-title-img {
@@ -277,7 +309,7 @@ export default defineComponent({
       position: relative;
       justify-content: center;
       color: #fff;
-      background-color: #0E62A9;
+      background-color: #0e62a9;
       padding: 0 10px;
 
       .screen-name-input {
@@ -307,13 +339,11 @@ export default defineComponent({
           }
         }
       }
-
     }
   }
 
   .publish-info-text {
     margin-left: 1rem;
-
   }
 
   .screen-info {
@@ -325,23 +355,22 @@ export default defineComponent({
     align-items: center;
     justify-content: center;
     background-color: #001426;
-    background-image:
-      url("/public/images/project/画面背景.png"),
-      linear-gradient(to bottom, #003E76, #001426);
+    background-image: url("/public/images/project/画面背景.png"),
+      linear-gradient(to bottom, #003e76, #001426);
     background-repeat: no-repeat, repeat;
     background-position: center, 0 0;
     background-size: 300px 160px, auto;
 
     .edit-wrap {
-        width: 304px;
-        height: 172px;
+      width: 304px;
+      height: 172px;
 
-        .edit {
-          min-width: 116px;
-          padding: 0 30px;
-          font-size: 16px;
-        }
+      .edit {
+        min-width: 116px;
+        padding: 0 30px;
+        font-size: 16px;
       }
+    }
 
     img {
       width: 334px;
@@ -359,13 +388,11 @@ export default defineComponent({
         pointer-events: all;
       }
     }
-
-
   }
 
   .dialog-body {
     margin-bottom: 20px;
-    margin-left: 40px
+    margin-left: 40px;
   }
 
   .screen-in {
@@ -385,7 +412,6 @@ export default defineComponent({
       justify-content: flex-start;
       background-color: rgba(0, 0, 0, 0.8);
       color: #fff;
-
 
       .left-button {
         display: flex;
@@ -411,8 +437,6 @@ export default defineComponent({
         min-width: 50px;
         flex: 1;
       }
-
-
 
       .screen-button {
         text-align: center;
@@ -465,11 +489,10 @@ export default defineComponent({
     width: 110px;
     height: 35px;
     font-size: 24px;
-    font-family: '思源黑体Normal';
-    color: #7E7E7E;
+    font-family: "思源黑体Normal";
+    color: #7e7e7e;
   }
 }
-
 
 .publish-info {
   span {
@@ -480,15 +503,13 @@ export default defineComponent({
   }
 
   .published {
-    color: #1D9F3A !important;
+    color: #1d9f3a !important;
   }
 
   .notPublished {
-    color: #0E62A9 !important;
+    color: #0e62a9 !important;
   }
 }
-
-
 
 .input-group1 {
   display: flex;
@@ -499,8 +520,8 @@ export default defineComponent({
     width: 110px;
     height: 35px;
     font-size: 22px;
-    font-family: '思源黑体Normal';
-    color: #7E7E7E;
+    font-family: "思源黑体Normal";
+    color: #7e7e7e;
     // margin-left:85px;
   }
 
@@ -517,7 +538,7 @@ export default defineComponent({
   height: 250px;
 
   span {
-    color: #A8A8A8;
+    color: #a8a8a8;
   }
 }
 
@@ -530,8 +551,8 @@ export default defineComponent({
     width: 110px;
     height: 35px;
     font-size: 22px;
-    font-family: '思源黑体Normal';
-    color: #7E7E7E;
+    font-family: "思源黑体Normal";
+    color: #7e7e7e;
     // margin-left:85px;
   }
 
@@ -557,7 +578,7 @@ export default defineComponent({
     width: 400px;
     padding: 10px;
     border: 1px solid #ccc;
-    color: #A8A8A8;
+    color: #a8a8a8;
   }
 
   .na-input {
@@ -591,7 +612,7 @@ export default defineComponent({
   width: 70%;
   padding: 10px;
   border: 1px solid #ccc;
-  color: #A8A8A8;
+  color: #a8a8a8;
 }
 
 .server-input {
@@ -601,7 +622,7 @@ export default defineComponent({
     width: 558px;
     padding: 10px;
     border: 1px solid #ccc;
-    color: #A8A8A8;
+    color: #a8a8a8;
     font-size: 20px;
   }
 
@@ -626,7 +647,6 @@ export default defineComponent({
   border-radius: 16px !important;
 }
 
-
 .cancel-button {
   color: #333;
 }
@@ -645,11 +665,11 @@ export default defineComponent({
 
 .n-base-selection {
   border-radius: 10rem;
-  border: #A8A8A8;
+  border: #a8a8a8;
 }
 
 .n-base-selection-label {
   border-radius: 10rem;
-  border: #A8A8A8;
+  border: #a8a8a8;
 }
 </style>

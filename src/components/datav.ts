@@ -2,6 +2,7 @@ import { kebabCase } from "@/utils/util";
 
 export async function createComponent(name: string) {
   const path = kebabCase(name.substr(1));
+  console.log("pathpath", path, name.substr(1));
   switch (name.substr(1)) {
     // bar
     case "BasicBar": {
@@ -28,7 +29,6 @@ export async function createComponent(name: string) {
       const comModule = await import(`./bar/${path}/src/${path}.ts`);
       return new comModule.default();
     }
-
 
     // horizontal
     case "BasicHorizontal": {
@@ -116,7 +116,7 @@ export async function createComponent(name: string) {
     case "Button":
     case "FullScreen":
     case "Switch":
-    case "Slider":{
+    case "Slider": {
       const comModule = await import(`./button/${path}/src/${path}.ts`);
       return new comModule.default();
     }
@@ -281,32 +281,38 @@ export async function createComponent(name: string) {
     }
 
     //ic
-    case "IcPanel":{
+    case "IcPanel": {
       const comModule = await import(`./ic/${path}/src/${path}.ts`);
       return new comModule.default();
     }
 
-    case "DynamicBar":{
+    case "DynamicBar": {
       const comModule = await import(`./bar/${path}/src/${path}.ts`);
       return new comModule.default();
     }
 
-    case "DynamicSingleBar":{
+    case "DynamicSingleBar": {
       const comModule = await import(`./bar/${path}/src/${path}.ts`);
       return new comModule.default();
     }
 
-    case "DynamicLine":{
+    case "DynamicLine": {
       const comModule = await import(`./line/${path}/src/${path}.ts`);
       return new comModule.default();
     }
-    case "ThreedViewer":{
+    case "ThreedViewer": {
       const comModule = await import(`./media/${path}/src/${path}.ts`);
       return new comModule.default();
     }
 
-    case "BasicForm":{
+    case "BasicForm": {
       const comModule = await import(`./form/${path}/src/${path}.ts`);
+      return new comModule.default();
+    }
+    case "CustomerComp": {
+      //console.log("CustomerComp……", `./customer/${path}/src/${path}.ts`);
+      const comModule = await import(`./customer/${path}/src/${path}.ts`);
+      console.log("CustomerComp……", comModule);
       return new comModule.default();
     }
     default:

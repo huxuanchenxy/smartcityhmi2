@@ -4,7 +4,7 @@
       <header-toolbar />
     </div>
     <div id="edit-main-wp" class="g-layout edit-main-wp">
-
+      
       <components-panel />
       <layer-panel />
       <filter-manager-drawer />

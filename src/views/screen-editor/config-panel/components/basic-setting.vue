@@ -1,31 +1,15 @@
 <template>
   <div class="basic-setting-wp">
     <g-field label="图表尺寸" :is-flat="true">
-      <g-input-number
-        v-model="attr.w"
-        :min="1"
-        :max="888888"
-        inline
-      />
-      <g-input-number
-        v-model="attr.h"
-        :min="1"
-        :max="888888"
-        inline
-      />
+      <g-input-number v-model="attr.w" :min="1" :max="888888" inline />
+      <g-input-number v-model="attr.h" :min="1" :max="888888" inline />
     </g-field>
     <g-field label="图表位置" :is-flat="true">
       <g-input-number v-model="attr.x" inline />
       <g-input-number v-model="attr.y" inline />
     </g-field>
     <g-field label="旋转角度" :is-flat="true">
-      <g-input-number
-        v-model="attr.deg"
-        :min="0"
-        :max="360"
-        :step="1"
-        inline
-      />
+      <g-input-number v-model="attr.deg" :min="0" :max="360" :step="1" inline />
       <div class="rotate-flip-wp">
         <n-tooltip>
           <template #trigger>
@@ -58,25 +42,20 @@
       </div>
     </g-field>
     <g-field label="透明度">
-      <g-slider
-        v-model="attr.opacity"
-        :min="0"
-        :max="1"
-        :step="0.05"
-      />
+      <g-slider v-model="attr.opacity" :min="0" :max="1" :step="0.05" />
     </g-field>
   </div>
 </template>
 
 <script lang='ts'>
-import { defineComponent, PropType, ref, onMounted } from 'vue'
-import { ComponentAttr } from '@/components/datav-component'
-import { IconFlipV, IconFlipH } from '@/icons'
+import { ComponentAttr } from "@/components/datav-component";
+import { IconFlipH, IconFlipV } from "@/icons";
+import { PropType, defineComponent, onMounted, ref } from "vue";
 
-type filpType = 'v' | 'h'
+type filpType = "v" | "h";
 
 export default defineComponent({
-  name: 'BasicSetting',
+  name: "BasicSetting",
   components: {
     IconFlipV,
     IconFlipH,
@@ -88,34 +67,34 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const filps = ref<filpType[]>([])
+    const filps = ref<filpType[]>([]);
 
     const onFilpChange = (key: filpType) => {
       if (filps.value.includes(key)) {
-        filps.value = filps.value.filter(m => m !== key)
+        filps.value = filps.value.filter((m) => m !== key);
       } else {
-        filps.value.push(key)
+        filps.value.push(key);
       }
-      props.attr.filpV = filps.value.includes('v')
-      props.attr.filpH = filps.value.includes('h')
-    }
+      props.attr.filpV = filps.value.includes("v");
+      props.attr.filpH = filps.value.includes("h");
+    };
 
     onMounted(() => {
       if (props.attr.filpV) {
-        filps.value.push('v')
+        filps.value.push("v");
       }
 
       if (props.attr.filpH) {
-        filps.value.push('h')
+        filps.value.push("h");
       }
-    })
+    });
 
     return {
       filps,
       onFilpChange,
-    }
+    };
   },
-})
+});
 </script>
 
 <style lang="scss" scoped>

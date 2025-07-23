@@ -1,13 +1,13 @@
 <template>
   <div class="datav-wrapper" :style="wrapperStyle">
     <div :style="titleStyle">
-      <span :style="titleContentStyle">{{ com.config.titleConfig.title }}</span>
+      <span :style="titleContentStyle">{{ com.alias }}</span>
       <n-button
         text
         type="info"
         :style="ButtonStyle"
-        @click="handleCancleClick"
         style="overflow: hidden"
+        @click="handleCancleClick"
       >
         <img
           :src="com.config.iconConfig.closeIcon"
@@ -21,135 +21,35 @@
         />
       </n-button>
     </div>
-    <n-form
-      ref="formRef"
-      label-placement="left"
-      :label-width="com.config.labelWidth"
-      :model="com.config"
-      style="padding: 20px 40px 0 20px"
+    <div :style="iframeStyle">
+      <iframe :src="com.filePath" style="width: 100%; height: 100%"></iframe>
+    </div>
+    <!-- <div
+      style="
+        width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
     >
-      <n-form-item
-        :label="item.label"
-        :path="`items[${index}].control.value`"
-        v-for="(item, index) in com.config.items"
-        :style="wordStyle"
-        :rule="{
-          required: item.control.required,
-          message: item.label + '不能为空',
-          trigger: ['input', 'blur'],
-        }"
+      <n-button
+        v-if="com.config.buttonOptions.showSubmit"
+        :type="com.config.buttonOptions.submitButtonType"
+        focusable="false"
+        @click="handleValidateClick"
       >
-        <n-input
-          v-if="item.control.type == ctEnum.input"
-          type="text"
-          :name="item.code"
-          v-model:value="item.control.value"
-          :placeholder="item.control.placeholder"
-          :style="wordStyle"
-        />
-        <n-input-number
-          style="width: 100%"
-          v-if="item.control.type == ctEnum.number"
-          v-model:value="item.control.value"
-          :placeholder="item.control.placeholder"
-          :min="item.control.numberOptions.min"
-          :max="item.control.numberOptions.max"
-          :step="item.control.numberOptions.step"
-          :style="wordStyle"
-        />
-        <n-radio-group
-          v-if="item.control.type == ctEnum.radio"
-          v-model:value="item.control.value"
-          :name="item.code"
-          size="large"
-        >
-          <n-space>
-            <n-radio
-              v-for="option in item.control.radioOptions.options"
-              :key="option.value"
-              :value="option.value"
-              :style="wordStyle"
-            >
-              {{ option.label }}
-            </n-radio>
-          </n-space>
-        </n-radio-group>
-        <n-select
-          v-if="item.control.type == ctEnum.select"
-          :name="item.code"
-          v-model:value="item.control.value"
-          :label-field="item.control.selectOptions.labelKey"
-          :value-field="item.control.selectOptions.valueKey"
-          filterable
-          :options="item.control.selectOptions.options"
-          :style="wordStyle"
-        />
-        <n-checkbox-group
-          :name="item.code"
-          v-if="item.control.type == ctEnum.checkbox"
-          v-model:value="item.control.value"
-        >
-          <n-space item-style="display: flex;">
-            <n-checkbox
-              v-for="option in item.control.checkBoxOptions.options"
-              :value="option.value"
-              :label="option.label"
-              :checked-value="item.control.checkBoxOptions.checkedValue"
-              :unchecked-value="item.control.checkBoxOptions.uncheckedValue"
-              size="large"
-              :style="wordStyle"
-            />
-          </n-space>
-        </n-checkbox-group>
-        <n-date-picker
-          :name="item.code"
-          v-if="item.control.type == ctEnum.date"
-          v-model:value="item.control.value"
-          type="date"
-          :format="item.control.dateOptions.dateFormat"
-          :style="wordStyle"
-          style="width: 100%"
-        />
-        <n-time-picker
-          :name="item.code"
-          v-if="item.control.type == ctEnum.time"
-          v-model:value="item.control.value"
-          :format="item.control.timeOptions.timeFormat"
-          :style="wordStyle"
-          style="width: 100%"
-        />
-      </n-form-item>
-      <n-form-item
-        style="display: flex; align-items: center; justify-content: center"
+        {{ com.config.buttonOptions.submitButtonText }}
+      </n-button>
+      <n-button
+        v-if="com.config.buttonOptions.showCancel"
+        :type="com.config.buttonOptions.cancleButtonType"
+        focusable="false"
+        @click="handleCancleClick"
       >
-        <div
-          style="
-            width: 200px;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-          "
-        >
-          <n-button
-            v-if="com.config.buttonOptions.showSubmit"
-            :type="com.config.buttonOptions.submitButtonType"
-            focusable="false"
-            @click="handleValidateClick"
-          >
-            {{ com.config.buttonOptions.submitButtonText }}
-          </n-button>
-          <n-button
-            v-if="com.config.buttonOptions.showCancel"
-            :type="com.config.buttonOptions.cancleButtonType"
-            focusable="false"
-            @click="handleCancleClick"
-          >
-            {{ com.config.buttonOptions.cancleButtonText }}
-          </n-button>
-        </div>
-      </n-form-item>
-    </n-form>
+        {{ com.config.buttonOptions.cancleButtonText }}
+      </n-button>
+    </div> -->
   </div>
 </template>
 
@@ -169,22 +69,24 @@ import {
   ref,
   toRef,
 } from "vue";
-import { BasicForm, controlType } from "./basic-form";
+import { CustomerComp, controlType } from "./customer-comp";
 
 export default defineComponent({
-  name: "VBasicForm",
+  name: "VCustomerComp",
   props: {
     com: {
-      type: Object as PropType<BasicForm>,
+      type: Object as PropType<CustomerComp>,
       required: true,
     },
   },
   setup(props) {
+    console.log("SETUP:::", props.com.config);
     useDataCenter(props.com);
     useEventCenter(props.com);
+    //let filePath = ref(props.com.filePath);
+    // console.log("props.com：：：", props.com);
 
     const formRef = ref<FormInst | null>(null);
-
     const mitter =
       getCurrentInstance()?.appContext.config.globalProperties.mitter;
 
@@ -205,6 +107,7 @@ export default defineComponent({
     const attr = toRef(props.com, "attr");
 
     onMounted(() => {
+      // console.log("onMounted……", props.com);
       initData();
     });
 
@@ -248,7 +151,7 @@ export default defineComponent({
           } else if (str == "false") {
             return false;
           } else {
-            return "'" + str + "'";
+            return `'${str}'`;
           }
         } else {
           return null;
@@ -342,6 +245,15 @@ export default defineComponent({
       return style as CSSProperties;
     });
 
+    const iframeStyle = computed(() => {
+      const ts = config.value.titleConfig.titleStyle;
+      let iframeHeight = attr.value.h - ts.height;
+      const style = {
+        width: `${attr.value.w}px`,
+        height: `${iframeHeight}px`,
+      };
+      return style as CSSProperties;
+    });
     const wordStyle = computed(() => {
       const style = {
         //'--n-blank-height': (config.value.textStyle.fontSize + 14) + 'px',
@@ -349,8 +261,8 @@ export default defineComponent({
         //'--n-height': (config.value.textStyle.fontSize + 14) + 'px',
         "--n-label-text-color": config.value.textStyle.color,
         "--n-text-color": config.value.textStyle.color,
-        "--n-label-font-size": config.value.textStyle.fontSize + "px",
-        "--n-font-size": config.value.textStyle.fontSize + "px",
+        "--n-label-font-size": `${config.value.textStyle.fontSize}px`,
+        "--n-font-size": `${config.value.textStyle.fontSize}px`,
       };
       return style as CSSProperties;
     });
@@ -400,7 +312,24 @@ export default defineComponent({
       titleStyle,
       titleContentStyle,
       ButtonStyle,
+      iframeStyle,
     };
   },
 });
 </script>
+
+<!-- <template>
+  <div>Customer</div>
+</template>
+
+<script setup>
+
+</script>
+<script>
+export default {
+  name: "CustomerComp",
+};
+</script>
+
+<style   scoped>
+</style> -->

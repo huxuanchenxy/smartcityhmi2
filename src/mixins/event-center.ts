@@ -1,19 +1,19 @@
-import { ApiModule } from "@/store/modules/api";
 import { DatavComponent } from "@/components/datav-component";
+import { ApiModule } from "@/store/modules/api";
 
-import { EditorModule } from "@/store/modules/editor";
-import { ApiType } from "@/components/data-source";
-import { getCurrentInstance } from "vue";
-import { HandleItemField, IcHandleItemField, PtModel } from "@/components/data-handle";
-import { LocalValueModule } from "@/store/modules/localvalue";
-import { DatavError } from "@/domains/error";
-import axios from "axios";
-import { execFilter } from "@/components/data-filter";
-import { FilterModule } from "@/store/modules/filter";
-import { JSONPath } from "jsonpath-plus";
 import { writeFormula, writeNode } from "@/api/ic";
+import { execFilter } from "@/components/data-filter";
+import { HandleItemField, IcHandleItemField } from "@/components/data-handle";
+import { ApiType } from "@/components/data-source";
+import { DatavError } from "@/domains/error";
+import { EditorModule } from "@/store/modules/editor";
+import { FilterModule } from "@/store/modules/filter";
+import { LocalValueModule } from "@/store/modules/localvalue";
 import { setNP } from "@/utils/util";
+import axios from "axios";
+import { JSONPath } from "jsonpath-plus";
 import { useMessage } from "naive-ui";
+import { getCurrentInstance } from "vue";
 
 export const useEventCenter = (com: DatavComponent) => {
   const nMessage = useMessage();
@@ -238,7 +238,6 @@ export const useEventCenter = (com: DatavComponent) => {
           });
         }
 
-        break;
       case "broadcast2":
         const webui2 = JSON.parse(field.params);
         if ((window as any).ue == null || (window as any).ue.interface == null) {
