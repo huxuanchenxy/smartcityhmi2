@@ -1,0 +1,1 @@
+System.register(["./index-legacy-Cgp3PKn6.js"],(function(e,r){"use strict";var s;return{setters:[e=>{s=e.p}],execute:function(){e("u",s("userStore",{state:()=>({curUser:null}),actions:{setCurUsreInfo(e){this.curUser=e},clearCurUserInfo(){this.curUser=null}},getters:{},persist:{enabled:!0,strategies:[{key:"userinfo",paths:["curUser"]}]}}))}}}));

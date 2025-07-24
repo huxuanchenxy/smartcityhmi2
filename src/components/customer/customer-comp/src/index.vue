@@ -317,19 +317,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<!-- <template>
-  <div>Customer</div>
-</template>
-
-<script setup>
-
-</script>
-<script>
-export default {
-  name: "CustomerComp",
-};
-</script>
-
-<style   scoped>
-</style> -->

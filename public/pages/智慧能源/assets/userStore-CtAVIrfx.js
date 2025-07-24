@@ -1,0 +1,1 @@
+import{p as r}from"./index-CjguSdL3.js";const t=r("userStore",{state:()=>({curUser:null}),actions:{setCurUsreInfo(e){this.curUser=e},clearCurUserInfo(){this.curUser=null}},getters:{},persist:{enabled:!0,strategies:[{key:"userinfo",paths:["curUser"]}]}});export{t as u};
