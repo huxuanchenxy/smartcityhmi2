@@ -764,7 +764,7 @@ export const carousel = {
 };
 const getCustomerDict = () => {
   const files = import.meta.glob("/public/pages/**/*");
-  console.log(files, Object.keys(files));
+  // console.log(files, Object.keys(files));
   let filesKey = Object.keys(files);
   let datas = [];
   filesKey.forEach(el => {
@@ -772,7 +772,7 @@ const getCustomerDict = () => {
     let alias = tempArray[3];
     let filePath = `./pages/${alias}/index.html`;
     let existIndex = datas.findIndex(x => x.filePath == filePath);
-    console.log(datas, filePath, datas.includes(filePath));
+    // console.log(datas, filePath, datas.includes(filePath));
     if (existIndex == -1) {
       // console.log("tempArray", filePath);
       datas.push({

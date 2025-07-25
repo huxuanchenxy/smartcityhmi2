@@ -20,36 +20,15 @@
           }"
         />
       </n-button>
+      <button @click="sendToChild">发送给子iframe</button><span>来自子页面的消息:{{ sonMessage }}</span>
     </div>
     <div :style="iframeStyle">
-      <iframe :src="com.filePath" style="width: 100%; height: 100%"></iframe>
+      <iframe 
+        ref="iframeRef" 
+        src="http://localhost:8800/#/sysconfig2/rule"  
+        style="width: 100%; height: 100%"
+      ></iframe>
     </div>
-    <!-- <div
-      style="
-        width: 100%;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      "
-    >
-      <n-button
-        v-if="com.config.buttonOptions.showSubmit"
-        :type="com.config.buttonOptions.submitButtonType"
-        focusable="false"
-        @click="handleValidateClick"
-      >
-        {{ com.config.buttonOptions.submitButtonText }}
-      </n-button>
-      <n-button
-        v-if="com.config.buttonOptions.showCancel"
-        :type="com.config.buttonOptions.cancleButtonType"
-        focusable="false"
-        @click="handleCancleClick"
-      >
-        {{ com.config.buttonOptions.cancleButtonText }}
-      </n-button>
-    </div> -->
   </div>
 </template>
 
@@ -70,6 +49,7 @@ import {
   toRef,
 } from "vue";
 import { CustomerComp, controlType } from "./customer-comp";
+
 
 export default defineComponent({
   name: "VCustomerComp",
@@ -109,6 +89,33 @@ export default defineComponent({
     onMounted(() => {
       // console.log("onMounted……", props.com);
       initData();
+    });
+
+    const iframeRef = ref<HTMLIFrameElement | null>(null)
+    const sonMessage = ref('无');
+    const sendToChild = () => {
+      // if (!iframeRef.value?.contentWindow) {
+      //   console.error('iframe未加载或contentWindow不可用');
+      //   return;
+      // }
+      iframeRef.value.contentWindow.postMessage({
+        type: 'PARENT_MESSAGE',
+        data: { content: 'Hello from parent' }
+      },'*');
+    };
+
+    // 监听子iframe发来的消息
+    const handleMessage = (event: MessageEvent) => {
+      // 安全检查
+      // if (event.origin !== 'http://localhost:8800') return;
+      
+      console.log('收到子iframe消息:', event.data);
+      sonMessage.value = event.data.data.content;
+      // 处理消息逻辑...
+    };
+
+    onMounted(() => {
+      window.addEventListener('message', handleMessage);
     });
 
     const initData = () => {
@@ -313,6 +320,9 @@ export default defineComponent({
       titleContentStyle,
       ButtonStyle,
       iframeStyle,
+      sendToChild,
+      iframeRef,
+      sonMessage,
     };
   },
 });
