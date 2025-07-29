@@ -79,7 +79,7 @@ import {
   toRef,
 } from "vue";
 import { CustomerComp, controlType } from "./customer-comp";
-
+import { watch } from 'vue'; 
 
 export default defineComponent({
   name: "VCustomerComp",
@@ -105,7 +105,6 @@ export default defineComponent({
       switch (field.targetMethodName) {
         case "open":
           props.com.hided = false;
-          console.log("mitter.on.open");
           initData();
           break;
         case "close":
@@ -341,6 +340,18 @@ export default defineComponent({
       };
       return style as CSSProperties;
     });
+
+    watch(() => props.com.config.extendData, (newVal, oldVal) => {
+      if (iframeRef.value?.contentWindow) {
+        iframeRef.value.contentWindow.postMessage({
+          type: 'PARENT_MESSAGE',
+          data: { 
+            content: 'Data changed',
+            extendData: newVal 
+          }
+        }, '*');
+      }
+    }, { deep: true });
 
     return {
       wrapperStyle,

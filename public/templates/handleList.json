@@ -1851,6 +1851,10 @@
       {
         "name": "cancle",
         "title": "取消"
+      },
+      {
+        "name": "onmessage",
+        "title": "窗体通讯"
       }
     ]
   }
