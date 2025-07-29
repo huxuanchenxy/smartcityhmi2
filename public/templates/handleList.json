@@ -1845,16 +1845,8 @@
     ],
     "events": [
       {
-        "name": "submit",
-        "title": "提交"
-      },
-      {
-        "name": "cancle",
-        "title": "取消"
-      },
-      {
-        "name": "onmessage",
-        "title": "窗体通讯"
+        "name": "customclick",
+        "title": "自定义点击"
       }
     ]
   }

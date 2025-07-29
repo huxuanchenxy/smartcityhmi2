@@ -42,7 +42,7 @@
       额外：
       {{ com.config.extendData }}
       </span>
-      
+      <n-button @click="checkEvents">把内容传出去</n-button>
     </div>
     <div>
       <button @click="sendToChild">发送给子iframe</button><span style="color: black;">来自子页面的消息:{{ sonMessage }}</span>
@@ -80,6 +80,7 @@ import {
 } from "vue";
 import { CustomerComp, controlType } from "./customer-comp";
 import { watch } from 'vue'; 
+import { DatavComponent } from '@/components/datav-component'
 
 export default defineComponent({
   name: "VCustomerComp",
@@ -353,6 +354,24 @@ export default defineComponent({
       }
     }, { deep: true });
 
+
+    const checkEvents = (value: any) => {
+      console.log('checkEvents', value)
+      console.log('props.com', props.com)
+      if (value) {
+        if (props.com.handles
+          && props.com.handles.customclick
+          && props.com.handles.customclick.fields
+          && props.com.handles.customclick.fields.length > 0) {
+          props.com.handles.customclick.fields.forEach(field => {
+            field.value = '来自自定义组件的值';
+            mitter.emit(field.targetComId, field)
+          })
+        }
+      }
+      
+    }
+
     return {
       wrapperStyle,
       wordStyle,
@@ -368,6 +387,7 @@ export default defineComponent({
       iframeRef,
       sonMessage,
       outMessage,
+      checkEvents,
     };
   },
 });
