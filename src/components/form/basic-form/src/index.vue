@@ -218,6 +218,7 @@ export default defineComponent({
           });
         }
       });
+      console.log("list:",list);
       if (list.length > 0) {
         readNode(list).then((r) => {
           if (r.data.code == 200) {

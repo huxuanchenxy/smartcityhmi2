@@ -122,7 +122,8 @@ export class CustomerComp extends DatavComponent {
       cancleButtonType: "default",
       cancleButtonText: "取消"
     },
-    items: [new CustomerCompItems("组件", 1)]
+    items: [new CustomerCompItems("组件", 1)],
+    extendData: {value:"额外的数据"},
   };
 
   apis: Partial<ApiConfigMap>;

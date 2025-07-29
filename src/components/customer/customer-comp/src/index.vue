@@ -20,7 +20,34 @@
           }"
         />
       </n-button>
-      <button @click="sendToChild">发送给子iframe</button><span>来自子页面的消息:{{ sonMessage }}</span>
+
+<div
+      style="
+        width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <n-button
+        v-if="com.config.buttonOptions.showSubmit"
+        :type="com.config.buttonOptions.submitButtonType"
+        focusable="false"
+        @click="handleValidateClick"
+      >
+        {{ com.config.buttonOptions.submitButtonText }}
+      </n-button>
+      <span style="color:black;">
+      额外：
+      {{ com.config.extendData }}
+      </span>
+      
+    </div>
+    <div>
+      <button @click="sendToChild">发送给子iframe</button><span style="color: black;">来自子页面的消息:{{ sonMessage }}</span>
+      <span style="color: black;">来外部组件的消息:{{ outMessage }}</span>
+    </div>
     </div>
     <div :style="iframeStyle">
       <iframe 
@@ -28,7 +55,10 @@
         src="http://localhost:8800/#/sysconfig2/rule"  
         style="width: 100%; height: 100%"
       ></iframe>
+      
     </div>
+
+        
   </div>
 </template>
 
@@ -75,6 +105,7 @@ export default defineComponent({
       switch (field.targetMethodName) {
         case "open":
           props.com.hided = false;
+          console.log("mitter.on.open");
           initData();
           break;
         case "close":
@@ -93,6 +124,8 @@ export default defineComponent({
 
     const iframeRef = ref<HTMLIFrameElement | null>(null)
     const sonMessage = ref('无');
+    const outMessage = ref('无');
+    
     const sendToChild = () => {
       // if (!iframeRef.value?.contentWindow) {
       //   console.error('iframe未加载或contentWindow不可用');
@@ -323,6 +356,7 @@ export default defineComponent({
       sendToChild,
       iframeRef,
       sonMessage,
+      outMessage,
     };
   },
 });

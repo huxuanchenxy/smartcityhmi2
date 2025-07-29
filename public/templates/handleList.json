@@ -1830,5 +1830,28 @@
         "title": "播放结束"
       }
     ]
+  },
+  {
+    "component": "VCustomerComp",
+    "actions": [
+      {
+        "methodCode": "open",
+        "methodName": "打开"
+      },
+      {
+        "methodCode": "close",
+        "methodName": "关闭"
+      }
+    ],
+    "events": [
+      {
+        "name": "submit",
+        "title": "提交"
+      },
+      {
+        "name": "cancle",
+        "title": "取消"
+      }
+    ]
   }
 ]
