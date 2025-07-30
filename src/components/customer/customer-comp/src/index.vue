@@ -127,10 +127,10 @@ export default defineComponent({
     const outMessage = ref('无');
     
     const sendToChild = () => {
-      // if (!iframeRef.value?.contentWindow) {
-      //   console.error('iframe未加载或contentWindow不可用');
-      //   return;
-      // }
+      if (!iframeRef.value?.contentWindow) {
+        console.error('iframe未加载或contentWindow不可用');
+        return;
+      }
       iframeRef.value.contentWindow.postMessage({
         type: 'PARENT_MESSAGE',
         data: { content: 'Hello from parent' }
@@ -139,9 +139,6 @@ export default defineComponent({
 
     // 监听子iframe发来的消息
     const handleMessage = (event: MessageEvent) => {
-      // 安全检查
-      // if (event.origin !== 'http://localhost:8800') return;
-      
       console.log('收到子iframe消息:', event.data);
       sonMessage.value = event.data.data.content;
       // 处理消息逻辑...
