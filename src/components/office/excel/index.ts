@@ -1,11 +1,11 @@
 import { loadAsyncComponent } from '@/utils/async-component'
 import type { SFCWithInstall } from '@/utils/types'
 import type { App } from 'vue'
-import CustomerComp from './src/index.vue'
+import Excel from './src/index.vue'
 
-CustomerComp.install = (app: App) => {
-  app.component(CustomerComp.name, CustomerComp)
+Excel.install = (app: App) => {
+  app.component(Excel.name, Excel)
   app.component('VCustomerCompProp', loadAsyncComponent(() => import('./src/config.vue')))
 }
 
-export default CustomerComp as SFCWithInstall<typeof CustomerComp>
+export default Excel as SFCWithInstall<typeof Excel>

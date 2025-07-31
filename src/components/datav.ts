@@ -312,7 +312,13 @@ export async function createComponent(name: string) {
     case "CustomerComp": {
       //console.log("CustomerComp……", `./customer/${path}/src/${path}.ts`);
       const comModule = await import(`./customer/${path}/src/${path}.ts`);
-      console.log("CustomerComp……", comModule);
+      
+      return new comModule.default();
+    }
+
+    case "Excel": {
+      const comModule = await import(`./office/${path}/src/${path}.ts`);
+      console.log("office", comModule);
       return new comModule.default();
     }
     default:

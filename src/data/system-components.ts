@@ -845,6 +845,22 @@ export const ic = {
   ]
 };
 
+export const office = {
+  type: "office",
+  name: "办公",
+  icon: "v-icon-other",
+  data: [
+    {
+      name: "VExcel",
+      alias: "Excel表格",
+      img: `${imagePath}icpanel.png`,
+      thum: `${thumPath}icpanel.png`,
+      used: true,
+      visible: true
+    }
+  ]
+};
+
 export const classifications = [
   {
     type: "customer",
@@ -856,7 +872,7 @@ export const classifications = [
     type: "office",
     name: "办公软件",
     icon: "v-icon-customer",
-    data: [bar] // relation,
+    data: [office] // relation,
   },
   {
     type: "regular",

@@ -1,64 +1,16 @@
 <template>
-  <div class="datav-wrapper" :style="wrapperStyle">
-    <div :style="titleStyle">
-      <span :style="titleContentStyle">{{ com.alias }}</span>
+  <div class="datav-wrapper">
+    <div>
       <n-button
         text
-        type="info"
-        :style="ButtonStyle"
+        type="normal"
         style="overflow: hidden"
-        @click="handleCancleClick"
       >
-        <img
-          :src="com.config.iconConfig.closeIcon"
-          style="height: 20px"
-          :style="{
-            position: 'relative',
-            left: '-80px',
-            filter:
-              'drop-shadow(' + com.config.iconConfig.iconColor + ' 80px 0)',
-          }"
-        />
+      office excel
       </n-button>
 
-<div
-      style="
-        width: 100%;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      "
-    >
-      <n-button
-        v-if="com.config.buttonOptions.showSubmit"
-        :type="com.config.buttonOptions.submitButtonType"
-        focusable="false"
-        @click="handleValidateClick"
-      >
-        {{ com.config.buttonOptions.submitButtonText }}
-      </n-button>
-      <span style="color:black;">
-      额外：
-      {{ com.config.extendData }}
-      </span>
-      <n-button @click="checkEvents">把内容传出去</n-button>
-    </div>
-    <div>
-      <button @click="sendToChild">发送给子iframe</button><span style="color: black;">来自子页面的消息:{{ sonMessage }}</span>
-      <span style="color: black;">来外部组件的消息:{{ outMessage }}</span>
-    </div>
-    </div>
-    <div :style="iframeStyle">
-      <iframe 
-        ref="iframeRef" 
-        src="http://localhost:8800/#/sysconfig2/rule"  
-        style="width: 100%; height: 100%"
-      ></iframe>
-      
     </div>
 
-        
   </div>
 </template>
 
@@ -78,15 +30,15 @@ import {
   ref,
   toRef,
 } from "vue";
-import { CustomerComp, controlType } from "./customer-comp";
+import { Excel, controlType } from "./excel";
 import { watch } from 'vue'; 
 import { DatavComponent } from '@/components/datav-component'
 
 export default defineComponent({
-  name: "VCustomerComp",
+  name: "VExcel",
   props: {
     com: {
-      type: Object as PropType<CustomerComp>,
+      type: Object as PropType<Excel>,
       required: true,
     },
   },
@@ -106,7 +58,7 @@ export default defineComponent({
       switch (field.targetMethodName) {
         case "open":
           props.com.hided = false;
-          initData();
+          // initData();
           break;
         case "close":
           props.com.hided = true;

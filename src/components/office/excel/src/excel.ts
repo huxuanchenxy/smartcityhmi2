@@ -3,7 +3,7 @@ import { ApiConfigMap, ApiDataConfigMap } from "@/components/data-source";
 import { DatavComponent, DatavFormItems } from "@/components/datav-component";
 import { CSSProperties } from "vue";
 
-export class CustomerCompItems extends DatavFormItems {
+export class ExcelItems extends DatavFormItems {
   constructor(code: string, idx: number) {
     super(code, idx);
   }
@@ -76,7 +76,7 @@ export enum controlType {
 /**
  *
  */
-export class CustomerComp extends DatavComponent {
+export class Excel extends DatavComponent {
   config = {
     labelWidth: 80,
     titleConfig: {
@@ -122,7 +122,7 @@ export class CustomerComp extends DatavComponent {
       cancleButtonType: "default",
       cancleButtonText: "取消"
     },
-    items: [new CustomerCompItems("组件", 1)],
+    items: [new ExcelItems("组件", 1)],
     extendData: {value:"额外的数据"},
   };
 
@@ -134,7 +134,7 @@ export class CustomerComp extends DatavComponent {
   actions: Record<string, DataEventConfig>;
 
   constructor() {
-    super("CustomerComp", { w: 800, h: 800 });
+    super("Excel", { w: 800, h: 800 });
     this.initData();
   }
 
@@ -149,4 +149,4 @@ export class CustomerComp extends DatavComponent {
   async loadData() {}
 }
 
-export default CustomerComp;
+export default Excel;

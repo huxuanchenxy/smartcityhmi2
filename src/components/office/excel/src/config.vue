@@ -126,13 +126,13 @@ import {
 } from "@/data/select-options";
 import { PropType, defineComponent, provide, ref, toRef } from "vue";
 import IcList from "../../../../views/screen-editor/config-panel/icevent-panel/ic-list.vue";
-import { CustomerComp, CustomerCompItems, controlType } from "./excel";
+import { Excel, ExcelItems, controlType } from "./excel";
 
 export default defineComponent({
   name: "VCustomerCompProp",
   props: {
     com: {
-      type: Object as PropType<CustomerComp>,
+      type: Object as PropType<Excel>,
       required: true,
     },
   },
@@ -144,13 +144,13 @@ export default defineComponent({
     const icListVisibile = ref(false);
 
     const handleAddFormItem = () => {
-      return new CustomerCompItems(
+      return new ExcelItems(
         `自定义组件-${config.value.items.length + 1}`,
         config.value.items.length + 1
       );
     };
 
-    const handleAddOption = (item: CustomerCompItems, type: string) => {
+    const handleAddOption = (item: ExcelItems, type: string) => {
       let option = {};
       switch (type) {
         case "select":
@@ -175,9 +175,9 @@ export default defineComponent({
       return option;
     };
 
-    var currentField: CustomerCompItems = null;
+    var currentField: ExcelItems = null;
 
-    const openIcList = (item: CustomerCompItems) => {
+    const openIcList = (item: ExcelItems) => {
       currentField = item;
       icListVisibile.value = true;
     };

@@ -107,9 +107,11 @@ import VDynamicLine from './line/dynamic-line'
 import VThreedViewer from './media/threed-viewer'
 
 import VCustomerComp from './customer/customer-comp'
+import VExcel from './office/excel'
 import VBasicForm from './form/basic-form'
 const components = [
   VCustomerComp,
+  VExcel,
   VMainTitle,
   VNumberTitleFlop,
   VDatePicker,
