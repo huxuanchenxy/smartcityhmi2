@@ -15,7 +15,6 @@
 </template>
 
 <script lang='ts'>
-import { readNode, writeNode } from "@/api/ic";
 import { HandleItemField } from "@/components/data-handle";
 import { useDataCenter } from "@/mixins/data-center";
 import { useEventCenter } from "@/mixins/event-center";
@@ -70,143 +69,7 @@ export default defineComponent({
     const attr = toRef(props.com, "attr");
 
     onMounted(() => {
-      // console.log("onMounted……", props.com);
-      initData();
     });
-
-    const iframeRef = ref<HTMLIFrameElement | null>(null)
-    const sonMessage = ref('无');
-    const outMessage = ref('无');
-    
-    const sendToChild = () => {
-      if (!iframeRef.value?.contentWindow) {
-        console.error('iframe未加载或contentWindow不可用');
-        return;
-      }
-      iframeRef.value.contentWindow.postMessage({
-        type: 'PARENT_MESSAGE',
-        data: { content: 'Hello from parent' }
-      },'*');
-    };
-
-    // 监听子iframe发来的消息
-    const handleMessage = (event: MessageEvent) => {
-      console.log('收到子iframe消息:', event.data);
-      sonMessage.value = event.data.data.content;
-      // 处理消息逻辑...
-    };
-
-    onMounted(() => {
-      window.addEventListener('message', handleMessage);
-    });
-
-    const initData = () => {
-      let list = [];
-      props.com.config.items.forEach((r) => {
-        if (r.pt.extension && r.pt.extension.device && r.pt.extension.name) {
-          list.push({
-            device: r.pt.extension.device,
-            name: r.pt.extension.name,
-          });
-        }
-      });
-      if (list.length > 0) {
-        readNode(list).then((r) => {
-          if (r.data.code == 200) {
-            let result = r.data.data;
-            if (result.length > 0) {
-              result.forEach((item) => {
-                props.com.config.items.forEach((formItem) => {
-                  if (
-                    formItem.pt.extension.device == item.device &&
-                    formItem.pt.extension.name == item.name
-                  ) {
-                    formItem.control.value = item.value;
-                  }
-                });
-              });
-            }
-          }
-        });
-      }
-    };
-
-    const strToNum = (str) => {
-      const num = Number(str);
-      if (isNaN(num)) {
-        if (str && str.length > 0) {
-          if (str == "true") {
-            return true;
-          } else if (str == "false") {
-            return false;
-          } else {
-            return `'${str}'`;
-          }
-        } else {
-          return null;
-        }
-      }
-      return num;
-    };
-
-    const handleValidateClick = (e: MouseEvent) => {
-      e.preventDefault();
-      formRef.value?.validate((errors) => {
-        if (!errors) {
-          //逻辑代码
-          let list = [];
-          props.com.config.items.forEach((r) => {
-            if (
-              r.pt.extension &&
-              r.pt.extension.name &&
-              r.pt.extension.device
-            ) {
-              var cValue = strToNum(r.control.value);
-              list.push({
-                device: r.pt.extension.device,
-                name: r.pt.extension.name,
-                value: cValue,
-              });
-            }
-          });
-          writeNode(list, [], []).then((r) => {
-            if (r.data.code == 200) {
-              //提交按钮事件互动
-              if (
-                props.com.handles &&
-                props.com.handles.submit &&
-                props.com.handles.submit.fields &&
-                props.com.handles.submit.fields.length > 0
-              ) {
-                props.com.handles.submit.fields.forEach((pmfield) => {
-                  mitter.emit(pmfield.targetComId, pmfield);
-                });
-              }
-            } else {
-              console.log(r.msg);
-            }
-          });
-        } else {
-          console.log(errors);
-        }
-      });
-    };
-
-    const handleCancleClick = (e: MouseEvent) => {
-      e.preventDefault();
-      props.com.hided = true;
-      //取消按钮事件互动
-      if (
-        props.com.handles &&
-        props.com.handles.cancle &&
-        props.com.handles.cancle.fields &&
-        props.com.handles.cancle.fields.length > 0
-      ) {
-        props.com.handles.cancle.fields.forEach((pmfield) => {
-          mitter.emit(pmfield.targetComId, pmfield);
-        });
-      }
-    };
 
     const wrapperStyle = computed(() => {
       const style = {
@@ -291,52 +154,17 @@ export default defineComponent({
       return style as CSSProperties;
     });
 
-    watch(() => props.com.config.extendData, (newVal, oldVal) => {
-      if (iframeRef.value?.contentWindow) {
-        iframeRef.value.contentWindow.postMessage({
-          type: 'PARENT_MESSAGE',
-          data: { 
-            content: 'Data changed',
-            extendData: newVal 
-          }
-        }, '*');
-      }
-    }, { deep: true });
 
-
-    const checkEvents = (value: any) => {
-      console.log('checkEvents', value)
-      console.log('props.com', props.com)
-      if (value) {
-        if (props.com.handles
-          && props.com.handles.customclick
-          && props.com.handles.customclick.fields
-          && props.com.handles.customclick.fields.length > 0) {
-          props.com.handles.customclick.fields.forEach(field => {
-            field.value = '来自自定义组件的值';
-            mitter.emit(field.targetComId, field)
-          })
-        }
-      }
-      
-    }
 
     return {
       wrapperStyle,
       wordStyle,
-      handleValidateClick,
-      handleCancleClick,
       formRef,
       ctEnum: controlType,
       titleStyle,
       titleContentStyle,
       ButtonStyle,
       iframeStyle,
-      sendToChild,
-      iframeRef,
-      sonMessage,
-      outMessage,
-      checkEvents,
     };
   },
 });
