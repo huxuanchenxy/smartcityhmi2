@@ -134,7 +134,7 @@ export class Excel extends DatavComponent {
   actions: Record<string, DataEventConfig>;
 
   constructor() {
-    super("Excel", { w: 800, h: 800 });
+    super("Excel", { w: 1200, h: 800 });
     this.initData();
   }
 
