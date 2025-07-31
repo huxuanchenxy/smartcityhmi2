@@ -852,6 +852,12 @@ export const classifications = [
     icon: "v-icon-customer",
     data: [customerComp] // relation,
   },
+    {
+    type: "office",
+    name: "办公软件",
+    icon: "v-icon-customer",
+    data: [bar] // relation,
+  },
   {
     type: "regular",
     name: "图表",
