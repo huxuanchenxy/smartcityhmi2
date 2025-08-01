@@ -2,7 +2,7 @@ import { kebabCase } from "@/utils/util";
 
 export async function createComponent(name: string) {
   const path = kebabCase(name.substr(1));
-  console.log("pathpath", path, name.substr(1));
+  // console.log("pathpath", path, name.substr(1));
   switch (name.substr(1)) {
     // bar
     case "BasicBar": {
@@ -318,7 +318,6 @@ export async function createComponent(name: string) {
 
     case "Excel": {
       const comModule = await import(`./office/${path}/src/${path}.ts`);
-      console.log("office", comModule);
       return new comModule.default();
     }
     default:

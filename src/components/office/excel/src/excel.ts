@@ -1,7 +1,9 @@
 import { DataEventConfig } from "@/components/data-event";
-import { ApiConfigMap, ApiDataConfigMap } from "@/components/data-source";
+import { ApiConfigMap, ApiDataConfigMap,
+  initApiConfig, initApiData, } from "@/components/data-source";
 import { DatavComponent, DatavFormItems } from "@/components/datav-component";
 import { CSSProperties } from "vue";
+import { createField } from '@/components/data-field'
 
 export class ExcelItems extends DatavFormItems {
   constructor(code: string, idx: number) {
@@ -123,15 +125,32 @@ export class Excel extends DatavComponent {
       cancleButtonText: "取消"
     },
     items: [new ExcelItems("组件", 1)],
-    data:[
-  {
-    name: "Sheet1",
-    rows: {
-      0: { cells: { 0: { text: "A1" }, 1: { text: "B1" } } },
-      1: { cells: { 0: { text: "A2" }, 1: { text: "B2" } } },
-    },
-  },
-],
+    data:[{
+	"name": "Sheet1",
+	"rows": {
+		"0": {
+			"cells": {
+				"0": {
+					"text": "A111"
+				},
+				"1": {
+					"text": "B111"
+				}
+			}
+		},
+		"1": {
+			"cells": {
+				"0": {
+					"text": "A222"
+				},
+				"1": {
+					"text": "B222"
+				}
+			}
+		}
+	}
+}]
+,
   };
 
   apis: Partial<ApiConfigMap>;
@@ -147,14 +166,31 @@ export class Excel extends DatavComponent {
   }
 
   initData() {
-    this.apis = {};
-    this.apiData = {};
-    this.events = {};
-    this.actions = {};
+    // this.apis = {};
+    // this.apiData = {};
+    // this.events = {};
+    // this.actions = {};
+
+
+    const fields = [
+      createField('title', { description: '标题值', optional: true }),
+      createField('url', { description: '超链接', optional: true }),
+    ]
+
+    this.apis = initApiConfig({
+      fields: Object.assign({}, ...fields),
+    })
+
+    this.apiData = initApiData(this.id)
+    // console.log('this.apidata:',this.apiData)
+    this.events = {}
+    this.actions = {}
     return this;
   }
 
-  async loadData() {}
+  async loadData() {
+    console.log('this.apiData1111:',this.apiData.source.config.data)
+  }
 }
 
 export default Excel;

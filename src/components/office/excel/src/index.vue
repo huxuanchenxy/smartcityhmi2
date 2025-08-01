@@ -37,6 +37,8 @@ import { DatavComponent } from '@/components/datav-component'
 // ✅ 引入 x-data-spreadsheet
 import Spreadsheet from "x-data-spreadsheet";
 import "x-data-spreadsheet/dist/xspreadsheet.css";
+import {ApiModule} from '@/store/modules/api'
+import { getStaticData } from '@/api/data'
 
 export default defineComponent({
   name: "VExcel",
@@ -47,8 +49,11 @@ export default defineComponent({
     },
   },
   setup(props) {
-    console.log("SETUP:::", props.com.config);
-    useDataCenter(props.com);
+    console.log("SETUP:::",props.com.id, props.com);
+
+    console.log("SETUP  source:::",props.com.apiData.source.config.data);
+    // useDataCenter(props.com);
+    const { datavEmit } = useDataCenter(props.com)
     useEventCenter(props.com);
 
     const formRef = ref<FormInst | null>(null);
@@ -59,6 +64,7 @@ export default defineComponent({
 
     // 监听自定义事件
     mitter.on(props.com.id, (field: HandleItemField) => {
+      console.log("监听到自定义事件", field);
       switch (field.targetMethodName) {
         case "open":
           props.com.hided = false;
@@ -96,6 +102,7 @@ export default defineComponent({
     // };
 
     const initExcel = () => {
+    // console.log('ApiModule.dataMap[props.com.id]?.source',ApiModule.dataMap[props.com.id])
     if (excelContainer.value && !spreadsheet.value) {
         spreadsheet.value = new Spreadsheet(excelContainer.value, {
           mode: "edit",
@@ -110,10 +117,40 @@ export default defineComponent({
     };
 
     watch(
-      () => config.value.data, // 监听数据变化
+      () => props.com.apiData.source.config.data, // 监听数据变化
       (newData) => {
+        
         if (spreadsheet.value) {
-          spreadsheet.value.loadData(newData || []);
+          console.log("监听数据变化", newData);
+//            var newd = [{
+// 	"name": "Sheet1",
+// 	"rows": {
+// 		"0": {
+// 			"cells": {
+// 				"0": {
+// 					"text": "Axxx"
+// 				},
+// 				"1": {
+// 					"text": "B111"
+// 				}
+// 			}
+// 		},
+// 		"1": {
+// 			"cells": {
+// 				"0": {
+// 					"text": "A222"
+// 				},
+// 				"1": {
+// 					"text": "B222"
+// 				}
+// 			}
+// 		}
+// 	}
+// }]
+
+        var newd = JSON.parse(newData);
+          // spreadsheet.value.loadData(newData || []);
+          spreadsheet.value.loadData(newd || []);
         }
       },
       { deep: true }
@@ -134,11 +171,17 @@ export default defineComponent({
       initExcel(); // 默认加载
     });
 
+    const dv_data = computed(() => {
+      console.log('dv_data', ApiModule.dataMap[props.com.id]?.source)
+      return ApiModule.dataMap[props.com.id]?.source ?? {}
+    })
+
     return {
       formRef,
       ctEnum: controlType,
       excelContainer,
       initExcel,
+      dv_data,
     };
   },
 });

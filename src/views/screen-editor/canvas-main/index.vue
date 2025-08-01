@@ -126,7 +126,7 @@ export default defineComponent({
     });
 
     const screenShotStyle = computed(() => {
-      console.log(canvas.value);
+      // console.log(canvas.value);
       return {
         width: `${canvas.value.width}px`,
         height: `${canvas.value.height}px`,
