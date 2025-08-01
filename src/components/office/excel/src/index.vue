@@ -73,8 +73,30 @@ export default defineComponent({
     const attr = toRef(props.com, "attr");
 
     // 初始化 Excel
+    // const initExcel = () => {
+    //   if (excelContainer.value && !spreadsheet.value) {
+    //     spreadsheet.value = new Spreadsheet(excelContainer.value, {
+    //       mode: "edit",
+    //       showToolbar: true,
+    //       showGrid: true,
+    //       view: {
+    //         height: () => 800,
+    //         width: () => 1200,
+    //       },
+    //     }).loadData([
+    //       {
+    //         name: "Sheet1",
+    //         rows: {
+    //           0: { cells: { 0: { text: "Hello" }, 1: { text: "Excel" } } },
+    //           1: { cells: { 0: { text: "Vue3" }, 1: { text: "x-data-spreadsheet" } } },
+    //         },
+    //       },
+    //     ]);
+    //   }
+    // };
+
     const initExcel = () => {
-      if (excelContainer.value && !spreadsheet.value) {
+    if (excelContainer.value && !spreadsheet.value) {
         spreadsheet.value = new Spreadsheet(excelContainer.value, {
           mode: "edit",
           showToolbar: true,
@@ -83,17 +105,30 @@ export default defineComponent({
             height: () => 800,
             width: () => 1200,
           },
-        }).loadData([
-          {
-            name: "Sheet1",
-            rows: {
-              0: { cells: { 0: { text: "Hello" }, 1: { text: "Excel" } } },
-              1: { cells: { 0: { text: "Vue3" }, 1: { text: "x-data-spreadsheet" } } },
-            },
-          },
-        ]);
+        }).loadData(config.value.data || []); // 动态加载配置中的数据
       }
     };
+
+    watch(
+      () => config.value.data, // 监听数据变化
+      (newData) => {
+        if (spreadsheet.value) {
+          spreadsheet.value.loadData(newData || []);
+        }
+      },
+      { deep: true }
+    );
+
+    const updateExcelData = (data: any[]) => {
+      if (spreadsheet.value) {
+        spreadsheet.value.loadData(data);
+      }
+    };
+
+    // 监听事件动态更新
+    mitter.on(`${props.com.id}-update-data`, (data: any[]) => {
+      updateExcelData(data);
+    });
 
     onMounted(() => {
       initExcel(); // 默认加载

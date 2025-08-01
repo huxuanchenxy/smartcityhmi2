@@ -145,7 +145,7 @@ export default defineComponent({
 
     const handleAddFormItem = () => {
       return new ExcelItems(
-        `自定义组件-${config.value.items.length + 1}`,
+        `自定义Excel-${config.value.items.length + 1}`,
         config.value.items.length + 1
       );
     };

@@ -123,7 +123,15 @@ export class Excel extends DatavComponent {
       cancleButtonText: "取消"
     },
     items: [new ExcelItems("组件", 1)],
-    extendData: {value:"额外的数据"},
+    data:[
+  {
+    name: "Sheet1",
+    rows: {
+      0: { cells: { 0: { text: "A1" }, 1: { text: "B1" } } },
+      1: { cells: { 0: { text: "A2" }, 1: { text: "B2" } } },
+    },
+  },
+],
   };
 
   apis: Partial<ApiConfigMap>;
