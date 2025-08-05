@@ -1850,4 +1850,24 @@
       }
     ]
   }
+  ,
+  {
+    "component": "VExcel",
+    "actions": [
+      {
+        "methodCode": "open",
+        "methodName": "打开"
+      },
+      {
+        "methodCode": "close",
+        "methodName": "关闭"
+      }
+    ],
+    "events": [
+      {
+        "name": "customclick",
+        "title": "自定义点击"
+      }
+    ]
+  }
 ]

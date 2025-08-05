@@ -9,6 +9,7 @@
       >
         office excel
       </n-button>
+      <n-button @click="checkEvents">把内容传给其他组件</n-button>
     </div>
     <!-- Excel 容器 -->
     <div ref="excelContainer" class="excel-container"></div>
@@ -33,8 +34,6 @@ import {
 import { Excel, controlType } from "./excel";
 import { watch } from 'vue'; 
 import { DatavComponent } from '@/components/datav-component'
-
-// ✅ 引入 x-data-spreadsheet
 import Spreadsheet from "x-data-spreadsheet";
 import "x-data-spreadsheet/dist/xspreadsheet.css";
 import {ApiModule} from '@/store/modules/api'
@@ -51,7 +50,7 @@ export default defineComponent({
   setup(props) {
     console.log("SETUP:::",props.com.id, props.com);
 
-    console.log("SETUP  source:::",props.com.apiData.source.config.data);
+    // console.log("SETUP  source:::",props.com.apiData.source.config.data);
     // useDataCenter(props.com);
     const { datavEmit } = useDataCenter(props.com)
     useEventCenter(props.com);
@@ -116,6 +115,9 @@ export default defineComponent({
       }
     };
 
+    //从界面上写入要这么写：
+    //console.log('com', com)
+    //com.apiData.source.config.data = "[{\"name\":\"Sheet1\",\"rows\":{\"0\":{\"cells\":{\"0\":{\"text\":\"A1rrr\"},\"1\":{\"text\":\"B1\"}}},\"1\":{\"cells\":{\"0\":{\"text\":\"A2\"},\"1\":{\"text\":\"B2\"}}}}}]"
     watch(
       () => props.com.apiData.source.config.data, // 监听数据变化
       (newData) => {
@@ -176,12 +178,30 @@ export default defineComponent({
       return ApiModule.dataMap[props.com.id]?.source ?? {}
     })
 
+    const checkEvents = (value: any) => {
+      // console.log('checkEvents', value)
+      console.log('props.com', props.com)
+      if (value) {
+        if (props.com.handles
+          && props.com.handles.customclick
+          && props.com.handles.customclick.fields
+          && props.com.handles.customclick.fields.length > 0) {
+          props.com.handles.customclick.fields.forEach(field => {
+            field.value = '来自自定义组件Excel的值';
+            mitter.emit(field.targetComId, field)
+          })
+        }
+      }
+      
+    }
+
     return {
       formRef,
       ctEnum: controlType,
       excelContainer,
       initExcel,
       dv_data,
+      checkEvents,
     };
   },
 });
