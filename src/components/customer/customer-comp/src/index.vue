@@ -50,12 +50,12 @@
     </div>
     </div>
     <div :style="iframeStyle">
-      <iframe 
+      <!-- <iframe 
         ref="iframeRef" 
         src="http://localhost:8800/#/sysconfig2/rule"  
         style="width: 100%; height: 100%"
-      ></iframe>
-      
+      ></iframe> -->
+      <iframe :src="com.filePath" style="width: 100%; height: 100%"></iframe>
     </div>
 
         
