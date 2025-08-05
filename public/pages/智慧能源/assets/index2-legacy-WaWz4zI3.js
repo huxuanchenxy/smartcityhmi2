@@ -1,1 +1,0 @@
-System.register(["./index-legacy-Cgp3PKn6.js"],(function(e,t){"use strict";var r,n,u,s;return{setters:[e=>{r=e._,n=e.y,u=e.o,s=e.d}],execute:function(){e("default",r({},[["render",function(e,t){const r=s("router-view");return u(),n(r)}]]))}}}));
