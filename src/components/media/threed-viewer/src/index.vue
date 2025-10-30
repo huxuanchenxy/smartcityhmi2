@@ -304,8 +304,13 @@ export default defineComponent({
           if (nodeMapping && nodeMapping.loop) {
             animationActions[r.name].loop = THREE.LoopRepeat
           }
+
+          // ✅ 只加这一行，其他保持原样
+          animationActions[r.name].play()
         })
       }
+
+      
     }
 
     // 创建场景
@@ -535,11 +540,11 @@ export default defineComponent({
 
     //渲染场景
     const render = () => {
-      const time = animationClock.getDelta()
+      // const time = animationClock.getDelta()
 
-      mixers.forEach(mixer => {
-        mixer.update(time)
-      })
+      // mixers.forEach(mixer => {
+      //   // mixer.update(time)
+      // })
 
       // 定义threejs输出画布的尺寸(单位:像素px)
       renderer.setSize(attr.value.w, attr.value.h) //设置three.js渲染区域的尺寸(像素px)
@@ -661,6 +666,9 @@ export default defineComponent({
         cameraNavigatorStart()
       }
       initMapPoint()
+
+        // ✅ 启动动画循环
+        animate()
     })
 
     const rotateCurrentModel = (group: THREE.Group, modelConfig: ThreedModelConfig) => {
@@ -971,10 +979,21 @@ export default defineComponent({
       // })
     })
 
+    // const animate = () => {
+    //   requestAnimationFrame(animate)
+    //   TWEEN.update()
+    //   renderer.render(scene, currentCamera) //执行渲染操作
+    // }
+
     const animate = () => {
       requestAnimationFrame(animate)
+
+      const delta = animationClock.getDelta()
+      mixers.forEach(mixer => mixer.update(delta))
+
       TWEEN.update()
-      renderer.render(scene, currentCamera) //执行渲染操作
+      renderer.render(scene, currentCamera)
+      console.log('delta', delta)
     }
 
     const extendPoint = (A: THREE.Vector3, B: THREE.Vector3, distance: number): THREE.Vector3 => {
