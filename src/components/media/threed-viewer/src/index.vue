@@ -18,6 +18,7 @@ import {
   CSSProperties,
   ref,
   onMounted,
+  onUnmounted,
   watch,
   getCurrentInstance,
 } from 'vue'
@@ -127,6 +128,7 @@ export default defineComponent({
 
     //nodeValueChange
     mitter.on(props.com.id, (field: IcHandleItemField) => {
+      console.log('field.targetMethodName', field.targetMethodName)
       switch (field.targetMethodName) {
         case 'nodeValueChange':
           console.log('onNodeValueChange', field.value, field)
@@ -141,7 +143,10 @@ export default defineComponent({
             r.modelNodeMappings
               .filter(m => m.deviceCode == device && m.nodeCode == node)
               .forEach(nm => {
+                console.log('judgePlayAnimation nm', nm)
+                console.log('judgePlayAnimation field.value', field.value)
                 let judge = judgePlayAnimation(nm, field.value)
+                console.log('judge', judge)
                 if (judge) {
                   if (animationActions[nm.modelKey]) {
                     playList.push(animationActions[nm.modelKey])
@@ -154,9 +159,11 @@ export default defineComponent({
                 }
               }),
           )
-
+              console.log('playList', playList)
           stopList.forEach(r => r.reset().fadeOut(0.2).stop())
+          console.log('playList.forEach start')
           playList.forEach(r => r.reset().fadeIn(0.2).play())
+          console.log('playList.forEach end')
           break
         case 'navigatorStart':
           cameraNavigatorStart()
@@ -216,7 +223,6 @@ export default defineComponent({
     //判断是否播放动画
     const judgePlayAnimation = (nodeMapping: modelNodeMapping, value: any) => {
       let result = false
-
       let dataType = convertNodeTypeToDataType(nodeMapping.nodeType)
 
       result = computeDataType(dataType, nodeMapping.operator1, nodeMapping.value1, value)
@@ -304,13 +310,8 @@ export default defineComponent({
           if (nodeMapping && nodeMapping.loop) {
             animationActions[r.name].loop = THREE.LoopRepeat
           }
-
-          // ✅ 只加这一行，其他保持原样
-          animationActions[r.name].play()
         })
       }
-
-      
     }
 
     // 创建场景
@@ -410,7 +411,7 @@ export default defineComponent({
         }
       }
 
-      scene.add(objControl)
+      // scene.add(objControl)
     }
 
     const addLight = (config: LightConfig) => {
@@ -540,11 +541,11 @@ export default defineComponent({
 
     //渲染场景
     const render = () => {
-      // const time = animationClock.getDelta()
+      const time = animationClock.getDelta()
 
-      // mixers.forEach(mixer => {
-      //   // mixer.update(time)
-      // })
+      mixers.forEach(mixer => {
+        mixer.update(time)
+      })
 
       // 定义threejs输出画布的尺寸(单位:像素px)
       renderer.setSize(attr.value.w, attr.value.h) //设置three.js渲染区域的尺寸(像素px)
@@ -657,19 +658,35 @@ export default defineComponent({
       render()
     }, 200)
 
+    // onMounted(() => {
+    //   reloadModel()
+    //   if (containerRef.value) {
+    //     containerRef.value.appendChild(renderer.domElement) //body元素中插入canvas对象
+    //   }
+    //   if (config.value.autoPlay && !EditorModule.editMode) {
+    //     cameraNavigatorStart()
+    //   }
+    //   initMapPoint()
+    // })
+
     onMounted(() => {
       reloadModel()
       if (containerRef.value) {
-        containerRef.value.appendChild(renderer.domElement) //body元素中插入canvas对象
+        containerRef.value.appendChild(renderer.domElement)
       }
+      // 启动持续动画循环
+      animate()
+
       if (config.value.autoPlay && !EditorModule.editMode) {
         cameraNavigatorStart()
       }
       initMapPoint()
-
-        // ✅ 启动动画循环
-        animate()
     })
+
+    onUnmounted(() => {
+  cancelAnimationFrame(rafId)
+})
+
 
     const rotateCurrentModel = (group: THREE.Group, modelConfig: ThreedModelConfig) => {
       group.rotation.set(
@@ -979,6 +996,7 @@ export default defineComponent({
       // })
     })
 
+    let rafId = 0
     // const animate = () => {
     //   requestAnimationFrame(animate)
     //   TWEEN.update()
@@ -986,14 +1004,10 @@ export default defineComponent({
     // }
 
     const animate = () => {
-      requestAnimationFrame(animate)
-
-      const delta = animationClock.getDelta()
-      mixers.forEach(mixer => mixer.update(delta))
-
-      TWEEN.update()
-      renderer.render(scene, currentCamera)
-      console.log('delta', delta)
+      const delta = animationClock.getDelta()   // 取间隔时间
+      mixers.forEach(mixer => mixer.update(delta)) // 推进全部 mixer
+      renderer.render(scene, currentCamera)     // 真正画一帧
+      rafId = requestAnimationFrame(animate)    // 下一帧继续
     }
 
     const extendPoint = (A: THREE.Vector3, B: THREE.Vector3, distance: number): THREE.Vector3 => {
