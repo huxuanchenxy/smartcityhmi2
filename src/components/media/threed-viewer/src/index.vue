@@ -131,10 +131,28 @@ export default defineComponent({
       console.log('field.targetMethodName', field.targetMethodName)
       switch (field.targetMethodName) {
         case 'nodeValueChange':
-          console.log('onNodeValueChange', field.value, field)
+          // console.log('onNodeValueChange', field.value, field)
 
           const device = field.icDevice
           const node = field.icName
+
+            const v = Number(field.value)
+            /* ===== 新增：用 value 区分指令类型 ===== */
+            if (v >= 3000 && v <= 3999) {
+                const angle = v - 3000               // 0-360
+                const boneName = 'Shoulder_01'       // **** 先写死 ****
+                const axis: 'x'|'y'|'z' = 'y'
+
+                const bone = boneMap[boneName]
+                if (bone) {
+                  bone.rotation[axis] = THREE.MathUtils.degToRad(angle)
+                  render()
+                } else {
+                  console.warn(`[arm] 骨骼 ${boneName} 不存在`)
+                }
+                return
+            }
+            /* ====================================== */
 
           const stopList: THREE.AnimationAction[] = []
           const playList: THREE.AnimationAction[] = []
@@ -143,10 +161,10 @@ export default defineComponent({
             r.modelNodeMappings
               .filter(m => m.deviceCode == device && m.nodeCode == node)
               .forEach(nm => {
-                console.log('judgePlayAnimation nm', nm)
-                console.log('judgePlayAnimation field.value', field.value)
+                // console.log('judgePlayAnimation nm', nm)
+                // console.log('judgePlayAnimation field.value', field.value)
                 let judge = judgePlayAnimation(nm, field.value)
-                console.log('judge', judge)
+                // console.log('judge', judge)
                 if (judge) {
                   if (animationActions[nm.modelKey]) {
                     playList.push(animationActions[nm.modelKey])
@@ -159,7 +177,7 @@ export default defineComponent({
                 }
               }),
           )
-              console.log('playList', playList)
+              // console.log('playList', playList)
           stopList.forEach(r => r.reset().fadeOut(0.2).stop())
           console.log('playList.forEach start')
           playList.forEach(r => r.reset().fadeIn(0.2).play())
@@ -236,7 +254,7 @@ export default defineComponent({
 
       return result
     }
-
+const boneMap: Record<string, THREE.Bone> = {}   // 骨骼名字 -> Bone 对象
     const addModelToScene = (
       threedModel: GLTF,
       modelConfig: ThreedModelConfig,
@@ -277,6 +295,16 @@ export default defineComponent({
         loadAnimations(currentModel, threedModel.animations)
 
         addMaterial(model)
+
+        // ========= 新增：缓存骨骼 =========
+        currentModel.traverse(obj => {
+          if ((obj as any).isBone) {
+            const bone = obj as THREE.Bone
+            boneMap[bone.name] = bone
+            console.log('[arm] cached bone ->', bone.name)
+          }
+        })
+        // ===================================
       }
 
       render()
