@@ -126,6 +126,21 @@ export default defineComponent({
 
     const mapPointList = ref<mapPoint[]>([])
 
+    function parseNumberPair(
+      input: string | number | null | undefined
+    ): { v: number; n2: number } {
+      if (input == null) return { v: 0, n2: 20 }
+
+      const arr = String(input).split(',').slice(0, 2) // 只拿前两项
+      const n1 = Number(arr[0])
+      const n2 = Number(arr[1])
+
+      return {
+        v: Number.isFinite(n1) ? n1 : 0,
+        n2: Number.isFinite(n2) ? n2 : 20
+      }
+    }
+
     //nodeValueChange
     mitter.on(props.com.id, (field: IcHandleItemField) => {
       console.log('field.targetMethodName', field.targetMethodName)
@@ -136,21 +151,37 @@ export default defineComponent({
           const device = field.icDevice
           const node = field.icName
 
-            const v = Number(field.value)
+          const { v, n2 } = parseNumberPair(field.value)
+            // const v = getLeftNumber(field.value)
             /* ===== 新增：用 value 区分指令类型 ===== */
             if (v >= 3000 && v <= 3999) {
-                const angle = v - 3000               // 0-360
-                const boneName = 'Shoulder_01'       // **** 先写死 ****
-                const axis: 'x'|'y'|'z' = 'y'
-
-                const bone = boneMap[boneName]
-                if (bone) {
-                  bone.rotation[axis] = THREE.MathUtils.degToRad(angle)
-                  render()
-                } else {
-                  console.warn(`[arm] 骨骼 ${boneName} 不存在`)
-                }
+              const bone = boneMap['Shoulder_01']
+              if (!bone) {
+                console.warn('[arm] Shoulder_01 不存在')
                 return
+              }
+              DELTA_PER_CALL = n2
+              // console.log('[arm] shoulder01CurrentDeg', shoulder01CurrentDeg)
+              // console.log('[arm] DELTA_PER_CALL', DELTA_PER_CALL)
+              // 计算新目标（度）
+              
+              const newDeg = shoulder01CurrentDeg + DELTA_PER_CALL
+              // console.log('[arm] newDeg', newDeg)
+              const startRad = bone.rotation.y          // 当前弧度
+              const endRad   = THREE.MathUtils.degToRad(newDeg)
+
+              // 创建平滑 tween
+              new TWEEN.Tween({ rad: startRad })
+                .to({ rad: endRad }, ROT_DURATION)
+                .onUpdate(obj => {
+                  bone.rotation.y = obj.rad
+                  render()          // 每一帧都画一次
+                })
+                .start()
+
+              // 记下来，下次继续累加
+              shoulder01CurrentDeg = newDeg
+              return
             }
             /* ====================================== */
 
@@ -255,6 +286,9 @@ export default defineComponent({
       return result
     }
 const boneMap: Record<string, THREE.Bone> = {}   // 骨骼名字 -> Bone 对象
+let shoulder01CurrentDeg = 0    // 上一次的角度（度）
+let DELTA_PER_CALL = -20        // 每次再转 2°
+const ROT_DURATION   = 500      // 毫秒，越小越快
     const addModelToScene = (
       threedModel: GLTF,
       modelConfig: ThreedModelConfig,
@@ -1034,6 +1068,7 @@ const boneMap: Record<string, THREE.Bone> = {}   // 骨骼名字 -> Bone 对象
     const animate = () => {
       const delta = animationClock.getDelta()   // 取间隔时间
       mixers.forEach(mixer => mixer.update(delta)) // 推进全部 mixer
+      TWEEN.update()   // 关键：驱动所有 tween
       renderer.render(scene, currentCamera)     // 真正画一帧
       rafId = requestAnimationFrame(animate)    // 下一帧继续
     }
