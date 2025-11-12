@@ -141,6 +141,11 @@ export default defineComponent({
       }
     }
 
+    const boneMap: Record<string, THREE.Bone> = {}   // 骨骼名字 -> Bone 对象
+let shoulder01CurrentDeg = 0    // 上一次的角度（度）
+let ArmShorter_08CurrentDeg = 0  
+let DELTA_PER_CALL = -20        // 每次再转 2°
+const ROT_DURATION   = 500      // 毫秒，越小越快
     //nodeValueChange
     mitter.on(props.com.id, (field: IcHandleItemField) => {
       console.log('field.targetMethodName', field.targetMethodName)
@@ -154,20 +159,48 @@ export default defineComponent({
           const { v, n2 } = parseNumberPair(field.value)
             // const v = getLeftNumber(field.value)
             /* ===== 新增：用 value 区分指令类型 ===== */
-            if (v >= 3000 && v <= 3999) {
-              const bone = boneMap['Shoulder_01']
+            if (v == 3800) {
+              // console.log('[arm] 启动3800',boneMap)
+              const bone = boneMap['ArmShorter_08']
               if (!bone) {
-                console.warn('[arm] Shoulder_01 不存在')
+                console.warn('[arm] ArmShorter_08 不存在')
                 return
               }
               DELTA_PER_CALL = n2
-              // console.log('[arm] shoulder01CurrentDeg', shoulder01CurrentDeg)
-              // console.log('[arm] DELTA_PER_CALL', DELTA_PER_CALL)
-              // 计算新目标（度）
+
+              
+              const newDeg = ArmShorter_08CurrentDeg + DELTA_PER_CALL
+              // console.log('[arm] newDeg', newDeg)
+              const startRad = bone.rotation.x       // 当前弧度
+              const endRad   = THREE.MathUtils.degToRad(newDeg)
+
+              // 创建平滑 tween
+              new TWEEN.Tween({ rad: startRad })
+                .to({ rad: endRad }, ROT_DURATION)
+                .onUpdate(obj => {
+                  bone.rotation.x = obj.rad
+                  render()          // 每一帧都画一次
+                })
+                .start()
+
+              // 记下来，下次继续累加
+              ArmShorter_08CurrentDeg = newDeg
+              return
+            }
+
+            if (v == 3700) {
+              // console.log('[arm] 启动3700',boneMap)
+              const bone = boneMap['Shoulder_01']
+              if (!bone) {
+                console.warn('[arm] shoulder01 不存在')
+                return
+              }
+              DELTA_PER_CALL = n2
+
               
               const newDeg = shoulder01CurrentDeg + DELTA_PER_CALL
               // console.log('[arm] newDeg', newDeg)
-              const startRad = bone.rotation.y          // 当前弧度
+              const startRad = bone.rotation.y       // 当前弧度
               const endRad   = THREE.MathUtils.degToRad(newDeg)
 
               // 创建平滑 tween
@@ -285,10 +318,7 @@ export default defineComponent({
 
       return result
     }
-const boneMap: Record<string, THREE.Bone> = {}   // 骨骼名字 -> Bone 对象
-let shoulder01CurrentDeg = 0    // 上一次的角度（度）
-let DELTA_PER_CALL = -20        // 每次再转 2°
-const ROT_DURATION   = 500      // 毫秒，越小越快
+
     const addModelToScene = (
       threedModel: GLTF,
       modelConfig: ThreedModelConfig,
