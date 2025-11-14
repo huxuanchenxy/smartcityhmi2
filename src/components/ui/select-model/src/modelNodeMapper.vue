@@ -39,6 +39,17 @@
               </n-list-item>
             </n-list>
           </n-tab-pane>
+          <n-tab-pane name="bone" tab="骨骼">
+            <div style="overflow: auto;height: 700px;width: 100%;">
+              <n-data-table
+                    :data="tableData"
+                    :columns="columns"
+                    :max-height="400"
+                    :scroll-x="0"
+                    size="small"
+                  />
+            </div>
+          </n-tab-pane>
         </n-tabs>
       </n-gi>
       <n-gi span="7">
@@ -167,11 +178,28 @@ export default defineComponent({
 
     const nMessage = useMessage()
 
-
+    const tableData = ref<{ name: string }[]>([])
+    // 列配置
+    const columns = [
+      { title: '骨骼名称', key: 'name' }
+    ]
+    const boneMap: Record<string, THREE.Bone> = {}   // 骨骼名字 -> Bone 对象
     const read3dModel = (threeModel: THREE.Object3D, animations: THREE.AnimationClip[]) => {
 
       addModelToScene(threeModel)
       treeData.value = [threeModel]
+              // ========= 新增：缓存骨骼 =========
+        const currentModel = threeModel
+        currentModel.traverse(obj => {
+          if ((obj as any).isBone) {
+            const bone = obj as THREE.Bone
+            boneMap[bone.name] = bone
+          }
+        })
+        tableData.value = Object.keys(boneMap).map(name => ({ name }))
+      
+        
+        // ===================================
       scene.animations = animations
       animationList.value = animations.map(clip => {
         return {
@@ -564,6 +592,8 @@ export default defineComponent({
     return {
       modelLoading,
       treeData,
+      tableData,
+      columns,
       icListVisibile,
       containerRef,
       modelTap,
