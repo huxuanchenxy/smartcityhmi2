@@ -148,7 +148,8 @@ let DELTA_PER_CALL = -20        // 每次再转 2°
 const ROT_DURATION   = 500      // 毫秒，越小越快
     //nodeValueChange
     mitter.on(props.com.id, (field: IcHandleItemField) => {
-      console.log('field.targetMethodName', field.targetMethodName)
+      // console.log('field', field)//这个是外面操作时传来的值
+      // console.log('field.targetMethodName', field.targetMethodName)
       switch (field.targetMethodName) {
         case 'nodeValueChange':
           // console.log('onNodeValueChange', field.value, field)
@@ -220,12 +221,13 @@ const ROT_DURATION   = 500      // 毫秒，越小越快
 
           const stopList: THREE.AnimationAction[] = []
           const playList: THREE.AnimationAction[] = []
-
+          console.log('judgePlayAnimation com',props.com)
           props.com.config.models.forEach(r =>
             r.modelNodeMappings
               .filter(m => m.deviceCode == device && m.nodeCode == node)
               .forEach(nm => {
-                // console.log('judgePlayAnimation nm', nm)
+                console.log('judgePlayAnimation r', r)
+                console.log('judgePlayAnimation nm', nm)
                 // console.log('judgePlayAnimation field.value', field.value)
                 let judge = judgePlayAnimation(nm, field.value)
                 // console.log('judge', judge)

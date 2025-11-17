@@ -1,7 +1,7 @@
 <template>
   <n-spin :show="modelLoading">
-    <n-grid x-gap="12" :cols="12">
-      <n-gi span="3">
+    <n-grid x-gap="12" :cols="13">
+      <n-gi span="2">
         <n-tabs type="line" default-value="animation" animated>
           <n-tab-pane name="mesh" tab="网格">
             <div style="overflow: auto;height: 700px;width: 100%;">
@@ -39,25 +39,16 @@
               </n-list-item>
             </n-list>
           </n-tab-pane>
-          <n-tab-pane name="bone" tab="骨骼">
-            <div style="overflow: auto;height: 700px;width: 100%;">
-              <n-data-table
-                    :data="tableData"
-                    :columns="columns"
-                    :max-height="400"
-                    :scroll-x="0"
-                    size="small"
-                  />
-            </div>
-          </n-tab-pane>
         </n-tabs>
       </n-gi>
       <n-gi span="7">
         <div ref="containerRef" style="width: 100%;height: 700px;" @click="modelTap"></div>
       </n-gi>
-      <n-gi span="2">
+      <n-gi span="4">
         点位
+
         <n-form ref="mappingFormRef" :model="currentModelNodeMapping" :rules="mappingRules">
+        <div class="mapping-box">
           <n-form-item path="nodeCode" label="点位">
             <n-input
               v-model:value="currentModelNodeMapping.nodeCode"
@@ -89,6 +80,18 @@
           <n-form-item path="loop" label="循环">
             <n-switch v-model:value="currentModelNodeMapping.loop" />
           </n-form-item>
+
+
+
+                        <n-data-table
+                    :data="currentModelNodeMapping.boneData"
+                    :columns="columns"
+                    :max-height="400"
+                    :scroll-x="0"
+                    size="small"
+                  />
+          </div>
+
           <n-form-item>
             <n-space>
               <n-button type="success" @click="saveCurrentModelNodeMapping()">
@@ -100,6 +103,7 @@
             </n-space>
           </n-form-item>
         </n-form>
+        
       </n-gi>
     </n-grid>
   </n-spin>
@@ -121,12 +125,19 @@ import { cloneDeep } from 'lodash-es'
 import { useMessage } from 'naive-ui'
 import { IcModule } from '@/store/modules/icstate'
 import { NodeDataType, convertNodeTypeToDataType, getOperatorListByDataType } from '@/utils/threed-node'
+import { h } from 'vue'
+import { NSelect, NSwitch } from 'naive-ui'
 
 interface animationListItem {
   clip: THREE.AnimationClip
   selected: boolean
 }
 
+interface BoneRow {
+  name: string
+  rotate: 'x' | 'y' | 'z'   // 新增
+  enable: boolean            // 新增
+}
 export default defineComponent({
   name: 'ModelNodeMapper',
   components: {
@@ -171,18 +182,47 @@ export default defineComponent({
     const icListVisibile = ref(false)
 
     const getEmptyModelNodeMapping = (clipName: string | null) => {
-      return { deviceCode: null, nodeCode: null, modelKey: clipName, nodeType: null, operator1: null, value1: null, operator2: null, value2: null, pt: null, loop: false }
+      return { deviceCode: null, nodeCode: null, modelKey: clipName, nodeType: null, operator1: null, value1: null, operator2: null, value2: null, pt: null, loop: false,boneData: [], }
     }
 
     const currentModelNodeMapping = ref<modelNodeMapping>(getEmptyModelNodeMapping(null))
 
     const nMessage = useMessage()
 
-    const tableData = ref<{ name: string }[]>([])
+    const boneData = ref<{ name: string }[]>([])
     // 列配置
-    const columns = [
-      { title: '骨骼名称', key: 'name' }
-    ]
+ const columns = [
+  { title: '骨骼名称', key: 'name' },
+  {
+    title: '旋转轴',
+    key: 'rotate',
+    render(row: BoneRow, index: number) {
+      return h(NSelect, {
+        value: row.rotate,
+        options: [
+          { label: 'X', value: 'x' },
+          { label: 'Y', value: 'y' },
+          { label: 'Z', value: 'z' }
+        ],
+        onUpdateValue(v: 'x' | 'y' | 'z') {
+          currentModelNodeMapping.value.boneData[index].rotate = v
+        }
+      })
+    }
+  },
+  {
+    title: '是否启用',
+    key: 'enable',
+    render(row: BoneRow, index: number) {
+      return h(NSwitch, {
+        value: row.enable,
+        onUpdateValue(v: boolean) {
+          currentModelNodeMapping.value.boneData[index].enable = v
+        }
+      })
+    }
+  }
+]
     const boneMap: Record<string, THREE.Bone> = {}   // 骨骼名字 -> Bone 对象
     const read3dModel = (threeModel: THREE.Object3D, animations: THREE.AnimationClip[]) => {
 
@@ -196,9 +236,16 @@ export default defineComponent({
             boneMap[bone.name] = bone
           }
         })
-        tableData.value = Object.keys(boneMap).map(name => ({ name }))
-      
+        // boneData.value = Object.keys(boneMap).map(name => ({ name }))
+        // currentModelNodeMapping.value.boneData = boneData.value
         
+        boneData.value = Object.keys(boneMap).map(name => ({
+          name,
+          rotate: 'x',
+          enable: false
+        }))
+        currentModelNodeMapping.value.boneData = cloneDeep(boneData.value)
+
         // ===================================
       scene.animations = animations
       animationList.value = animations.map(clip => {
@@ -487,12 +534,18 @@ export default defineComponent({
       })
       item.selected = true
 
+      // console.log('selectAnimation item', item)
       let modelNodeMapping = props.modelValue.modelNodeMappings.find(r => r.modelKey == item.clip.name)
       if (modelNodeMapping) {
+        // console.log('boneData.value', boneData.value)
+        // currentModelNodeMapping.value.boneData = boneData.value
         currentModelNodeMapping.value = cloneDeep(modelNodeMapping)
+        console.log('selectAnimation modelNodeMapping 1111', modelNodeMapping)
       }
       else {
         currentModelNodeMapping.value = getEmptyModelNodeMapping(item.clip.name)
+        currentModelNodeMapping.value.boneData = boneData.value
+        console.log('selectAnimation modelNodeMapping 2222', modelNodeMapping)
       }
       mappingFormRef.value.restoreValidation()
     }
@@ -502,7 +555,9 @@ export default defineComponent({
     }
     provide('closeIcList', () => { icListVisibile.value = false })
 
+    //选好点位的时候会进来
     provide('addPt', (item: PtModel) => {
+      console.log('addPt', item)
       currentModelNodeMapping.value.deviceCode = item.extension.device
       currentModelNodeMapping.value.nodeCode = item.extension.name
       currentModelNodeMapping.value.nodeType = item.nodeType
@@ -538,6 +593,7 @@ export default defineComponent({
       //console.log('icHandles', props.icHandles['nodeValueChange'].fields)
 
       let icHandles = props.icCom.ichandles as Record<string, IcHandleItemConfig>
+      console.log('icHandles', icHandles)
       let nodeValueChange = icHandles['nodeValueChange']
       //console.log('icHandles', icHandles['nodeValueChange'])
       //console.log('icHandles', toRef(props.icCom,'ichandles'))
@@ -546,7 +602,7 @@ export default defineComponent({
         nMessage.error('请选择动画节点')
         return
       }
-
+      console.log('currentModelNodeMapping', currentModelNodeMapping.value)
       let modelNodeMappingIndex = props.modelValue.modelNodeMappings.findIndex(r => r.modelKey == currentModelNodeMapping.value.modelKey)
 
       if (modelNodeMappingIndex < 0) {
@@ -592,7 +648,7 @@ export default defineComponent({
     return {
       modelLoading,
       treeData,
-      tableData,
+      boneData,
       columns,
       icListVisibile,
       containerRef,
@@ -625,5 +681,9 @@ export default defineComponent({
 <style scoped>
 .animationItem:hover {
   background-color: #f0f0f0;
+}
+.mapping-box{
+  overflow: auto;
+  height: 550px;
 }
 </style>
