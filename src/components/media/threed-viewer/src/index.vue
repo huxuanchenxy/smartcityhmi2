@@ -348,13 +348,13 @@ export default defineComponent({
         loadAnimations(currentModel, threedModel.animations)
 
         addMaterial(model)
-
+        // console.log('currentModel',currentModel)
         // ========= 新增：缓存骨骼 =========
         currentModel.traverse(obj => {
           if ((obj as any).isBone) {
             const bone = obj as THREE.Bone
             boneMap[bone.name] = bone
-            console.log('[arm] cached bone ->', bone.name)
+            // console.log('[arm] cached bone ->', bone.name)
           }
         })
         // ===================================

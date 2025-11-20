@@ -39,6 +39,30 @@
               </n-list-item>
             </n-list>
           </n-tab-pane>
+          <n-tab-pane name="bone" tab="骨骼">
+            <div style="overflow:auto;height:700px;">
+              <!-- 骨架树 -->
+                <n-tree
+                  ref="boneTreeRef"
+                  block-line
+                  :data="boneTreeData"
+                  key-field="uuid"
+                  label-field="name"
+                  :children-field="'children'"
+                  selectable
+                  :node-props="boneNodeProps"
+                  :selected-keys="selectedBoneKeys"
+                  :expanded-keys="expandedBoneKeys"          
+                  @update:expanded-keys="(keys) => (expandedBoneKeys = keys)" 
+                  :expand-on-click="false"                  
+                />
+              <n-divider />
+              <n-space>
+                <n-button size="tiny" @click="addSelectedBonesToTable">追加到列表</n-button>
+                <n-button size="tiny" @click="clearBoneSelection">清空选择</n-button>
+              </n-space>
+            </div>
+          </n-tab-pane>             
         </n-tabs>
       </n-gi>
       <n-gi span="7">
@@ -110,7 +134,7 @@
   <IcList :visible="icListVisibile" />
 </template>
 <script lang='ts'>
-import { computed, defineComponent, onMounted, provide, ref, toRef } from 'vue'
+import { computed, defineComponent, onMounted, provide, ref, toRef,nextTick } from 'vue'
 import { IconPlay } from '@/icons'
 import { getFile, getModel } from '@/api/threed'
 import * as THREE from 'three'
@@ -224,12 +248,35 @@ export default defineComponent({
   }
 ]
     const boneMap: Record<string, THREE.Bone> = {}   // 骨骼名字 -> Bone 对象
+
+        /* 1. 新增响应式变量 */
+    const boneTreeRef        = ref(null)
+    const boneTreeData       = ref<TreeOption[]>([])
+    const selectedBoneKeys   = ref<string[]>([])
+    const expandedBoneKeys   = ref<string[]>([])
+    let skeletonHelper     : THREE.SkeletonHelper | null = null
+
+    /** 递归收集 uuid */
+function getAllUuids(nodes: TreeOption[]): string[] {
+  const keys: string[] = []
+    const walk = (list: any[]) => {
+    list.forEach(n => {
+      keys.push(n.uuid)          // n 现在是 TreeOption，uuid 是 string ✅
+      if (n.children?.length) walk(n.children)
+    })
+  }
+  walk(nodes)
+  return keys
+}
     const read3dModel = (threeModel: THREE.Object3D, animations: THREE.AnimationClip[]) => {
 
       addModelToScene(threeModel)
       treeData.value = [threeModel]
               // ========= 新增：缓存骨骼 =========
         const currentModel = threeModel
+
+
+
         currentModel.traverse(obj => {
           if ((obj as any).isBone) {
             const bone = obj as THREE.Bone
@@ -247,6 +294,40 @@ export default defineComponent({
         currentModelNodeMapping.value.boneData = cloneDeep(boneData.value)
 
         // ===================================
+
+          /* ---- 骨架缓存 ---- */
+          // const boneMap:Record<string,THREE.Bone> = {}
+          const boneArr:THREE.Bone[] = []
+          threeModel.traverse((obj:any) => {
+            if (obj.isBone) {
+              boneMap[obj.name] = obj
+              boneArr.push(obj)
+              console.log('bone name =', obj.name, 'parent =', obj.parent?.name ?? 'null')
+            }
+          })
+          console.log('一共找到', boneArr.length, '根骨头')
+          /* ---- 画骨架 ---- */
+          skeletonHelper = new THREE.SkeletonHelper(threeModel)
+          // skeletonHelper.material.linewidth = 3
+          scene.add(skeletonHelper)
+
+          /* ---- 生成树结构 ---- */
+          const tree = buildBoneTree(boneArr)
+          console.log('即将赋值 boneTreeData', JSON.parse(JSON.stringify(tree)))
+          boneTreeData.value = null          // 先强制清空
+          nextTick(() => {
+            boneTreeData.value = tree        // 再一次性给新引用
+          })
+          // boneTreeData.value = tree        // 整个换掉，保证响应式
+          /* ---- 初始化右侧表格数据 ---- */
+          boneData.value = boneArr.map(b => ({
+            name   : b.name,
+            rotate : 'x' as const,
+            enable : false
+          }))
+          currentModelNodeMapping.value.boneData = cloneDeep(boneData.value)
+
+
       scene.animations = animations
       animationList.value = animations.map(clip => {
         return {
@@ -267,6 +348,93 @@ export default defineComponent({
         containerRef.value.appendChild(renderer.domElement) //body元素中插入canvas对象
       }
     }
+
+
+/* 3. 把扁平 bone 数组变成树 */
+function buildBoneTree(bones: THREE.Bone[]): TreeOption[] {
+  const map = new Map<string, TreeOption>()
+  const root: TreeOption[] = []
+
+  // 1. 先生成所有节点，children 留空数组
+  bones.forEach(b =>
+    map.set(b.uuid, { uuid: b.uuid, name: b.name, children: [] })
+  )
+
+  // 2. 挂父子：用“展开运算符”生成新 children 引用
+  bones.forEach(b => {
+    const node = map.get(b.uuid)!
+    const parentBone = b.parent && (b.parent as any).isBone ? b.parent as THREE.Bone : null
+
+    if (parentBone && map.has(parentBone.uuid)) {
+      const pNode = map.get(parentBone.uuid)!
+      pNode.children = [...pNode.children, node] // 新引用
+    } else {
+      root.push(node)
+    }
+  })
+
+  // 3. 再深拷贝一次，确保整棵树都是新对象
+  return JSON.parse(JSON.stringify(root))
+}
+
+/* 4. 树节点点击事件 */
+const boneNodeProps = ({ option }:{option:TreeOption}) => ({
+  // onClick() {
+  //   selectedBoneKeys.value = [option.uuid]
+  //   /* 高亮 helper 对应骨头 */
+  //   const bone = boneMap[option.name]
+  //   if (bone && skeletonHelper) {
+  //     /* SkeletonHelper 的 bone 顺序同 SkinnedMesh */
+  //     const idx = (skeletonHelper.bones as THREE.Bone[]).findIndex(b => b.uuid === bone.uuid)
+  //     if (idx !== -1) {
+  //       /* 把 helper 颜色改成黄色，其余恢复青色 */
+  //       const colors = (skeletonHelper.geometry.attributes.color as THREE.BufferAttribute)
+  //       const arr = colors.array as Uint8Array
+  //       const step = 6  // 每根骨头 2 个点，每个点 RGB 占 3 字节
+  //       for (let i = 0; i < arr.length; i += 3) {
+  //         arr[i]   = 0   // R
+  //         arr[i+1] = 255 // G
+  //         arr[i+2] = 255 // B
+  //       }
+  //       /* 把当前骨染成黄 */
+  //       for (let i = idx * step; i < (idx + 1) * step; i += 3) {
+  //         arr[i]   = 255
+  //         arr[i+1] = 255
+  //         arr[i+2] = 0
+  //       }
+  //       colors.needsUpdate = true
+  //     }
+  //   }
+  // }
+})
+
+/* 5. 把树里选中的 bone 追加到右侧表格（去重） */
+const addSelectedBonesToTable = () => {
+  const exist = new Set(currentModelNodeMapping.value.boneData.map(r => r.name))
+  selectedBoneKeys.value.forEach(uuid => {
+    const name = boneTreeData.value.find(n => n.uuid === uuid)?.name
+    if (name && !exist.has(name)) {
+      currentModelNodeMapping.value.boneData.push({
+        name,
+        rotate: 'x',
+        enable: true
+      })
+    }
+  })
+}
+
+/* 6. 清空选择 */
+const clearBoneSelection = () => {
+  selectedBoneKeys.value = []
+  if (skeletonHelper) {
+    /* 恢复青色 */
+    const arr = (skeletonHelper.geometry.attributes.color.array as Uint8Array)
+    for (let i = 0; i < arr.length; i += 3) {
+      arr[i] = 0; arr[i+1] = 255; arr[i+2] = 255
+    }
+    (skeletonHelper.geometry.attributes.color as THREE.BufferAttribute).needsUpdate = true
+  }
+}
 
 
 
@@ -674,6 +842,15 @@ export default defineComponent({
       getOperatorList,
       resetCurrentModelNodeMapping,
       saveCurrentModelNodeMapping,
+
+      /* 新增的骨骼相关 */
+  boneTreeData,
+  boneTreeRef,
+  boneNodeProps,
+  selectedBoneKeys,
+  expandedBoneKeys,
+  addSelectedBonesToTable,
+  clearBoneSelection,
     }
   },
 })
