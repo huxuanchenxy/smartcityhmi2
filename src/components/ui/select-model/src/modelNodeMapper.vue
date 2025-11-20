@@ -151,6 +151,7 @@ import { IcModule } from '@/store/modules/icstate'
 import { NodeDataType, convertNodeTypeToDataType, getOperatorListByDataType } from '@/utils/threed-node'
 import { h } from 'vue'
 import { NSelect, NSwitch } from 'naive-ui'
+import {CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
 
 interface animationListItem {
   clip: THREE.AnimationClip
@@ -268,9 +269,25 @@ function getAllUuids(nodes: TreeOption[]): string[] {
   walk(nodes)
   return keys
 }
+
+let renderStarted = false
     const read3dModel = (threeModel: THREE.Object3D, animations: THREE.AnimationClip[]) => {
 
-      addModelToScene(threeModel)
+// 先把模型加到 scene（不在 addModelToScene 里直接触发 render()）
+addModelToScene(threeModel)
+
+// 把 renderer.domElement 插入容器（如果尚未插入）
+if (containerRef.value && containerRef.value.children.length === 0) {
+  containerRef.value.appendChild(renderer.domElement)
+  // 确保 labelRenderer 在渲染循环前被创建
+  initLabelRenderer()
+}
+
+// 然后再启动渲染循环（renderStarted 控制只启动一次）
+if (!renderStarted) {
+  renderStarted = true
+  render()
+}
       treeData.value = [threeModel]
               // ========= 新增：缓存骨骼 =========
         const currentModel = threeModel
@@ -302,15 +319,29 @@ function getAllUuids(nodes: TreeOption[]): string[] {
             if (obj.isBone) {
               boneMap[obj.name] = obj
               boneArr.push(obj)
-              console.log('bone name =', obj.name, 'parent =', obj.parent?.name ?? 'null')
+              // console.log('bone name =', obj.name, 'parent =', obj.parent?.name ?? 'null')
             }
+
+              if (obj.isBone) {
+                  const div = document.createElement('div')
+                  div.className = 'boneLabel'
+                  div.style.color = '#00ff00'
+                  div.style.fontSize = '24px'
+                  div.textContent = obj.name
+                  const label = new CSS2DObject(div)
+                  // 把标签放在骨头原点（也可换成 worldPosition）
+                  label.position.set(0, 0, 0)
+                  obj.add(label)
+              }
           })
           console.log('一共找到', boneArr.length, '根骨头')
           /* ---- 画骨架 ---- */
-          skeletonHelper = new THREE.SkeletonHelper(threeModel)
+          skeletonHelper = new THREE.SkeletonHelper(threeModel);
           // skeletonHelper.material.linewidth = 3
+          (skeletonHelper.material as THREE.LineBasicMaterial).linewidth = 30
           scene.add(skeletonHelper)
 
+          
           /* ---- 生成树结构 ---- */
           const tree = buildBoneTree(boneArr)
           console.log('即将赋值 boneTreeData', JSON.parse(JSON.stringify(tree)))
@@ -347,6 +378,12 @@ function getAllUuids(nodes: TreeOption[]): string[] {
       if (containerRef.value && containerRef.value.children.length === 0) {
         containerRef.value.appendChild(renderer.domElement) //body元素中插入canvas对象
       }
+
+        /* 3. 最后启动/继续渲染循环 */
+        if (!renderStarted) {          // 加一个标志位，只启动一次
+          renderStarted = true
+          render()
+        }
     }
 
 
@@ -379,33 +416,35 @@ function buildBoneTree(bones: THREE.Bone[]): TreeOption[] {
 
 /* 4. 树节点点击事件 */
 const boneNodeProps = ({ option }:{option:TreeOption}) => ({
-  // onClick() {
-  //   selectedBoneKeys.value = [option.uuid]
-  //   /* 高亮 helper 对应骨头 */
-  //   const bone = boneMap[option.name]
-  //   if (bone && skeletonHelper) {
-  //     /* SkeletonHelper 的 bone 顺序同 SkinnedMesh */
-  //     const idx = (skeletonHelper.bones as THREE.Bone[]).findIndex(b => b.uuid === bone.uuid)
-  //     if (idx !== -1) {
-  //       /* 把 helper 颜色改成黄色，其余恢复青色 */
-  //       const colors = (skeletonHelper.geometry.attributes.color as THREE.BufferAttribute)
-  //       const arr = colors.array as Uint8Array
-  //       const step = 6  // 每根骨头 2 个点，每个点 RGB 占 3 字节
-  //       for (let i = 0; i < arr.length; i += 3) {
-  //         arr[i]   = 0   // R
-  //         arr[i+1] = 255 // G
-  //         arr[i+2] = 255 // B
-  //       }
-  //       /* 把当前骨染成黄 */
-  //       for (let i = idx * step; i < (idx + 1) * step; i += 3) {
-  //         arr[i]   = 255
-  //         arr[i+1] = 255
-  //         arr[i+2] = 0
-  //       }
-  //       colors.needsUpdate = true
-  //     }
-  //   }
-  // }
+  onClick() {
+    // selectedBoneKeys.value = [option.uuid]
+    selectedBoneKeys.value = [option.uuid as string]
+    console.log('bone node clicked', option.name)
+    /* 高亮 helper 对应骨头 */
+    const bone = boneMap[option.name as string]
+    if (bone && skeletonHelper) {
+      /* SkeletonHelper 的 bone 顺序同 SkinnedMesh */
+      const idx = (skeletonHelper.bones as THREE.Bone[]).findIndex(b => b.uuid === bone.uuid)
+      if (idx !== -1) {
+        /* 把 helper 颜色改成黄色，其余恢复青色 */
+        const colors = (skeletonHelper.geometry.attributes.color as THREE.BufferAttribute)
+        const arr = colors.array as Uint8Array
+        const step = 6  // 每根骨头 2 个点，每个点 RGB 占 3 字节
+        for (let i = 0; i < arr.length; i += 3) {
+          arr[i]   = 0   // R
+          arr[i+1] = 255 // G
+          arr[i+2] = 255 // B
+        }
+        /* 把当前骨染成黄 */
+        for (let i = idx * step; i < (idx + 1) * step; i += 3) {
+          arr[i]   = 255
+          arr[i+1] = 255
+          arr[i+2] = 0
+        }
+        colors.needsUpdate = true
+      }
+    }
+  }
 })
 
 /* 5. 把树里选中的 bone 追加到右侧表格（去重） */
@@ -577,22 +616,50 @@ const clearBoneSelection = () => {
       }
     }
 
-    //渲染场景
-    const render = () => {
-      const time = animationClock.getDelta()
-      if (mixer) {
-        mixer.update(time)
-      }
-
-      // 定义threejs输出画布的尺寸(单位:像素px)
-      renderer.setSize(600, 600) //设置three.js渲染区域的尺寸(像素px)
-      renderer.render(scene, currentCamera) //执行渲染操作
-      renderer.setRenderTarget(null)
-      requestAnimationFrame(render)
+    let labelRenderer: CSS2DRenderer
+    function initLabelRenderer() {
+      labelRenderer = new CSS2DRenderer()
+      labelRenderer.setSize(renderer.domElement.clientWidth, renderer.domElement.clientHeight)
+      labelRenderer.domElement.style.position = 'absolute'
+      labelRenderer.domElement.style.top = '0'
+      labelRenderer.domElement.style.pointerEvents = 'none' // 让鼠标事件穿透标签
+      containerRef.value!.appendChild(labelRenderer.domElement) // 同一个容器
     }
+
+    //渲染场景
+// 渲染场景
+const render = () => {
+  const time = animationClock.getDelta()
+  if (mixer) {
+    mixer.update(time)
+  }
+
+  // 保证 renderer 与 camera 已经初始化
+  if (!renderer || !currentCamera) {
+    requestAnimationFrame(render)
+    return
+  }
+
+  // 使用容器真实尺寸（退回到 600x600 作为兜底）
+  const w = containerRef.value?.clientWidth ?? 600
+  const h = containerRef.value?.clientHeight ?? 600
+  renderer.setSize(w, h)
+  renderer.render(scene, currentCamera)
+  renderer.setRenderTarget(null)
+
+  // 只有在 labelRenderer 已初始化时才渲染它
+  if (labelRenderer) {
+    labelRenderer.setSize(w, h)
+    labelRenderer.render(scene, currentCamera)
+  }
+
+  requestAnimationFrame(render)
+}
+
 
     initScene()
     initRenderer()
+    // initLabelRenderer()
     initCamera()
     initCameraLight()
     initCameraControl()
@@ -601,11 +668,12 @@ const clearBoneSelection = () => {
       group = new THREE.Group()
       scene.add(group)
       group.add(threedModel)
-      render()
+      // render()
     }
 
     onMounted(() => {
-      render()
+      // initLabelRenderer()
+      // render()
     })
 
     const nodeProps = ({ option }: { option: TreeOption; }) => {
@@ -862,5 +930,11 @@ const clearBoneSelection = () => {
 .mapping-box{
   overflow: auto;
   height: 550px;
+}
+
+.boneLabel {
+  font-family: Arial, sans-serif;
+  white-space: nowrap;
+  transform: translate(-50%, -100%); /* 居中+上浮 */
 }
 </style>
